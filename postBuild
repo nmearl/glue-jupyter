@@ -2,6 +2,12 @@
 
 set -ex
 
+
+pip install .
+
+git clone https://github.com/glue-viz/glue
+(cd glue; pip install .)
+
 jupyter labextension install @jupyter-widgets/jupyterlab-manager
 
 git clone https://github.com/maartenbreddels/ipyvolume/
