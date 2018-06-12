@@ -10,6 +10,7 @@ git clone https://github.com/glue-viz/glue
 
 jupyter labextension install @jupyter-widgets/jupyterlab-manager
 
+pip uninstall ipyvolume -y
 git clone https://github.com/maartenbreddels/ipyvolume/
 pushd ipyvolume
 pip install .
