@@ -27,8 +27,8 @@ before_install:
   - conda create -y -n test-environment python=$PYTHON_VERSION
   - conda env update -n test-environment -f environment.yml
   - source activate test-environment
+  - conda install -c conda-forge pytest pytest-cov runipy nodejs
   - bash postBuild
-  - conda install -c conda-forge pytest pytest-cov runipy
   - pip install coveralls
 
 install:
