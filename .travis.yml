@@ -24,7 +24,8 @@ before_install:
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
   - conda info -a
-  - conda env create -q -n test-environment python=$PYTHON_VERSION -f environment.yml
+  - conda create -y -n test-environment python=$PYTHON_VERSION
+  - conda env update -n test-environment -f environment.yml
   - source activate test-environment
   - conda install -c conda-forge pytest pytest-cov runipy
   - pip install coveralls
