@@ -28,14 +28,20 @@ before_install:
   - conda env update -n test-environment -f environment.yml
   - source activate test-environment
   - conda install -c conda-forge pytest pytest-cov runipy nodejs
-  - bash postBuild
+#  - bash postBuild
+  - git clone https://github.com/glue-viz/glue
+  - (cd glue; pip install .)
+  - git clone https://github.com/maartenbreddels/ipyvolume/
+  - (cd ipyvolume; pip install .)
+  - git clone https://github.com/maartenbreddels/bqplot
+  - (cd bqplot; git checkout scatter_webgl; pip install .)
   - pip install coveralls
 
 install:
   - pip install -e .
 
 script:
-  - py.test --cov-report= --cov=glue_jupyter
+  - xvfb-run py.test --cov-report= --cov=glue_jupyter
 #  - runipy examples/examples.ipynb
 
 after_success:
