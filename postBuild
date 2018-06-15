@@ -20,7 +20,7 @@ popd
 
 git clone https://github.com/maartenbreddels/bqplot/
 pushd bqplot
-git checkout image_colormap_frontend
+git checkout scatter_webgl
 pip install .
 jupyter labextension install js
 popd
