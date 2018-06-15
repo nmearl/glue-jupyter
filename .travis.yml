@@ -35,7 +35,6 @@ install:
   - pip install -e .
 
 script:
-  - xvfb-run make test
   - py.test --cov-report= --cov=glue_jupyter
 #  - runipy examples/examples.ipynb
 
