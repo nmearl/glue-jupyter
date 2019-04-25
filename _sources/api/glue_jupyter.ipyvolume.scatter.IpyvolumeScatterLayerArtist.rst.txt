@@ -1,0 +1,19 @@
+IpyvolumeScatterLayerArtist
+===========================
+
+.. currentmodule:: glue_jupyter.ipyvolume.scatter
+
+.. autoclass:: IpyvolumeScatterLayerArtist
+   :show-inheritance:
+
+   .. rubric:: Methods Summary
+
+   .. autosummary::
+
+      ~IpyvolumeScatterLayerArtist.redraw
+      ~IpyvolumeScatterLayerArtist.update
+
+   .. rubric:: Methods Documentation
+
+   .. automethod:: redraw
+   .. automethod:: update

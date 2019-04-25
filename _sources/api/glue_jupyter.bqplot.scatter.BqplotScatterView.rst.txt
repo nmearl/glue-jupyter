@@ -1,0 +1,23 @@
+BqplotScatterView
+=================
+
+.. currentmodule:: glue_jupyter.bqplot.scatter
+
+.. autoclass:: BqplotScatterView
+   :show-inheritance:
+
+   .. rubric:: Attributes Summary
+
+   .. autosummary::
+
+      ~BqplotScatterView.allow_duplicate_data
+      ~BqplotScatterView.allow_duplicate_subset
+      ~BqplotScatterView.large_data_size
+      ~BqplotScatterView.tools
+
+   .. rubric:: Attributes Documentation
+
+   .. autoattribute:: allow_duplicate_data
+   .. autoattribute:: allow_duplicate_subset
+   .. autoattribute:: large_data_size
+   .. autoattribute:: tools

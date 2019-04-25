@@ -1,0 +1,43 @@
+JupyterApplication
+==================
+
+.. currentmodule:: glue_jupyter
+
+.. autoclass:: JupyterApplication
+   :show-inheritance:
+
+   .. rubric:: Methods Summary
+
+   .. autosummary::
+
+      ~JupyterApplication.add_link
+      ~JupyterApplication.add_widget
+      ~JupyterApplication.histogram1d
+      ~JupyterApplication.imshow
+      ~JupyterApplication.link
+      ~JupyterApplication.new_data_viewer
+      ~JupyterApplication.profile1d
+      ~JupyterApplication.scatter2d
+      ~JupyterApplication.scatter3d
+      ~JupyterApplication.set_subset_mode
+      ~JupyterApplication.subset
+      ~JupyterApplication.subset_lasso2d
+      ~JupyterApplication.subset_roi
+      ~JupyterApplication.volshow
+
+   .. rubric:: Methods Documentation
+
+   .. automethod:: add_link
+   .. automethod:: add_widget
+   .. automethod:: histogram1d
+   .. automethod:: imshow
+   .. automethod:: link
+   .. automethod:: new_data_viewer
+   .. automethod:: profile1d
+   .. automethod:: scatter2d
+   .. automethod:: scatter3d
+   .. automethod:: set_subset_mode
+   .. automethod:: subset
+   .. automethod:: subset_lasso2d
+   .. automethod:: subset_roi
+   .. automethod:: volshow

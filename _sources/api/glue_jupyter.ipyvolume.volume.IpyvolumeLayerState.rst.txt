@@ -1,0 +1,31 @@
+IpyvolumeLayerState
+===================
+
+.. currentmodule:: glue_jupyter.ipyvolume.volume
+
+.. autoclass:: IpyvolumeLayerState
+   :show-inheritance:
+
+   .. rubric:: Attributes Summary
+
+   .. autosummary::
+
+      ~IpyvolumeLayerState.clamp_max
+      ~IpyvolumeLayerState.clamp_min
+      ~IpyvolumeLayerState.data_max
+      ~IpyvolumeLayerState.data_min
+      ~IpyvolumeLayerState.lighting
+      ~IpyvolumeLayerState.max_resolution
+      ~IpyvolumeLayerState.opacity_scale
+      ~IpyvolumeLayerState.render_method
+
+   .. rubric:: Attributes Documentation
+
+   .. autoattribute:: clamp_max
+   .. autoattribute:: clamp_min
+   .. autoattribute:: data_max
+   .. autoattribute:: data_min
+   .. autoattribute:: lighting
+   .. autoattribute:: max_resolution
+   .. autoattribute:: opacity_scale
+   .. autoattribute:: render_method

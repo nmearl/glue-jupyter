@@ -1,0 +1,316 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>BqplotImageSubsetLayerArtist &mdash; glue-jupyter 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="BqplotImageView" href="glue_jupyter.bqplot.image.BqplotImageView.html" />
+    <link rel="prev" title="BqplotImageLayerArtist" href="glue_jupyter.bqplot.image.BqplotImageLayerArtist.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> glue-jupyter
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installing.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#general">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter">glue_jupyter Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.app">glue_jupyter.app Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.view">glue_jupyter.view Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.common.state3d">glue_jupyter.common.state3d Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.common.state_widgets">glue_jupyter.common.state_widgets Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.compat">glue_jupyter.compat Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#bqplot-viewers">bqplot viewers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.bqplot.common">glue_jupyter.bqplot.common Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.bqplot.histogram">glue_jupyter.bqplot.histogram Package</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#module-glue_jupyter.bqplot.image">glue_jupyter.bqplot.image Package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../api.html#id8">Classes</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="glue_jupyter.bqplot.image.BqplotImageLayerArtist.html">BqplotImageLayerArtist</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">BqplotImageSubsetLayerArtist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="glue_jupyter.bqplot.image.BqplotImageView.html">BqplotImageView</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.bqplot.profile">glue_jupyter.bqplot.profile Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.bqplot.scatter">glue_jupyter.bqplot.scatter Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#ipyvolume-viewers">ipyvolume viewers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.ipyvolume.common">glue_jupyter.ipyvolume.common Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.ipyvolume.scatter">glue_jupyter.ipyvolume.scatter Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.ipyvolume.volume">glue_jupyter.ipyvolume.volume Package</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">glue-jupyter</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">API Documentation</a> &raquo;</li>
+        
+      <li>BqplotImageSubsetLayerArtist</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/glue_jupyter.bqplot.image.BqplotImageSubsetLayerArtist.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="bqplotimagesubsetlayerartist">
+<h1>BqplotImageSubsetLayerArtist<a class="headerlink" href="#bqplotimagesubsetlayerartist" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="glue_jupyter.bqplot.image.BqplotImageSubsetLayerArtist">
+<em class="property">class </em><code class="descclassname">glue_jupyter.bqplot.image.</code><code class="descname">BqplotImageSubsetLayerArtist</code><span class="sig-paren">(</span><em>view</em>, <em>viewer_state</em>, <em>layer_state=None</em>, <em>layer=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/bqplot/image/layer_artist.html#BqplotImageSubsetLayerArtist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.bqplot.image.BqplotImageSubsetLayerArtist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">glue.viewers.image.layer_artist.BaseImageLayerArtist</span></code></p>
+<p class="rubric">Methods Summary</p>
+<table class="longtable docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.bqplot.image.BqplotImageSubsetLayerArtist.enable" title="glue_jupyter.bqplot.image.BqplotImageSubsetLayerArtist.enable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable</span></code></a>(self[, redraw])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.bqplot.image.BqplotImageSubsetLayerArtist.redraw" title="glue_jupyter.bqplot.image.BqplotImageSubsetLayerArtist.redraw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">redraw</span></code></a>(self)</p></td>
+<td><p>Re-render the plot</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.bqplot.image.BqplotImageSubsetLayerArtist.remove" title="glue_jupyter.bqplot.image.BqplotImageSubsetLayerArtist.remove"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove</span></code></a>(self)</p></td>
+<td><p>Remove the visualization for this layer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.bqplot.image.BqplotImageSubsetLayerArtist.update" title="glue_jupyter.bqplot.image.BqplotImageSubsetLayerArtist.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a>(self, \*event)</p></td>
+<td><p>Sync the visual appearance of the layer, and redraw</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods Documentation</p>
+<dl class="method">
+<dt id="glue_jupyter.bqplot.image.BqplotImageSubsetLayerArtist.enable">
+<code class="descname">enable</code><span class="sig-paren">(</span><em>self</em>, <em>redraw=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/bqplot/image/layer_artist.html#BqplotImageSubsetLayerArtist.enable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.bqplot.image.BqplotImageSubsetLayerArtist.enable" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="glue_jupyter.bqplot.image.BqplotImageSubsetLayerArtist.redraw">
+<code class="descname">redraw</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/bqplot/image/layer_artist.html#BqplotImageSubsetLayerArtist.redraw"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.bqplot.image.BqplotImageSubsetLayerArtist.redraw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Re-render the plot</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="glue_jupyter.bqplot.image.BqplotImageSubsetLayerArtist.remove">
+<code class="descname">remove</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/bqplot/image/layer_artist.html#BqplotImageSubsetLayerArtist.remove"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.bqplot.image.BqplotImageSubsetLayerArtist.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the visualization for this layer.</p>
+<p>This is called when the layer artist is removed for good from the
+viewer. It defaults to calling clear, but can be overriden in cases
+where clear and remove should be different.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="glue_jupyter.bqplot.image.BqplotImageSubsetLayerArtist.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>self</em>, <em>*event</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/bqplot/image/layer_artist.html#BqplotImageSubsetLayerArtist.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.bqplot.image.BqplotImageSubsetLayerArtist.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sync the visual appearance of the layer, and redraw</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="glue_jupyter.bqplot.image.BqplotImageView.html" class="btn btn-neutral float-right" title="BqplotImageView" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="glue_jupyter.bqplot.image.BqplotImageLayerArtist.html" class="btn btn-neutral float-left" title="BqplotImageLayerArtist" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Maarten A. Breddels
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

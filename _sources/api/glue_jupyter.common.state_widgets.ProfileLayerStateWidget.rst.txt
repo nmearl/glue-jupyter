@@ -1,0 +1,7 @@
+ProfileLayerStateWidget
+=======================
+
+.. currentmodule:: glue_jupyter.common.state_widgets
+
+.. autoclass:: ProfileLayerStateWidget
+   :show-inheritance:

@@ -1,0 +1,7 @@
+ScatterLayerStateWidget
+=======================
+
+.. currentmodule:: glue_jupyter.common.state_widgets
+
+.. autoclass:: ScatterLayerStateWidget
+   :show-inheritance:

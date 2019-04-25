@@ -1,0 +1,19 @@
+Scatter3dLayerState
+===================
+
+.. currentmodule:: glue_jupyter.ipyvolume.scatter
+
+.. autoclass:: Scatter3dLayerState
+   :show-inheritance:
+
+   .. rubric:: Attributes Summary
+
+   .. autosummary::
+
+      ~Scatter3dLayerState.geo
+      ~Scatter3dLayerState.vz_att
+
+   .. rubric:: Attributes Documentation
+
+   .. autoattribute:: geo
+   .. autoattribute:: vz_att

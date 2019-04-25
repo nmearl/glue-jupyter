@@ -1,0 +1,51 @@
+ViewerState3D
+=============
+
+.. currentmodule:: glue_jupyter.common.state3d
+
+.. autoclass:: ViewerState3D
+   :show-inheritance:
+
+   .. rubric:: Attributes Summary
+
+   .. autosummary::
+
+      ~ViewerState3D.limits_cache
+      ~ViewerState3D.visible_axes
+      ~ViewerState3D.x_att
+      ~ViewerState3D.x_max
+      ~ViewerState3D.x_min
+      ~ViewerState3D.y_att
+      ~ViewerState3D.y_max
+      ~ViewerState3D.y_min
+      ~ViewerState3D.z_att
+      ~ViewerState3D.z_max
+      ~ViewerState3D.z_min
+
+   .. rubric:: Methods Summary
+
+   .. autosummary::
+
+      ~ViewerState3D.flip_x
+      ~ViewerState3D.flip_y
+      ~ViewerState3D.flip_z
+
+   .. rubric:: Attributes Documentation
+
+   .. autoattribute:: limits_cache
+   .. autoattribute:: visible_axes
+   .. autoattribute:: x_att
+   .. autoattribute:: x_max
+   .. autoattribute:: x_min
+   .. autoattribute:: y_att
+   .. autoattribute:: y_max
+   .. autoattribute:: y_min
+   .. autoattribute:: z_att
+   .. autoattribute:: z_max
+   .. autoattribute:: z_min
+
+   .. rubric:: Methods Documentation
+
+   .. automethod:: flip_x
+   .. automethod:: flip_y
+   .. automethod:: flip_z

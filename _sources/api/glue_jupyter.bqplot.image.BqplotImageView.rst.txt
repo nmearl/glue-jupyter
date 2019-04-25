@@ -1,0 +1,35 @@
+BqplotImageView
+===============
+
+.. currentmodule:: glue_jupyter.bqplot.image
+
+.. autoclass:: BqplotImageView
+   :show-inheritance:
+
+   .. rubric:: Attributes Summary
+
+   .. autosummary::
+
+      ~BqplotImageView.allow_duplicate_data
+      ~BqplotImageView.allow_duplicate_subset
+      ~BqplotImageView.large_data_size
+      ~BqplotImageView.tools
+
+   .. rubric:: Methods Summary
+
+   .. autosummary::
+
+      ~BqplotImageView.get_data_layer_artist
+      ~BqplotImageView.get_subset_layer_artist
+
+   .. rubric:: Attributes Documentation
+
+   .. autoattribute:: allow_duplicate_data
+   .. autoattribute:: allow_duplicate_subset
+   .. autoattribute:: large_data_size
+   .. autoattribute:: tools
+
+   .. rubric:: Methods Documentation
+
+   .. automethod:: get_data_layer_artist
+   .. automethod:: get_subset_layer_artist

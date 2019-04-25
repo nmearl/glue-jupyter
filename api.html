@@ -1,0 +1,705 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>API Documentation &mdash; glue-jupyter 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="jglue" href="api/glue_jupyter.jglue.html" />
+    <link rel="prev" title="Getting started" href="getting_started.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> glue-jupyter
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installing.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#general">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-glue_jupyter">glue_jupyter Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#functions">Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.jglue.html">jglue</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.example_data_xyz.html">example_data_xyz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.example_image.html">example_image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.example_volume.html">example_volume</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#classes">Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.JupyterApplication.html">JupyterApplication</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-glue_jupyter.app">glue_jupyter.app Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.app.JupyterApplication.html">JupyterApplication</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-glue_jupyter.view">glue_jupyter.view Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.view.IPyWidgetView.html">IPyWidgetView</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.view.IPyWidgetLayerArtistContainer.html">IPyWidgetLayerArtistContainer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-glue_jupyter.common.state3d">glue_jupyter.common.state3d Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.common.state3d.ViewerState3D.html">ViewerState3D</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.common.state3d.ViewerState3DVolume.html">ViewerState3DVolume</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.common.state3d.ViewerState3DScatter.html">ViewerState3DScatter</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-glue_jupyter.common.state_widgets">glue_jupyter.common.state_widgets Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.common.state_widgets.HistogramLayerStateWidget.html">HistogramLayerStateWidget</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.common.state_widgets.HistogramViewerStateWidget.html">HistogramViewerStateWidget</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.common.state_widgets.ImageLayerStateWidget.html">ImageLayerStateWidget</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.common.state_widgets.ImageSubsetLayerStateWidget.html">ImageSubsetLayerStateWidget</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.common.state_widgets.ImageViewerStateWidget.html">ImageViewerStateWidget</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.common.state_widgets.ProfileLayerStateWidget.html">ProfileLayerStateWidget</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.common.state_widgets.ProfileViewerStateWidget.html">ProfileViewerStateWidget</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.common.state_widgets.ScatterLayerStateWidget.html">ScatterLayerStateWidget</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.common.state_widgets.ScatterViewerStateWidget.html">ScatterViewerStateWidget</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-glue_jupyter.compat">glue_jupyter.compat Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.compat.LayerArtist.html">LayerArtist</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#bqplot-viewers">bqplot viewers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-glue_jupyter.bqplot.common">glue_jupyter.bqplot.common Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.bqplot.common.BqplotBaseView.html">BqplotBaseView</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-glue_jupyter.bqplot.histogram">glue_jupyter.bqplot.histogram Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.bqplot.histogram.BqplotHistogramLayerArtist.html">BqplotHistogramLayerArtist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.bqplot.histogram.BqplotHistogramView.html">BqplotHistogramView</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-glue_jupyter.bqplot.image">glue_jupyter.bqplot.image Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.bqplot.image.BqplotImageLayerArtist.html">BqplotImageLayerArtist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.bqplot.image.BqplotImageSubsetLayerArtist.html">BqplotImageSubsetLayerArtist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.bqplot.image.BqplotImageView.html">BqplotImageView</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-glue_jupyter.bqplot.profile">glue_jupyter.bqplot.profile Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.bqplot.profile.BqplotProfileLayerArtist.html">BqplotProfileLayerArtist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.bqplot.profile.BqplotProfileView.html">BqplotProfileView</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-glue_jupyter.bqplot.scatter">glue_jupyter.bqplot.scatter Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.bqplot.scatter.BqplotScatterLayerArtist.html">BqplotScatterLayerArtist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.bqplot.scatter.BqplotScatterLayerState.html">BqplotScatterLayerState</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.bqplot.scatter.BqplotScatterView.html">BqplotScatterView</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ipyvolume-viewers">ipyvolume viewers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-glue_jupyter.ipyvolume.common">glue_jupyter.ipyvolume.common Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.ipyvolume.common.IpyvolumeBaseView.html">IpyvolumeBaseView</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.ipyvolume.common.Viewer3DStateWidget.html">Viewer3DStateWidget</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-glue_jupyter.ipyvolume.scatter">glue_jupyter.ipyvolume.scatter Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id12">Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.ipyvolume.scatter.IpyvolumeScatterLayerArtist.html">IpyvolumeScatterLayerArtist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.ipyvolume.scatter.IpyvolumeScatterView.html">IpyvolumeScatterView</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.ipyvolume.scatter.Scatter3DLayerStateWidget.html">Scatter3DLayerStateWidget</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.ipyvolume.scatter.Scatter3dLayerState.html">Scatter3dLayerState</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-glue_jupyter.ipyvolume.volume">glue_jupyter.ipyvolume.volume Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id13">Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.html">IpyvolumeLayerState</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.ipyvolume.volume.IpyvolumeVolumeView.html">IpyvolumeVolumeView</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/glue_jupyter.ipyvolume.volume.Volume3DLayerStateWidget.html">Volume3DLayerStateWidget</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">glue-jupyter</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>API Documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="api-documentation">
+<h1>API Documentation<a class="headerlink" href="#api-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="general">
+<h2>General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-glue_jupyter">
+<span id="glue-jupyter-package"></span><h2>glue_jupyter Package<a class="headerlink" href="#module-glue_jupyter" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/glue_jupyter.jglue.html#glue_jupyter.jglue" title="glue_jupyter.jglue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">jglue</span></code></a>(\*args, \*\*kwargs)</p></td>
+<td><p>Create a new Jupyter-based glue application.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/glue_jupyter.example_data_xyz.html#glue_jupyter.example_data_xyz" title="glue_jupyter.example_data_xyz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">example_data_xyz</span></code></a>([seed, N, loc, scale, label])</p></td>
+<td><p>Create an example dataset with three attributes x, y, and z set to random values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/glue_jupyter.example_image.html#glue_jupyter.example_image" title="glue_jupyter.example_image"><code class="xref py py-obj docutils literal notranslate"><span class="pre">example_image</span></code></a>([shape, limits])</p></td>
+<td><p>Creates a test 2-d dataset containing an image.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/glue_jupyter.example_volume.html#glue_jupyter.example_volume" title="glue_jupyter.example_volume"><code class="xref py py-obj docutils literal notranslate"><span class="pre">example_volume</span></code></a>([shape, limits])</p></td>
+<td><p>Creates a test 3-d dataset containing a ball.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/glue_jupyter.JupyterApplication.html#glue_jupyter.JupyterApplication" title="glue_jupyter.JupyterApplication"><code class="xref py py-obj docutils literal notranslate"><span class="pre">JupyterApplication</span></code></a>([data_collection, session])</p></td>
+<td><p>The main Glue application object for the Jupyter environment.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="module-glue_jupyter.app">
+<span id="glue-jupyter-app-module"></span><h2>glue_jupyter.app Module<a class="headerlink" href="#module-glue_jupyter.app" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Classes<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/glue_jupyter.app.JupyterApplication.html#glue_jupyter.app.JupyterApplication" title="glue_jupyter.app.JupyterApplication"><code class="xref py py-obj docutils literal notranslate"><span class="pre">JupyterApplication</span></code></a>([data_collection, session])</p></td>
+<td><p>The main Glue application object for the Jupyter environment.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="module-glue_jupyter.view">
+<span id="glue-jupyter-view-module"></span><h2>glue_jupyter.view Module<a class="headerlink" href="#module-glue_jupyter.view" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3>Classes<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/glue_jupyter.view.IPyWidgetView.html#glue_jupyter.view.IPyWidgetView" title="glue_jupyter.view.IPyWidgetView"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPyWidgetView</span></code></a>(*args, **kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/glue_jupyter.view.IPyWidgetLayerArtistContainer.html#glue_jupyter.view.IPyWidgetLayerArtistContainer" title="glue_jupyter.view.IPyWidgetLayerArtistContainer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPyWidgetLayerArtistContainer</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="module-glue_jupyter.common.state3d">
+<span id="glue-jupyter-common-state3d-module"></span><h2>glue_jupyter.common.state3d Module<a class="headerlink" href="#module-glue_jupyter.common.state3d" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>Classes<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/glue_jupyter.common.state3d.ViewerState3D.html#glue_jupyter.common.state3d.ViewerState3D" title="glue_jupyter.common.state3d.ViewerState3D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ViewerState3D</span></code></a>(**kwargs)</p></td>
+<td><p>A common state object for all 3D viewers</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/glue_jupyter.common.state3d.ViewerState3DVolume.html#glue_jupyter.common.state3d.ViewerState3DVolume" title="glue_jupyter.common.state3d.ViewerState3DVolume"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ViewerState3DVolume</span></code></a>(**kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/glue_jupyter.common.state3d.ViewerState3DScatter.html#glue_jupyter.common.state3d.ViewerState3DScatter" title="glue_jupyter.common.state3d.ViewerState3DScatter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ViewerState3DScatter</span></code></a>(**kwargs)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="module-glue_jupyter.common.state_widgets">
+<span id="glue-jupyter-common-state-widgets-package"></span><h2>glue_jupyter.common.state_widgets Package<a class="headerlink" href="#module-glue_jupyter.common.state_widgets" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3>Classes<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/glue_jupyter.common.state_widgets.HistogramLayerStateWidget.html#glue_jupyter.common.state_widgets.HistogramLayerStateWidget" title="glue_jupyter.common.state_widgets.HistogramLayerStateWidget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HistogramLayerStateWidget</span></code></a>(layer_state)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/glue_jupyter.common.state_widgets.HistogramViewerStateWidget.html#glue_jupyter.common.state_widgets.HistogramViewerStateWidget" title="glue_jupyter.common.state_widgets.HistogramViewerStateWidget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HistogramViewerStateWidget</span></code></a>(viewer_state)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/glue_jupyter.common.state_widgets.ImageLayerStateWidget.html#glue_jupyter.common.state_widgets.ImageLayerStateWidget" title="glue_jupyter.common.state_widgets.ImageLayerStateWidget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ImageLayerStateWidget</span></code></a>(layer_state)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/glue_jupyter.common.state_widgets.ImageSubsetLayerStateWidget.html#glue_jupyter.common.state_widgets.ImageSubsetLayerStateWidget" title="glue_jupyter.common.state_widgets.ImageSubsetLayerStateWidget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ImageSubsetLayerStateWidget</span></code></a>(layer_state)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/glue_jupyter.common.state_widgets.ImageViewerStateWidget.html#glue_jupyter.common.state_widgets.ImageViewerStateWidget" title="glue_jupyter.common.state_widgets.ImageViewerStateWidget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ImageViewerStateWidget</span></code></a>(viewer_state)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/glue_jupyter.common.state_widgets.ProfileLayerStateWidget.html#glue_jupyter.common.state_widgets.ProfileLayerStateWidget" title="glue_jupyter.common.state_widgets.ProfileLayerStateWidget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProfileLayerStateWidget</span></code></a>(layer_state)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/glue_jupyter.common.state_widgets.ProfileViewerStateWidget.html#glue_jupyter.common.state_widgets.ProfileViewerStateWidget" title="glue_jupyter.common.state_widgets.ProfileViewerStateWidget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProfileViewerStateWidget</span></code></a>(viewer_state)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/glue_jupyter.common.state_widgets.ScatterLayerStateWidget.html#glue_jupyter.common.state_widgets.ScatterLayerStateWidget" title="glue_jupyter.common.state_widgets.ScatterLayerStateWidget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScatterLayerStateWidget</span></code></a>(layer_state)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/glue_jupyter.common.state_widgets.ScatterViewerStateWidget.html#glue_jupyter.common.state_widgets.ScatterViewerStateWidget" title="glue_jupyter.common.state_widgets.ScatterViewerStateWidget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScatterViewerStateWidget</span></code></a>(viewer_state)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="module-glue_jupyter.compat">
+<span id="glue-jupyter-compat-module"></span><h2>glue_jupyter.compat Module<a class="headerlink" href="#module-glue_jupyter.compat" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3>Classes<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/glue_jupyter.compat.LayerArtist.html#glue_jupyter.compat.LayerArtist" title="glue_jupyter.compat.LayerArtist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LayerArtist</span></code></a>(viewer_state[, layer_state, layer])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="bqplot-viewers">
+<h2>bqplot viewers<a class="headerlink" href="#bqplot-viewers" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-glue_jupyter.bqplot.common">
+<span id="glue-jupyter-bqplot-common-package"></span><h2>glue_jupyter.bqplot.common Package<a class="headerlink" href="#module-glue_jupyter.bqplot.common" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h3>Classes<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/glue_jupyter.bqplot.common.BqplotBaseView.html#glue_jupyter.bqplot.common.BqplotBaseView" title="glue_jupyter.bqplot.common.BqplotBaseView"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BqplotBaseView</span></code></a>(session[, state])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="module-glue_jupyter.bqplot.histogram">
+<span id="glue-jupyter-bqplot-histogram-package"></span><h2>glue_jupyter.bqplot.histogram Package<a class="headerlink" href="#module-glue_jupyter.bqplot.histogram" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h3>Classes<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/glue_jupyter.bqplot.histogram.BqplotHistogramLayerArtist.html#glue_jupyter.bqplot.histogram.BqplotHistogramLayerArtist" title="glue_jupyter.bqplot.histogram.BqplotHistogramLayerArtist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BqplotHistogramLayerArtist</span></code></a>(view, viewer_state)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/glue_jupyter.bqplot.histogram.BqplotHistogramView.html#glue_jupyter.bqplot.histogram.BqplotHistogramView" title="glue_jupyter.bqplot.histogram.BqplotHistogramView"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BqplotHistogramView</span></code></a>(session[, state])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="module-glue_jupyter.bqplot.image">
+<span id="glue-jupyter-bqplot-image-package"></span><h2>glue_jupyter.bqplot.image Package<a class="headerlink" href="#module-glue_jupyter.bqplot.image" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id8">
+<h3>Classes<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/glue_jupyter.bqplot.image.BqplotImageLayerArtist.html#glue_jupyter.bqplot.image.BqplotImageLayerArtist" title="glue_jupyter.bqplot.image.BqplotImageLayerArtist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BqplotImageLayerArtist</span></code></a>(axes, viewer_state[, …])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/glue_jupyter.bqplot.image.BqplotImageSubsetLayerArtist.html#glue_jupyter.bqplot.image.BqplotImageSubsetLayerArtist" title="glue_jupyter.bqplot.image.BqplotImageSubsetLayerArtist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BqplotImageSubsetLayerArtist</span></code></a>(view, viewer_state)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/glue_jupyter.bqplot.image.BqplotImageView.html#glue_jupyter.bqplot.image.BqplotImageView" title="glue_jupyter.bqplot.image.BqplotImageView"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BqplotImageView</span></code></a>(session)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="module-glue_jupyter.bqplot.profile">
+<span id="glue-jupyter-bqplot-profile-package"></span><h2>glue_jupyter.bqplot.profile Package<a class="headerlink" href="#module-glue_jupyter.bqplot.profile" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h3>Classes<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/glue_jupyter.bqplot.profile.BqplotProfileLayerArtist.html#glue_jupyter.bqplot.profile.BqplotProfileLayerArtist" title="glue_jupyter.bqplot.profile.BqplotProfileLayerArtist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BqplotProfileLayerArtist</span></code></a>(view, viewer_state)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/glue_jupyter.bqplot.profile.BqplotProfileView.html#glue_jupyter.bqplot.profile.BqplotProfileView" title="glue_jupyter.bqplot.profile.BqplotProfileView"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BqplotProfileView</span></code></a>(session[, state])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="module-glue_jupyter.bqplot.scatter">
+<span id="glue-jupyter-bqplot-scatter-package"></span><h2>glue_jupyter.bqplot.scatter Package<a class="headerlink" href="#module-glue_jupyter.bqplot.scatter" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id10">
+<h3>Classes<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/glue_jupyter.bqplot.scatter.BqplotScatterLayerArtist.html#glue_jupyter.bqplot.scatter.BqplotScatterLayerArtist" title="glue_jupyter.bqplot.scatter.BqplotScatterLayerArtist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BqplotScatterLayerArtist</span></code></a>(view, viewer_state)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/glue_jupyter.bqplot.scatter.BqplotScatterLayerState.html#glue_jupyter.bqplot.scatter.BqplotScatterLayerState" title="glue_jupyter.bqplot.scatter.BqplotScatterLayerState"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BqplotScatterLayerState</span></code></a>([viewer_state, layer])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/glue_jupyter.bqplot.scatter.BqplotScatterView.html#glue_jupyter.bqplot.scatter.BqplotScatterView" title="glue_jupyter.bqplot.scatter.BqplotScatterView"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BqplotScatterView</span></code></a>(session[, state])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="ipyvolume-viewers">
+<h2>ipyvolume viewers<a class="headerlink" href="#ipyvolume-viewers" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-glue_jupyter.ipyvolume.common">
+<span id="glue-jupyter-ipyvolume-common-package"></span><h2>glue_jupyter.ipyvolume.common Package<a class="headerlink" href="#module-glue_jupyter.ipyvolume.common" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id11">
+<h3>Classes<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/glue_jupyter.ipyvolume.common.IpyvolumeBaseView.html#glue_jupyter.ipyvolume.common.IpyvolumeBaseView" title="glue_jupyter.ipyvolume.common.IpyvolumeBaseView"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IpyvolumeBaseView</span></code></a>(*args, **kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/glue_jupyter.ipyvolume.common.Viewer3DStateWidget.html#glue_jupyter.ipyvolume.common.Viewer3DStateWidget" title="glue_jupyter.ipyvolume.common.Viewer3DStateWidget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Viewer3DStateWidget</span></code></a>(viewer_state)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="module-glue_jupyter.ipyvolume.scatter">
+<span id="glue-jupyter-ipyvolume-scatter-package"></span><h2>glue_jupyter.ipyvolume.scatter Package<a class="headerlink" href="#module-glue_jupyter.ipyvolume.scatter" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id12">
+<h3>Classes<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/glue_jupyter.ipyvolume.scatter.IpyvolumeScatterLayerArtist.html#glue_jupyter.ipyvolume.scatter.IpyvolumeScatterLayerArtist" title="glue_jupyter.ipyvolume.scatter.IpyvolumeScatterLayerArtist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IpyvolumeScatterLayerArtist</span></code></a>(view, …)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/glue_jupyter.ipyvolume.scatter.IpyvolumeScatterView.html#glue_jupyter.ipyvolume.scatter.IpyvolumeScatterView" title="glue_jupyter.ipyvolume.scatter.IpyvolumeScatterView"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IpyvolumeScatterView</span></code></a>(*args, **kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/glue_jupyter.ipyvolume.scatter.Scatter3DLayerStateWidget.html#glue_jupyter.ipyvolume.scatter.Scatter3DLayerStateWidget" title="glue_jupyter.ipyvolume.scatter.Scatter3DLayerStateWidget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Scatter3DLayerStateWidget</span></code></a>(layer_state)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/glue_jupyter.ipyvolume.scatter.Scatter3dLayerState.html#glue_jupyter.ipyvolume.scatter.Scatter3dLayerState" title="glue_jupyter.ipyvolume.scatter.Scatter3dLayerState"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Scatter3dLayerState</span></code></a>([viewer_state, layer])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="module-glue_jupyter.ipyvolume.volume">
+<span id="glue-jupyter-ipyvolume-volume-package"></span><h2>glue_jupyter.ipyvolume.volume Package<a class="headerlink" href="#module-glue_jupyter.ipyvolume.volume" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id13">
+<h3>Classes<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.html#glue_jupyter.ipyvolume.volume.IpyvolumeLayerState" title="glue_jupyter.ipyvolume.volume.IpyvolumeLayerState"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IpyvolumeLayerState</span></code></a>([layer])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/glue_jupyter.ipyvolume.volume.IpyvolumeVolumeView.html#glue_jupyter.ipyvolume.volume.IpyvolumeVolumeView" title="glue_jupyter.ipyvolume.volume.IpyvolumeVolumeView"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IpyvolumeVolumeView</span></code></a>(*args, **kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/glue_jupyter.ipyvolume.volume.Volume3DLayerStateWidget.html#glue_jupyter.ipyvolume.volume.Volume3DLayerStateWidget" title="glue_jupyter.ipyvolume.volume.Volume3DLayerStateWidget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Volume3DLayerStateWidget</span></code></a>(layer_state)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api/glue_jupyter.jglue.html" class="btn btn-neutral float-right" title="jglue" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="getting_started.html" class="btn btn-neutral float-left" title="Getting started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Maarten A. Breddels
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

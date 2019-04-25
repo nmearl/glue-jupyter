@@ -1,0 +1,339 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>glue_jupyter.ipyvolume.volume.layer_artist &mdash; glue-jupyter 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> glue-jupyter
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installing.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">glue-jupyter</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../../glue_jupyter.html">glue_jupyter</a> &raquo;</li>
+        
+      <li>glue_jupyter.ipyvolume.volume.layer_artist</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for glue_jupyter.ipyvolume.volume.layer_artist</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">ipyvolume</span> <span class="k">as</span> <span class="nn">ipv</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span>
+
+<span class="kn">from</span> <span class="nn">glue_vispy_viewers.volume.layer_state</span> <span class="k">import</span> <span class="n">VolumeLayerState</span>
+<span class="kn">from</span> <span class="nn">glue.external.echo</span> <span class="k">import</span> <span class="n">CallbackProperty</span>
+<span class="kn">from</span> <span class="nn">glue.core.data</span> <span class="k">import</span> <span class="n">Subset</span>
+<span class="kn">from</span> <span class="nn">glue.core.exceptions</span> <span class="k">import</span> <span class="n">IncompatibleAttribute</span>
+<span class="kn">from</span> <span class="nn">glue_vispy_viewers.common.layer_artist</span> <span class="k">import</span> <span class="n">VispyLayerArtist</span>
+
+<span class="kn">from</span> <span class="nn">...link</span> <span class="k">import</span> <span class="n">link</span><span class="p">,</span> <span class="n">on_change</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;IpyvolumeLayerState&#39;</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="IpyvolumeLayerState"><a class="viewcode-back" href="../../../../api/glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.html#glue_jupyter.ipyvolume.volume.IpyvolumeLayerState">[docs]</a><span class="k">class</span> <span class="nc">IpyvolumeLayerState</span><span class="p">(</span><span class="n">VolumeLayerState</span><span class="p">):</span>
+
+    <span class="n">opacity_scale</span> <span class="o">=</span> <span class="n">CallbackProperty</span><span class="p">()</span>
+    <span class="n">render_method</span> <span class="o">=</span> <span class="n">CallbackProperty</span><span class="p">()</span>
+    <span class="n">lighting</span> <span class="o">=</span> <span class="n">CallbackProperty</span><span class="p">()</span>
+    <span class="n">max_resolution</span> <span class="o">=</span> <span class="n">CallbackProperty</span><span class="p">()</span>
+    <span class="n">clamp_min</span> <span class="o">=</span> <span class="n">CallbackProperty</span><span class="p">()</span>
+    <span class="n">clamp_max</span> <span class="o">=</span> <span class="n">CallbackProperty</span><span class="p">()</span>
+    <span class="c1"># attribute = SelectionCallbackProperty()</span>
+
+    <span class="n">data_min</span> <span class="o">=</span> <span class="n">CallbackProperty</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">data_max</span> <span class="o">=</span> <span class="n">CallbackProperty</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">IpyvolumeLayerState</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="n">layer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">opacity_scale</span> <span class="o">=</span> <span class="mf">0.1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">render_method</span> <span class="o">=</span> <span class="s1">&#39;NORMAL&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lighting</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_resolution</span> <span class="o">=</span> <span class="mi">256</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clamp_min</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clamp_max</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+
+<span class="k">def</span> <span class="nf">_transfer_function_rgba</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">max_opacity</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">to_rgb</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">ramp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+    <span class="n">data</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">r</span>
+    <span class="n">data</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span>
+    <span class="n">data</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span>
+    <span class="n">data</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">ramp</span><span class="o">*</span><span class="n">max_opacity</span>
+    <span class="k">return</span> <span class="n">data</span>
+
+<span class="n">data0</span> <span class="o">=</span> <span class="p">[[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]]</span><span class="o">*</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span>
+
+
+<span class="k">class</span> <span class="nc">IpyvolumeVolumeLayerArtist</span><span class="p">(</span><span class="n">VispyLayerArtist</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ipyvolume_viewer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">layer_state</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">IpyvolumeVolumeLayerArtist</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layer</span> <span class="o">=</span> <span class="n">layer</span> <span class="ow">or</span> <span class="n">layer_state</span><span class="o">.</span><span class="n">layer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ipyvolume_viewer</span> <span class="o">=</span> <span class="n">ipyvolume_viewer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">figure</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ipyvolume_viewer</span><span class="o">.</span><span class="n">figure</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">layer_state</span> <span class="ow">or</span> <span class="n">IpyvolumeLayerState</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">layer</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transfer_function</span> <span class="o">=</span> <span class="n">ipv</span><span class="o">.</span><span class="n">TransferFunction</span><span class="p">(</span><span class="n">rgba</span><span class="o">=</span><span class="n">_transfer_function_rgba</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">color</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">volume</span> <span class="o">=</span> <span class="n">ipv</span><span class="o">.</span><span class="n">Volume</span><span class="p">(</span><span class="n">extent_original</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]]</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span> <span class="n">data_original</span><span class="o">=</span><span class="n">data0</span><span class="p">,</span> <span class="n">tf</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">transfer_function</span><span class="p">,</span> <span class="n">data_max_shape</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">volumes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">volumes</span> <span class="o">+</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">volume</span><span class="p">,]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_viewer_state</span> <span class="o">=</span> <span class="n">ipyvolume_viewer</span><span class="o">.</span><span class="n">state</span>
+        <span class="k">assert</span> <span class="n">ipyvolume_viewer</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="n">state</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_viewer_state</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_viewer_state</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">)</span>
+
+        <span class="c1">#ipv.figure(self.ipyvolume_viewer.figure)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_shape</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="n">link</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="s1">&#39;lighting&#39;</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">volume</span><span class="p">,</span> <span class="s1">&#39;lighting&#39;</span><span class="p">))</span>
+        <span class="n">link</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="s1">&#39;render_method&#39;</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">volume</span><span class="p">,</span> <span class="s1">&#39;rendering_method&#39;</span><span class="p">))</span>
+        <span class="n">link</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="s1">&#39;max_resolution&#39;</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">volume</span><span class="p">,</span> <span class="s1">&#39;data_max_shape&#39;</span><span class="p">))</span>
+
+        <span class="n">link</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="s1">&#39;vmin&#39;</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">volume</span><span class="p">,</span> <span class="s1">&#39;show_min&#39;</span><span class="p">))</span>
+        <span class="n">link</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="s1">&#39;vmax&#39;</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">volume</span><span class="p">,</span> <span class="s1">&#39;show_max&#39;</span><span class="p">))</span>
+
+        <span class="n">link</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="s1">&#39;data_min&#39;</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">volume</span><span class="p">,</span> <span class="s1">&#39;data_min&#39;</span><span class="p">))</span>
+        <span class="n">link</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="s1">&#39;data_max&#39;</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">volume</span><span class="p">,</span> <span class="s1">&#39;data_max&#39;</span><span class="p">))</span>
+
+        <span class="n">link</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="s1">&#39;clamp_min&#39;</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">volume</span><span class="p">,</span> <span class="s1">&#39;clamp_min&#39;</span><span class="p">))</span>
+        <span class="n">link</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="s1">&#39;clamp_max&#39;</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">volume</span><span class="p">,</span> <span class="s1">&#39;clamp_max&#39;</span><span class="p">))</span>
+
+        <span class="n">link</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="s1">&#39;opacity_scale&#39;</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">volume</span><span class="p">,</span> <span class="s1">&#39;opacity_scale&#39;</span><span class="p">))</span>
+
+        <span class="n">on_change</span><span class="p">([(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="s1">&#39;color&#39;</span><span class="p">,</span> <span class="s1">&#39;alpha&#39;</span><span class="p">)])(</span><span class="bp">self</span><span class="o">.</span><span class="n">_update_transfer_function</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">redraw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># print(self.layer)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layer</span><span class="p">,</span> <span class="n">Subset</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">mask</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">to_mask</span><span class="p">()</span>
+            <span class="k">except</span> <span class="n">IncompatibleAttribute</span><span class="p">:</span>
+                <span class="c1"># The following includes a call to self.clear()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">disable</span><span class="p">(</span><span class="s2">&quot;Subset cannot be applied to this data&quot;</span><span class="p">)</span>
+                <span class="k">return</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">enable</span><span class="p">()</span>
+            <span class="c1"># if self.state.subset_mode == &#39;outline&#39;:</span>
+            <span class="c1">#     data = mask.astype(np.float32)</span>
+            <span class="c1"># else:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">attribute</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+            <span class="n">data</span> <span class="o">*=</span> <span class="n">mask</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layer</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">attribute</span><span class="p">]</span>
+        <span class="c1">#data = self.layer.data[self.state.attribute].astype(np.float32)</span>
+        <span class="c1">#print(data, data.shape, self.state.attribute)</span>
+        <span class="n">finite_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">finite_data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">finite_mask</span><span class="p">]</span>
+        <span class="n">finite_mask_normalized</span> <span class="o">=</span> <span class="n">finite_data</span> <span class="o">-</span> <span class="n">finite_data</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+        <span class="n">finite_mask_normalized</span> <span class="o">=</span> <span class="n">finite_mask_normalized</span> <span class="o">/</span> <span class="n">finite_mask_normalized</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+        <span class="n">data_min</span><span class="p">,</span> <span class="n">data_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1">#np.percentile(finite_data, 1), np.percentile(finite_data, 99)</span>
+        <span class="c1"># data_min, data_max = 0, 1</span>
+        <span class="c1"># self.state.data_min = data_min</span>
+        <span class="c1"># self.state.data_max = data_max</span>
+        <span class="c1">#data_min, data_max = None, None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_shape</span> <span class="o">=</span> <span class="n">shape</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">volume</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">volume</span> <span class="o">=</span> <span class="n">ipv</span><span class="o">.</span><span class="n">volshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">data_min</span><span class="o">=</span><span class="n">data_min</span><span class="p">,</span> <span class="n">data_max</span><span class="o">=</span><span class="n">data_max</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]]],</span> <span class="n">controls</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">tf</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">transfer_function</span><span class="p">)</span><span class="c1">#, volume_rendering_method=self.state.render_method)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">volume</span><span class="o">.</span><span class="n">extent_original</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]]]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">volume</span><span class="o">.</span><span class="n">data_original</span> <span class="o">=</span> <span class="n">data</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">volume</span><span class="o">.</span><span class="n">data_min</span> <span class="o">=</span> <span class="n">data_min</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">volume</span><span class="o">.</span><span class="n">data_max</span> <span class="o">=</span> <span class="n">data_max</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">data_min</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">vmin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">data_max</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">vmax</span>
+
+        <span class="c1"># might be a bug in glue-core, it seems that for subsets vmin/vmax are</span>
+        <span class="c1"># not calculated</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">vmin</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">vmax</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">lim_helper</span><span class="o">.</span><span class="n">log</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">percentile</span> <span class="o">=</span> <span class="mi">100</span>
+
+    <span class="k">def</span> <span class="nf">_update_transfer_function</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transfer_function</span><span class="o">.</span><span class="n">rgba</span> <span class="o">=</span> <span class="n">_transfer_function_rgba</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">color</span><span class="p">,</span> <span class="n">max_opacity</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">alpha</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Maarten A. Breddels
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

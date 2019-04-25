@@ -1,0 +1,7 @@
+Volume3DLayerStateWidget
+========================
+
+.. currentmodule:: glue_jupyter.ipyvolume.volume
+
+.. autoclass:: Volume3DLayerStateWidget
+   :show-inheritance:

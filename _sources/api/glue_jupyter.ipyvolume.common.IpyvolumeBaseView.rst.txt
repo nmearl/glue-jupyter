@@ -1,0 +1,39 @@
+IpyvolumeBaseView
+=================
+
+.. currentmodule:: glue_jupyter.ipyvolume.common
+
+.. autoclass:: IpyvolumeBaseView
+   :show-inheritance:
+
+   .. rubric:: Attributes Summary
+
+   .. autosummary::
+
+      ~IpyvolumeBaseView.allow_duplicate_data
+      ~IpyvolumeBaseView.allow_duplicate_subset
+      ~IpyvolumeBaseView.tools
+
+   .. rubric:: Methods Summary
+
+   .. autosummary::
+
+      ~IpyvolumeBaseView.apply_roi
+      ~IpyvolumeBaseView.create_tab
+      ~IpyvolumeBaseView.limits_to_scales
+      ~IpyvolumeBaseView.redraw
+      ~IpyvolumeBaseView.show
+
+   .. rubric:: Attributes Documentation
+
+   .. autoattribute:: allow_duplicate_data
+   .. autoattribute:: allow_duplicate_subset
+   .. autoattribute:: tools
+
+   .. rubric:: Methods Documentation
+
+   .. automethod:: apply_roi
+   .. automethod:: create_tab
+   .. automethod:: limits_to_scales
+   .. automethod:: redraw
+   .. automethod:: show

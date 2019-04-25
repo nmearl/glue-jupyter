@@ -1,0 +1,7 @@
+ViewerState3DVolume
+===================
+
+.. currentmodule:: glue_jupyter.common.state3d
+
+.. autoclass:: ViewerState3DVolume
+   :show-inheritance:

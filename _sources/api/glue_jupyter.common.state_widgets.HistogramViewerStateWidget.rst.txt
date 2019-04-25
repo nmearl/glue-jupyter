@@ -1,0 +1,7 @@
+HistogramViewerStateWidget
+==========================
+
+.. currentmodule:: glue_jupyter.common.state_widgets
+
+.. autoclass:: HistogramViewerStateWidget
+   :show-inheritance:

@@ -1,0 +1,25 @@
+BqplotHistogramView
+===================
+
+.. currentmodule:: glue_jupyter.bqplot.histogram
+
+.. autoclass:: BqplotHistogramView
+   :show-inheritance:
+
+   .. rubric:: Attributes Summary
+
+   .. autosummary::
+
+      ~BqplotHistogramView.allow_duplicate_data
+      ~BqplotHistogramView.allow_duplicate_subset
+      ~BqplotHistogramView.is2d
+      ~BqplotHistogramView.large_data_size
+      ~BqplotHistogramView.tools
+
+   .. rubric:: Attributes Documentation
+
+   .. autoattribute:: allow_duplicate_data
+   .. autoattribute:: allow_duplicate_subset
+   .. autoattribute:: is2d
+   .. autoattribute:: large_data_size
+   .. autoattribute:: tools

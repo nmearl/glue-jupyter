@@ -1,0 +1,7 @@
+Viewer3DStateWidget
+===================
+
+.. currentmodule:: glue_jupyter.ipyvolume.common
+
+.. autoclass:: Viewer3DStateWidget
+   :show-inheritance:

@@ -1,0 +1,664 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>glue_jupyter.app &mdash; glue-jupyter 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> glue-jupyter
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installing.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">glue-jupyter</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../glue_jupyter.html">glue_jupyter</a> &raquo;</li>
+        
+      <li>glue_jupyter.app</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for glue_jupyter.app</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">display</span>
+
+
+<span class="kn">from</span> <span class="nn">glue.core.application_base</span> <span class="k">import</span> <span class="n">Application</span>
+<span class="kn">from</span> <span class="nn">glue.core.link_helpers</span> <span class="k">import</span> <span class="n">LinkSame</span>
+<span class="kn">from</span> <span class="nn">glue.core.roi</span> <span class="k">import</span> <span class="n">PolygonalROI</span>
+<span class="kn">from</span> <span class="nn">glue.core.subset</span> <span class="k">import</span> <span class="n">RoiSubsetState</span>
+<span class="kn">from</span> <span class="nn">glue.core.command</span> <span class="k">import</span> <span class="n">ApplySubsetState</span>
+<span class="kn">from</span> <span class="nn">glue.core.edit_subset_mode</span> <span class="k">import</span> <span class="p">(</span><span class="n">NewMode</span><span class="p">,</span> <span class="n">ReplaceMode</span><span class="p">,</span> <span class="n">AndMode</span><span class="p">,</span> <span class="n">OrMode</span><span class="p">,</span>
+                                        <span class="n">XorMode</span><span class="p">,</span> <span class="n">AndNotMode</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">glue_jupyter.utils</span> <span class="k">import</span> <span class="n">_update_not_none</span>
+<span class="kn">from</span> <span class="nn">glue_jupyter.widgets.subset_select</span> <span class="k">import</span> <span class="n">SubsetSelect</span>
+<span class="kn">from</span> <span class="nn">glue_jupyter.widgets.subset_mode</span> <span class="k">import</span> <span class="n">SubsetMode</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;JupyterApplication&#39;</span><span class="p">]</span>
+
+<span class="c1"># TODO: move this to glue-core so that the subset mode can be set ot a string</span>
+<span class="c1"># there too</span>
+<span class="n">SUBSET_MODES</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;new&#39;</span><span class="p">:</span> <span class="n">NewMode</span><span class="p">,</span> <span class="s1">&#39;replace&#39;</span><span class="p">:</span> <span class="n">ReplaceMode</span><span class="p">,</span> <span class="s1">&#39;and&#39;</span><span class="p">:</span> <span class="n">AndMode</span><span class="p">,</span>
+                <span class="s1">&#39;or&#39;</span><span class="p">:</span> <span class="n">OrMode</span><span class="p">,</span> <span class="s1">&#39;xor&#39;</span><span class="p">:</span> <span class="n">XorMode</span><span class="p">,</span> <span class="s1">&#39;not&#39;</span><span class="p">:</span> <span class="n">AndNotMode</span><span class="p">}</span>
+
+
+<div class="viewcode-block" id="JupyterApplication"><a class="viewcode-back" href="../../api/glue_jupyter.app.JupyterApplication.html#glue_jupyter.JupyterApplication">[docs]</a><span class="k">class</span> <span class="nc">JupyterApplication</span><span class="p">(</span><span class="n">Application</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The main Glue application object for the Jupyter environment.</span>
+
+<span class="sd">    This is used as the primary way to interact with glue, including loading</span>
+<span class="sd">    data, creating viewers, and adding links.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data_collection : `~glue.core.data_collection.DataCollection`</span>
+<span class="sd">        A pre-existing data collection. By default, a new data collection is</span>
+<span class="sd">        created.</span>
+<span class="sd">    session : `~glue.core.session.Session`</span>
+<span class="sd">        A pre-existing session object. By default, a new session object is</span>
+<span class="sd">        created.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_collection</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">JupyterApplication</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">data_collection</span><span class="o">=</span><span class="n">data_collection</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">widget_data_collection</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">SelectMultiple</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">widget_subset_select</span> <span class="o">=</span> <span class="n">SubsetSelect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">widget_subset_mode</span> <span class="o">=</span> <span class="n">SubsetMode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">widget_subset_mode</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">_ipython_display_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">display</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">widget</span><span class="p">)</span>
+
+<div class="viewcode-block" id="JupyterApplication.link"><a class="viewcode-back" href="../../api/glue_jupyter.app.JupyterApplication.html#glue_jupyter.JupyterApplication.link">[docs]</a>    <span class="k">def</span> <span class="nf">link</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">links</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parse and add links.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">glue.qglue</span> <span class="k">import</span> <span class="n">parse_links</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_collection</span><span class="o">.</span><span class="n">add_link</span><span class="p">(</span><span class="n">parse_links</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_collection</span><span class="p">,</span> <span class="n">links</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="JupyterApplication.add_link"><a class="viewcode-back" href="../../api/glue_jupyter.app.JupyterApplication.html#glue_jupyter.JupyterApplication.add_link">[docs]</a>    <span class="k">def</span> <span class="nf">add_link</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data1</span><span class="p">,</span> <span class="n">attribute1</span><span class="p">,</span> <span class="n">data2</span><span class="p">,</span> <span class="n">attribute2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add a simple identity link between two attributes.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data1 : `~glue.core.data.Data`</span>
+<span class="sd">            The dataset containing the first attribute.</span>
+<span class="sd">        attribute1 : str or `~glue.core.component_id.ComponentID`</span>
+<span class="sd">            The first attribute to link.</span>
+<span class="sd">        data2 : `~glue.core.data.Data`</span>
+<span class="sd">            The dataset containing the first attribute.</span>
+<span class="sd">        attribute2 : str or `~glue.core.component_id.ComponentID`</span>
+<span class="sd">            The first attribute to link.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># For now this assumes attribute1 and attribute2 are strings and single</span>
+        <span class="c1"># attributes. In future we should generalize this while keeping the</span>
+        <span class="c1"># simplest use case simple.</span>
+        <span class="n">att1</span> <span class="o">=</span> <span class="n">data1</span><span class="o">.</span><span class="n">id</span><span class="p">[</span><span class="n">attribute1</span><span class="p">]</span>
+        <span class="n">att2</span> <span class="o">=</span> <span class="n">data2</span><span class="o">.</span><span class="n">id</span><span class="p">[</span><span class="n">attribute2</span><span class="p">]</span>
+        <span class="n">link</span> <span class="o">=</span> <span class="n">LinkSame</span><span class="p">(</span><span class="n">att1</span><span class="p">,</span> <span class="n">att2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_collection</span><span class="o">.</span><span class="n">add_link</span><span class="p">(</span><span class="n">link</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="JupyterApplication.set_subset_mode"><a class="viewcode-back" href="../../api/glue_jupyter.app.JupyterApplication.html#glue_jupyter.JupyterApplication.set_subset_mode">[docs]</a>    <span class="k">def</span> <span class="nf">set_subset_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the current subset mode.</span>
+
+<span class="sd">        By default, selections in viewers update the current subset by</span>
+<span class="sd">        replacing the previous selection with the new selection. However it is</span>
+<span class="sd">        also possible to combine the current selection with previous selections</span>
+<span class="sd">        using boolean operations.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        mode : {&#39;new&#39;, &#39;replace&#39;, &#39;and&#39;, &#39;or&#39;, &#39;xor&#39;, &#39;not&#39;}</span>
+<span class="sd">            The selection mode to use.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="ow">in</span> <span class="n">SUBSET_MODES</span><span class="p">:</span>
+            <span class="n">mode</span> <span class="o">=</span> <span class="n">SUBSET_MODES</span><span class="p">[</span><span class="n">mode</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">edit_subset_mode</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">mode</span></div>
+
+<div class="viewcode-block" id="JupyterApplication.new_data_viewer"><a class="viewcode-back" href="../../api/glue_jupyter.app.JupyterApplication.html#glue_jupyter.JupyterApplication.new_data_viewer">[docs]</a>    <span class="k">def</span> <span class="nf">new_data_viewer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">viewer</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">new_data_viewer</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">viewer</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">viewer</span></div>
+
+<div class="viewcode-block" id="JupyterApplication.histogram1d"><a class="viewcode-back" href="../../api/glue_jupyter.app.JupyterApplication.html#glue_jupyter.JupyterApplication.histogram1d">[docs]</a>    <span class="k">def</span> <span class="nf">histogram1d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">widget</span><span class="o">=</span><span class="s1">&#39;bqplot&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">x_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">x_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_bin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cumulative</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">viewer_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">layer_state</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Open an interactive histogram viewer.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x : str or `~glue.core.component_id.ComponentID`, optional</span>
+<span class="sd">            The attribute to show on the x axis.</span>
+<span class="sd">        data : `~glue.core.data.Data`, optional</span>
+<span class="sd">            The initial dataset to show in the viewer. Additional</span>
+<span class="sd">            datasets can be added later using the ``add_data`` method on</span>
+<span class="sd">            the viewer object.</span>
+<span class="sd">        widget : {&#39;bqplot&#39;, &#39;matplotlib&#39;}</span>
+<span class="sd">            Whether to use bqplot or Matplotlib as the front-end.</span>
+<span class="sd">        color : str or tuple, optional</span>
+<span class="sd">            The color to use for the data. Note that this will have the</span>
+<span class="sd">            effect of setting the data color for all viewers.</span>
+<span class="sd">        x_min : float, optional</span>
+<span class="sd">            The lower value of the range to compute the histogram in.</span>
+<span class="sd">        x_max : float, optional</span>
+<span class="sd">            The upper value of the range to compute the histogram in.</span>
+<span class="sd">        n_bin : int, optional</span>
+<span class="sd">            The number of bins in the histogram.</span>
+<span class="sd">        normalize : bool, optional</span>
+<span class="sd">            Whether to normalize the histogram.</span>
+<span class="sd">        cumulative : bool, optional</span>
+<span class="sd">            Whether to show a cumulative histogram.</span>
+<span class="sd">        viewer_state : `~glue.viewers.common.state.ViewerState`</span>
+<span class="sd">            The initial state for the viewer (advanced).</span>
+<span class="sd">        layer_state : `~glue.viewers.common.state.LayerState`</span>
+<span class="sd">            The initial state for the data layer (advanced).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">widget</span> <span class="o">==</span> <span class="s1">&#39;bqplot&#39;</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">.bqplot.histogram</span> <span class="k">import</span> <span class="n">BqplotHistogramView</span>
+            <span class="n">viewer_cls</span> <span class="o">=</span> <span class="n">BqplotHistogramView</span>
+        <span class="k">elif</span> <span class="n">widget</span> <span class="o">==</span> <span class="s1">&#39;matplotlib&#39;</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">.matplotlib.histogram</span> <span class="k">import</span> <span class="n">HistogramJupyterViewer</span>
+            <span class="n">viewer_cls</span> <span class="o">=</span> <span class="n">HistogramJupyterViewer</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Widget type should be &#39;bqplot&#39; or &#39;matplotlib&#39;&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;There is more than one data set in the data collection, please pass a data argument&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">viewer_state_obj</span> <span class="o">=</span> <span class="n">viewer_cls</span><span class="o">.</span><span class="n">_state_cls</span><span class="p">()</span>
+        <span class="n">viewer_state_obj</span><span class="o">.</span><span class="n">x_att_helper</span><span class="o">.</span><span class="n">append_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">viewer_state</span> <span class="o">=</span> <span class="n">viewer_state</span> <span class="ow">or</span> <span class="p">{}</span>
+
+        <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">viewer_state</span><span class="p">[</span><span class="s1">&#39;x_att&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">id</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+
+        <span class="c1"># x_min and x_max get set to the hist_x_min/max in glue.viewers.histogram.state</span>
+        <span class="c1"># for this API it make more sense to call it x_min and x_max, and for consistency with the rest</span>
+        <span class="n">_update_not_none</span><span class="p">(</span><span class="n">viewer_state</span><span class="p">,</span> <span class="n">hist_x_min</span><span class="o">=</span><span class="n">x_min</span><span class="p">,</span> <span class="n">hist_x_max</span><span class="o">=</span><span class="n">x_max</span><span class="p">,</span> <span class="n">hist_n_bin</span><span class="o">=</span><span class="n">n_bin</span><span class="p">,</span>
+            <span class="n">normalize</span><span class="o">=</span><span class="n">normalize</span><span class="p">,</span> <span class="n">cumulative</span><span class="o">=</span><span class="n">cumulative</span><span class="p">)</span>
+        <span class="n">viewer_state_obj</span><span class="o">.</span><span class="n">update_from_dict</span><span class="p">(</span><span class="n">viewer_state</span><span class="p">)</span>
+
+        <span class="n">view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_data_viewer</span><span class="p">(</span><span class="n">viewer_cls</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="n">viewer_state_obj</span><span class="p">)</span>
+        <span class="n">layer_state</span> <span class="o">=</span> <span class="n">layer_state</span> <span class="ow">or</span> <span class="p">{}</span>
+        <span class="n">_update_not_none</span><span class="p">(</span><span class="n">layer_state</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+        <span class="n">view</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">update_from_dict</span><span class="p">(</span><span class="n">layer_state</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">view</span></div>
+
+<div class="viewcode-block" id="JupyterApplication.scatter2d"><a class="viewcode-back" href="../../api/glue_jupyter.app.JupyterApplication.html#glue_jupyter.JupyterApplication.scatter2d">[docs]</a>    <span class="k">def</span> <span class="nf">scatter2d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">widget</span><span class="o">=</span><span class="s1">&#39;bqplot&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">viewer_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">layer_state</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Open an interactive 2d scatter plot viewer.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x : str or `~glue.core.component_id.ComponentID`, optional</span>
+<span class="sd">            The attribute to show on the x axis.</span>
+<span class="sd">        y : str or `~glue.core.component_id.ComponentID`, optional</span>
+<span class="sd">            The attribute to show on the y axis.</span>
+<span class="sd">        data : `~glue.core.data.Data`, optional</span>
+<span class="sd">            The initial dataset to show in the viewer. Additional</span>
+<span class="sd">            datasets can be added later using the ``add_data`` method on</span>
+<span class="sd">            the viewer object.</span>
+<span class="sd">        widget : {&#39;bqplot&#39;, &#39;matplotlib&#39;}</span>
+<span class="sd">            Whether to use bqplot or Matplotlib as the front-end.</span>
+<span class="sd">        color : str or tuple, optional</span>
+<span class="sd">            The color to use for the markers. Note that this will have the</span>
+<span class="sd">            effect of setting the data color for all viewers.</span>
+<span class="sd">        size : int or float</span>
+<span class="sd">            The size to use for the markers. Note that this will have the</span>
+<span class="sd">            effect of setting the marker size for all viewers.</span>
+<span class="sd">        viewer_state : `~glue.viewers.common.state.ViewerState`</span>
+<span class="sd">            The initial state for the viewer (advanced).</span>
+<span class="sd">        layer_state : `~glue.viewers.common.state.LayerState`</span>
+<span class="sd">            The initial state for the data layer (advanced).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">widget</span> <span class="o">==</span> <span class="s1">&#39;bqplot&#39;</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">.bqplot.scatter</span> <span class="k">import</span> <span class="n">BqplotScatterView</span>
+            <span class="n">viewer_cls</span> <span class="o">=</span> <span class="n">BqplotScatterView</span>
+        <span class="k">elif</span> <span class="n">widget</span> <span class="o">==</span> <span class="s1">&#39;matplotlib&#39;</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">.matplotlib.scatter</span> <span class="k">import</span> <span class="n">ScatterJupyterViewer</span>
+            <span class="n">viewer_cls</span> <span class="o">=</span> <span class="n">ScatterJupyterViewer</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Widget type should be &#39;bqplot&#39; or &#39;matplotlib&#39;&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;There is more than one data set in the data collection, please pass a data argument&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">viewer_state_obj</span> <span class="o">=</span> <span class="n">viewer_cls</span><span class="o">.</span><span class="n">_state_cls</span><span class="p">()</span>
+        <span class="n">viewer_state_obj</span><span class="o">.</span><span class="n">x_att_helper</span><span class="o">.</span><span class="n">append_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">viewer_state_obj</span><span class="o">.</span><span class="n">y_att_helper</span><span class="o">.</span><span class="n">append_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">viewer_state</span> <span class="o">=</span> <span class="n">viewer_state</span> <span class="ow">or</span> <span class="p">{}</span>
+
+        <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">viewer_state</span><span class="p">[</span><span class="s1">&#39;x_att&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">id</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">viewer_state</span><span class="p">[</span><span class="s1">&#39;y_att&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">id</span><span class="p">[</span><span class="n">y</span><span class="p">]</span>
+
+        <span class="n">viewer_state_obj</span><span class="o">.</span><span class="n">update_from_dict</span><span class="p">(</span><span class="n">viewer_state</span><span class="p">)</span>
+
+        <span class="n">view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_data_viewer</span><span class="p">(</span><span class="n">viewer_cls</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="n">viewer_state_obj</span><span class="p">)</span>
+        <span class="n">layer_state</span> <span class="o">=</span> <span class="n">layer_state</span> <span class="ow">or</span> <span class="p">{}</span>
+        <span class="n">_update_not_none</span><span class="p">(</span><span class="n">layer_state</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
+        <span class="n">view</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">update_from_dict</span><span class="p">(</span><span class="n">layer_state</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">view</span></div>
+
+<div class="viewcode-block" id="JupyterApplication.scatter3d"><a class="viewcode-back" href="../../api/glue_jupyter.app.JupyterApplication.html#glue_jupyter.JupyterApplication.scatter3d">[docs]</a>    <span class="k">def</span> <span class="nf">scatter3d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Open an interactive 3d scatter plot viewer.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x : str or `~glue.core.component_id.ComponentID`, optional</span>
+<span class="sd">            The attribute to show on the x axis.</span>
+<span class="sd">        y : str or `~glue.core.component_id.ComponentID`, optional</span>
+<span class="sd">            The attribute to show on the y axis.</span>
+<span class="sd">        z : str or `~glue.core.component_id.ComponentID`, optional</span>
+<span class="sd">            The attribute to show on the z axis.</span>
+<span class="sd">        data : `~glue.core.data.Data`, optional</span>
+<span class="sd">            The initial dataset to show in the viewer. Additional</span>
+<span class="sd">            datasets can be added later using the ``add_data`` method on</span>
+<span class="sd">            the viewer object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="kn">from</span> <span class="nn">.ipyvolume</span> <span class="k">import</span> <span class="n">IpyvolumeScatterView</span>
+
+        <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;There is more than one data set in the data collection, please pass a data argument&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_data_viewer</span><span class="p">(</span><span class="n">IpyvolumeScatterView</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">id</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+            <span class="n">view</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">x_att</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">id</span><span class="p">[</span><span class="n">y</span><span class="p">]</span>
+            <span class="n">view</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">y_att</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="k">if</span> <span class="n">z</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">id</span><span class="p">[</span><span class="n">z</span><span class="p">]</span>
+            <span class="n">view</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">z_att</span> <span class="o">=</span> <span class="n">z</span>
+        <span class="k">return</span> <span class="n">view</span></div>
+
+<div class="viewcode-block" id="JupyterApplication.imshow"><a class="viewcode-back" href="../../api/glue_jupyter.app.JupyterApplication.html#glue_jupyter.JupyterApplication.imshow">[docs]</a>    <span class="k">def</span> <span class="nf">imshow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">widget</span><span class="o">=</span><span class="s1">&#39;bqplot&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Open an interactive image viewer.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x : str or `~glue.core.component_id.ComponentID`, optional</span>
+<span class="sd">            The attribute to show on the x axis. This should be one of the</span>
+<span class="sd">            pixel axis attributes.</span>
+<span class="sd">        y : str or `~glue.core.component_id.ComponentID`, optional</span>
+<span class="sd">            The attribute to show on the y axis. This should be one of the</span>
+<span class="sd">            pixel axis attributes.</span>
+<span class="sd">        data : `~glue.core.data.Data`, optional</span>
+<span class="sd">            The initial dataset to show in the viewer. Additional</span>
+<span class="sd">            datasets can be added later using the ``add_data`` method on</span>
+<span class="sd">            the viewer object.</span>
+<span class="sd">        widget : {&#39;bqplot&#39;, &#39;matplotlib&#39;}</span>
+<span class="sd">            Whether to use bqplot or Matplotlib as the front-end.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">widget</span> <span class="o">==</span> <span class="s1">&#39;bqplot&#39;</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">.bqplot.image</span> <span class="k">import</span> <span class="n">BqplotImageView</span>
+            <span class="n">viewer_cls</span> <span class="o">=</span> <span class="n">BqplotImageView</span>
+        <span class="k">elif</span> <span class="n">widget</span> <span class="o">==</span> <span class="s1">&#39;matplotlib&#39;</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">.matplotlib.image</span> <span class="k">import</span> <span class="n">ImageJupyterViewer</span>
+            <span class="n">viewer_cls</span> <span class="o">=</span> <span class="n">ImageJupyterViewer</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Widget type should be &#39;bqplot&#39; or &#39;matplotlib&#39;&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;There is more than one data set in the data collection, please pass a data argument&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">pixel_component_ids</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Only data with two or more dimensions can be used &#39;</span>
+                             <span class="s1">&#39;as the initial dataset in the image viewer&#39;</span><span class="p">)</span>
+
+        <span class="n">view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_data_viewer</span><span class="p">(</span><span class="n">viewer_cls</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">id</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+            <span class="n">view</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">x_att</span> <span class="o">=</span> <span class="n">x</span>
+
+        <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">id</span><span class="p">[</span><span class="n">y</span><span class="p">]</span>
+            <span class="n">view</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">y_att</span> <span class="o">=</span> <span class="n">y</span>
+
+        <span class="k">return</span> <span class="n">view</span></div>
+
+<div class="viewcode-block" id="JupyterApplication.profile1d"><a class="viewcode-back" href="../../api/glue_jupyter.app.JupyterApplication.html#glue_jupyter.JupyterApplication.profile1d">[docs]</a>    <span class="k">def</span> <span class="nf">profile1d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">widget</span><span class="o">=</span><span class="s1">&#39;bqplot&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Open an interactive 1d profile viewer.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x : str or `~glue.core.component_id.ComponentID`, optional</span>
+<span class="sd">            The attribute to show on the x axis. This should be a pixel or</span>
+<span class="sd">            world coordinate `~glue.core.component_id.ComponentID`.</span>
+<span class="sd">        data : `~glue.core.data.Data`, optional</span>
+<span class="sd">            The initial dataset to show in the viewer. Additional</span>
+<span class="sd">            datasets can be added later using the ``add_data`` method on</span>
+<span class="sd">            the viewer object.</span>
+<span class="sd">        widget : {&#39;bqplot&#39;, &#39;matplotlib&#39;}</span>
+<span class="sd">            Whether to use bqplot or Matplotlib as the front-end.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">widget</span> <span class="o">==</span> <span class="s1">&#39;bqplot&#39;</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">.bqplot.profile</span> <span class="k">import</span> <span class="n">BqplotProfileView</span>
+            <span class="n">viewer_cls</span> <span class="o">=</span> <span class="n">BqplotProfileView</span>
+        <span class="k">elif</span> <span class="n">widget</span> <span class="o">==</span> <span class="s1">&#39;matplotlib&#39;</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">.matplotlib.profile</span> <span class="k">import</span> <span class="n">ProfileJupyterViewer</span>
+            <span class="n">viewer_cls</span> <span class="o">=</span> <span class="n">ProfileJupyterViewer</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Widget type should be &#39;matplotlib&#39;&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;There is more than one data set in the data collection, please pass a data argument&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_data_viewer</span><span class="p">(</span><span class="n">viewer_cls</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">id</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+            <span class="n">view</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">x_att</span> <span class="o">=</span> <span class="n">x</span>
+
+        <span class="k">return</span> <span class="n">view</span></div>
+
+<div class="viewcode-block" id="JupyterApplication.volshow"><a class="viewcode-back" href="../../api/glue_jupyter.app.JupyterApplication.html#glue_jupyter.JupyterApplication.volshow">[docs]</a>    <span class="k">def</span> <span class="nf">volshow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Open an interactive volume viewer.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x : str or `~glue.core.component_id.ComponentID`, optional</span>
+<span class="sd">            The attribute to show on the x axis. This should be one of the</span>
+<span class="sd">            pixel axis attributes.</span>
+<span class="sd">        y : str or `~glue.core.component_id.ComponentID`, optional</span>
+<span class="sd">            The attribute to show on the y axis. This should be one of the</span>
+<span class="sd">            pixel axis attributes.</span>
+<span class="sd">        z : str or `~glue.core.component_id.ComponentID`, optional</span>
+<span class="sd">            The attribute to show on the z axis. This should be one of the</span>
+<span class="sd">            pixel axis attributes.</span>
+<span class="sd">        data : `~glue.core.data.Data`, optional</span>
+<span class="sd">            The initial dataset to show in the viewer. Additional</span>
+<span class="sd">            datasets can be added later using the ``add_data`` method on</span>
+<span class="sd">            the viewer object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">.ipyvolume</span> <span class="k">import</span> <span class="n">IpyvolumeVolumeView</span>
+
+        <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;There is more than one data set in the data collection, please pass a data argument&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_data_viewer</span><span class="p">(</span><span class="n">IpyvolumeVolumeView</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">id</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+            <span class="n">view</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">x_att</span> <span class="o">=</span> <span class="n">x</span>
+
+        <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">id</span><span class="p">[</span><span class="n">y</span><span class="p">]</span>
+            <span class="n">view</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">y_att</span> <span class="o">=</span> <span class="n">y</span>
+
+        <span class="k">if</span> <span class="n">z</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">id</span><span class="p">[</span><span class="n">z</span><span class="p">]</span>
+            <span class="n">view</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">z_att</span> <span class="o">=</span> <span class="n">z</span>
+
+        <span class="k">return</span> <span class="n">view</span></div>
+
+<div class="viewcode-block" id="JupyterApplication.subset"><a class="viewcode-back" href="../../api/glue_jupyter.app.JupyterApplication.html#glue_jupyter.JupyterApplication.subset">[docs]</a>    <span class="k">def</span> <span class="nf">subset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">subset_state</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a new selection/subset.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : str</span>
+<span class="sd">            The name of the new subset.</span>
+<span class="sd">        subset_state : `~glue.core.subset.SubsetState`</span>
+<span class="sd">            The definition of the subset. See the documentation at</span>
+<span class="sd">            http://docs.glueviz.org/en/stable/python_guide/data_tutorial.html#defining-new-subsets</span>
+<span class="sd">            for more information about creating subsets programmatically.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_collection</span><span class="o">.</span><span class="n">new_subset_group</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">subset_state</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="JupyterApplication.subset_lasso2d"><a class="viewcode-back" href="../../api/glue_jupyter.app.JupyterApplication.html#glue_jupyter.JupyterApplication.subset_lasso2d">[docs]</a>    <span class="k">def</span> <span class="nf">subset_lasso2d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_att</span><span class="p">,</span> <span class="n">y_att</span><span class="p">,</span> <span class="n">lasso_x</span><span class="p">,</span> <span class="n">lasso_y</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a subset from a programmatic 2d lasso selection.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x_att : `~glue.core.component_id.ComponentID`</span>
+<span class="sd">            The attribute corresponding to the x values being selected.</span>
+<span class="sd">        y_att : `~glue.core.component_id.ComponentID`</span>
+<span class="sd">            The attribute corresponding to the x values being selected.</span>
+<span class="sd">        lasso_x : iterable</span>
+<span class="sd">            The x values of the lasso.</span>
+<span class="sd">        lasso_y : iterable</span>
+<span class="sd">            The y values of the lasso.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">roi</span> <span class="o">=</span> <span class="n">PolygonalROI</span><span class="p">(</span><span class="n">lasso_x</span><span class="p">,</span> <span class="n">lasso_y</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">subset_roi</span><span class="p">([</span><span class="n">x_att</span><span class="p">,</span> <span class="n">y_att</span><span class="p">],</span> <span class="n">roi</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="JupyterApplication.subset_roi"><a class="viewcode-back" href="../../api/glue_jupyter.app.JupyterApplication.html#glue_jupyter.JupyterApplication.subset_roi">[docs]</a>    <span class="k">def</span> <span class="nf">subset_roi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attributes</span><span class="p">,</span> <span class="n">roi</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a subset from a region of interest.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        attributes : iterable</span>
+<span class="sd">            The attributes on the x and y axis</span>
+<span class="sd">        roi : `~glue.core.roi.Roi`</span>
+<span class="sd">            The region of interest to use to create the subset.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">subset_state</span> <span class="o">=</span> <span class="n">RoiSubsetState</span><span class="p">(</span><span class="n">attributes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">attributes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">roi</span><span class="p">)</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="n">ApplySubsetState</span><span class="p">(</span><span class="n">data_collection</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data_collection</span><span class="p">,</span>
+                               <span class="n">subset_state</span><span class="o">=</span><span class="n">subset_state</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">command_stack</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span></div>
+
+    <span class="c1"># Methods that we need to override to avoid the default behavior</span>
+
+    <span class="k">def</span> <span class="nf">_update_undo_redo_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="k">pass</span>  <span class="c1"># TODO: if we want a gui for this, we need to update it here</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_choose_merge</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c1"># Never suggest automatic merging</span>
+        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="JupyterApplication.add_widget"><a class="viewcode-back" href="../../api/glue_jupyter.app.JupyterApplication.html#glue_jupyter.JupyterApplication.add_widget">[docs]</a>    <span class="k">def</span> <span class="nf">add_widget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tab</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">pass</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Maarten A. Breddels
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

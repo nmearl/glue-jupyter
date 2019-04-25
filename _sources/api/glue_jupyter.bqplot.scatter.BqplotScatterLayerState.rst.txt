@@ -1,0 +1,17 @@
+BqplotScatterLayerState
+=======================
+
+.. currentmodule:: glue_jupyter.bqplot.scatter
+
+.. autoclass:: BqplotScatterLayerState
+   :show-inheritance:
+
+   .. rubric:: Attributes Summary
+
+   .. autosummary::
+
+      ~BqplotScatterLayerState.bins
+
+   .. rubric:: Attributes Documentation
+
+   .. autoattribute:: bins

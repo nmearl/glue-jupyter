@@ -1,0 +1,605 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>JupyterApplication &mdash; glue-jupyter 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="JupyterApplication" href="glue_jupyter.app.JupyterApplication.html" />
+    <link rel="prev" title="example_volume" href="glue_jupyter.example_volume.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> glue-jupyter
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installing.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#general">General</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#module-glue_jupyter">glue_jupyter Package</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../api.html#functions">Functions</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../api.html#classes">Classes</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">JupyterApplication</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.app">glue_jupyter.app Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.view">glue_jupyter.view Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.common.state3d">glue_jupyter.common.state3d Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.common.state_widgets">glue_jupyter.common.state_widgets Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.compat">glue_jupyter.compat Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#bqplot-viewers">bqplot viewers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.bqplot.common">glue_jupyter.bqplot.common Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.bqplot.histogram">glue_jupyter.bqplot.histogram Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.bqplot.image">glue_jupyter.bqplot.image Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.bqplot.profile">glue_jupyter.bqplot.profile Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.bqplot.scatter">glue_jupyter.bqplot.scatter Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#ipyvolume-viewers">ipyvolume viewers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.ipyvolume.common">glue_jupyter.ipyvolume.common Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.ipyvolume.scatter">glue_jupyter.ipyvolume.scatter Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.ipyvolume.volume">glue_jupyter.ipyvolume.volume Package</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">glue-jupyter</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">API Documentation</a> &raquo;</li>
+        
+      <li>JupyterApplication</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/glue_jupyter.JupyterApplication.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="jupyterapplication">
+<h1>JupyterApplication<a class="headerlink" href="#jupyterapplication" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="glue_jupyter.JupyterApplication">
+<em class="property">class </em><code class="descclassname">glue_jupyter.</code><code class="descname">JupyterApplication</code><span class="sig-paren">(</span><em>data_collection=None</em>, <em>session=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/app.html#JupyterApplication"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.JupyterApplication" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.application_base.Application.html#glue.core.application_base.Application" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-class docutils literal notranslate"><span class="pre">glue.core.application_base.Application</span></code></a></p>
+<p>The main Glue application object for the Jupyter environment.</p>
+<p>This is used as the primary way to interact with glue, including loading
+data, creating viewers, and adding links.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>data_collection</strong><span class="classifier"><a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.data_collection.DataCollection.html#glue.core.data_collection.DataCollection" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataCollection</span></code></a></span></dt><dd><p>A pre-existing data collection. By default, a new data collection is
+created.</p>
+</dd>
+<dt><strong>session</strong><span class="classifier"><a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.session.Session.html#glue.core.session.Session" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Session</span></code></a></span></dt><dd><p>A pre-existing session object. By default, a new session object is
+created.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods Summary</p>
+<table class="longtable docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.JupyterApplication.add_link" title="glue_jupyter.JupyterApplication.add_link"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_link</span></code></a>(self, data1, attribute1, data2, …)</p></td>
+<td><p>Add a simple identity link between two attributes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.JupyterApplication.add_widget" title="glue_jupyter.JupyterApplication.add_widget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_widget</span></code></a>(self, widget[, label, tab])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.JupyterApplication.histogram1d" title="glue_jupyter.JupyterApplication.histogram1d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">histogram1d</span></code></a>(self[, x, data, widget, color, …])</p></td>
+<td><p>Open an interactive histogram viewer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.JupyterApplication.imshow" title="glue_jupyter.JupyterApplication.imshow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">imshow</span></code></a>(self[, x, y, data, widget])</p></td>
+<td><p>Open an interactive image viewer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.JupyterApplication.link" title="glue_jupyter.JupyterApplication.link"><code class="xref py py-obj docutils literal notranslate"><span class="pre">link</span></code></a>(self, links)</p></td>
+<td><p>Parse and add links.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.JupyterApplication.new_data_viewer" title="glue_jupyter.JupyterApplication.new_data_viewer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">new_data_viewer</span></code></a>(self, \*args, \*\*kwargs)</p></td>
+<td><p>Create a new data viewer, add it to the UI, and populate with data</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.JupyterApplication.profile1d" title="glue_jupyter.JupyterApplication.profile1d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profile1d</span></code></a>(self[, x, data, widget])</p></td>
+<td><p>Open an interactive 1d profile viewer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.JupyterApplication.scatter2d" title="glue_jupyter.JupyterApplication.scatter2d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scatter2d</span></code></a>(self[, x, y, data, widget, color, …])</p></td>
+<td><p>Open an interactive 2d scatter plot viewer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.JupyterApplication.scatter3d" title="glue_jupyter.JupyterApplication.scatter3d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scatter3d</span></code></a>(self[, x, y, z, data])</p></td>
+<td><p>Open an interactive 3d scatter plot viewer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.JupyterApplication.set_subset_mode" title="glue_jupyter.JupyterApplication.set_subset_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_subset_mode</span></code></a>(self, mode)</p></td>
+<td><p>Set the current subset mode.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.JupyterApplication.subset" title="glue_jupyter.JupyterApplication.subset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subset</span></code></a>(self, name, subset_state)</p></td>
+<td><p>Create a new selection/subset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.JupyterApplication.subset_lasso2d" title="glue_jupyter.JupyterApplication.subset_lasso2d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subset_lasso2d</span></code></a>(self, x_att, y_att, lasso_x, …)</p></td>
+<td><p>Create a subset from a programmatic 2d lasso selection.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.JupyterApplication.subset_roi" title="glue_jupyter.JupyterApplication.subset_roi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subset_roi</span></code></a>(self, attributes, roi)</p></td>
+<td><p>Create a subset from a region of interest.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.JupyterApplication.volshow" title="glue_jupyter.JupyterApplication.volshow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">volshow</span></code></a>(self[, x, y, z, data])</p></td>
+<td><p>Open an interactive volume viewer.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods Documentation</p>
+<dl class="method">
+<dt id="glue_jupyter.JupyterApplication.add_link">
+<code class="descname">add_link</code><span class="sig-paren">(</span><em>self</em>, <em>data1</em>, <em>attribute1</em>, <em>data2</em>, <em>attribute2</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/app.html#JupyterApplication.add_link"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.JupyterApplication.add_link" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a simple identity link between two attributes.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>data1</strong><span class="classifier"><a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.data.Data.html#glue.core.data.Data" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Data</span></code></a></span></dt><dd><p>The dataset containing the first attribute.</p>
+</dd>
+<dt><strong>attribute1</strong><span class="classifier">str or <a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.component_id.ComponentID.html#glue.core.component_id.ComponentID" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ComponentID</span></code></a></span></dt><dd><p>The first attribute to link.</p>
+</dd>
+<dt><strong>data2</strong><span class="classifier"><a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.data.Data.html#glue.core.data.Data" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Data</span></code></a></span></dt><dd><p>The dataset containing the first attribute.</p>
+</dd>
+<dt><strong>attribute2</strong><span class="classifier">str or <a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.component_id.ComponentID.html#glue.core.component_id.ComponentID" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ComponentID</span></code></a></span></dt><dd><p>The first attribute to link.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="glue_jupyter.JupyterApplication.add_widget">
+<code class="descname">add_widget</code><span class="sig-paren">(</span><em>self</em>, <em>widget</em>, <em>label=None</em>, <em>tab=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/app.html#JupyterApplication.add_widget"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.JupyterApplication.add_widget" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="glue_jupyter.JupyterApplication.histogram1d">
+<code class="descname">histogram1d</code><span class="sig-paren">(</span><em>self</em>, <em>x=None</em>, <em>data=None</em>, <em>widget='bqplot'</em>, <em>color=None</em>, <em>x_min=None</em>, <em>x_max=None</em>, <em>n_bin=None</em>, <em>normalize=False</em>, <em>cumulative=False</em>, <em>viewer_state=None</em>, <em>layer_state=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/app.html#JupyterApplication.histogram1d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.JupyterApplication.histogram1d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open an interactive histogram viewer.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>x</strong><span class="classifier">str or <a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.component_id.ComponentID.html#glue.core.component_id.ComponentID" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ComponentID</span></code></a>, optional</span></dt><dd><p>The attribute to show on the x axis.</p>
+</dd>
+<dt><strong>data</strong><span class="classifier"><a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.data.Data.html#glue.core.data.Data" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Data</span></code></a>, optional</span></dt><dd><p>The initial dataset to show in the viewer. Additional
+datasets can be added later using the <code class="docutils literal notranslate"><span class="pre">add_data</span></code> method on
+the viewer object.</p>
+</dd>
+<dt><strong>widget</strong><span class="classifier">{‘bqplot’, ‘matplotlib’}</span></dt><dd><p>Whether to use bqplot or Matplotlib as the front-end.</p>
+</dd>
+<dt><strong>color</strong><span class="classifier">str or tuple, optional</span></dt><dd><p>The color to use for the data. Note that this will have the
+effect of setting the data color for all viewers.</p>
+</dd>
+<dt><strong>x_min</strong><span class="classifier">float, optional</span></dt><dd><p>The lower value of the range to compute the histogram in.</p>
+</dd>
+<dt><strong>x_max</strong><span class="classifier">float, optional</span></dt><dd><p>The upper value of the range to compute the histogram in.</p>
+</dd>
+<dt><strong>n_bin</strong><span class="classifier">int, optional</span></dt><dd><p>The number of bins in the histogram.</p>
+</dd>
+<dt><strong>normalize</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to normalize the histogram.</p>
+</dd>
+<dt><strong>cumulative</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to show a cumulative histogram.</p>
+</dd>
+<dt><strong>viewer_state</strong><span class="classifier"><a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.viewers.common.state.ViewerState.html#glue.viewers.common.state.ViewerState" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ViewerState</span></code></a></span></dt><dd><p>The initial state for the viewer (advanced).</p>
+</dd>
+<dt><strong>layer_state</strong><span class="classifier"><a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.viewers.common.state.LayerState.html#glue.viewers.common.state.LayerState" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LayerState</span></code></a></span></dt><dd><p>The initial state for the data layer (advanced).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="glue_jupyter.JupyterApplication.imshow">
+<code class="descname">imshow</code><span class="sig-paren">(</span><em>self</em>, <em>x=None</em>, <em>y=None</em>, <em>data=None</em>, <em>widget='bqplot'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/app.html#JupyterApplication.imshow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.JupyterApplication.imshow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open an interactive image viewer.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>x</strong><span class="classifier">str or <a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.component_id.ComponentID.html#glue.core.component_id.ComponentID" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ComponentID</span></code></a>, optional</span></dt><dd><p>The attribute to show on the x axis. This should be one of the
+pixel axis attributes.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">str or <a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.component_id.ComponentID.html#glue.core.component_id.ComponentID" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ComponentID</span></code></a>, optional</span></dt><dd><p>The attribute to show on the y axis. This should be one of the
+pixel axis attributes.</p>
+</dd>
+<dt><strong>data</strong><span class="classifier"><a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.data.Data.html#glue.core.data.Data" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Data</span></code></a>, optional</span></dt><dd><p>The initial dataset to show in the viewer. Additional
+datasets can be added later using the <code class="docutils literal notranslate"><span class="pre">add_data</span></code> method on
+the viewer object.</p>
+</dd>
+<dt><strong>widget</strong><span class="classifier">{‘bqplot’, ‘matplotlib’}</span></dt><dd><p>Whether to use bqplot or Matplotlib as the front-end.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="glue_jupyter.JupyterApplication.link">
+<code class="descname">link</code><span class="sig-paren">(</span><em>self</em>, <em>links</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/app.html#JupyterApplication.link"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.JupyterApplication.link" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse and add links.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="glue_jupyter.JupyterApplication.new_data_viewer">
+<code class="descname">new_data_viewer</code><span class="sig-paren">(</span><em>self</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/app.html#JupyterApplication.new_data_viewer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.JupyterApplication.new_data_viewer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new data viewer, add it to the UI,
+and populate with data</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="glue_jupyter.JupyterApplication.profile1d">
+<code class="descname">profile1d</code><span class="sig-paren">(</span><em>self</em>, <em>x=None</em>, <em>data=None</em>, <em>widget='bqplot'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/app.html#JupyterApplication.profile1d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.JupyterApplication.profile1d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open an interactive 1d profile viewer.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>x</strong><span class="classifier">str or <a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.component_id.ComponentID.html#glue.core.component_id.ComponentID" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ComponentID</span></code></a>, optional</span></dt><dd><p>The attribute to show on the x axis. This should be a pixel or
+world coordinate <a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.component_id.ComponentID.html#glue.core.component_id.ComponentID" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ComponentID</span></code></a>.</p>
+</dd>
+<dt><strong>data</strong><span class="classifier"><a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.data.Data.html#glue.core.data.Data" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Data</span></code></a>, optional</span></dt><dd><p>The initial dataset to show in the viewer. Additional
+datasets can be added later using the <code class="docutils literal notranslate"><span class="pre">add_data</span></code> method on
+the viewer object.</p>
+</dd>
+<dt><strong>widget</strong><span class="classifier">{‘bqplot’, ‘matplotlib’}</span></dt><dd><p>Whether to use bqplot or Matplotlib as the front-end.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="glue_jupyter.JupyterApplication.scatter2d">
+<code class="descname">scatter2d</code><span class="sig-paren">(</span><em>self</em>, <em>x=None</em>, <em>y=None</em>, <em>data=None</em>, <em>widget='bqplot'</em>, <em>color=None</em>, <em>size=None</em>, <em>viewer_state=None</em>, <em>layer_state=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/app.html#JupyterApplication.scatter2d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.JupyterApplication.scatter2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open an interactive 2d scatter plot viewer.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>x</strong><span class="classifier">str or <a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.component_id.ComponentID.html#glue.core.component_id.ComponentID" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ComponentID</span></code></a>, optional</span></dt><dd><p>The attribute to show on the x axis.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">str or <a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.component_id.ComponentID.html#glue.core.component_id.ComponentID" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ComponentID</span></code></a>, optional</span></dt><dd><p>The attribute to show on the y axis.</p>
+</dd>
+<dt><strong>data</strong><span class="classifier"><a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.data.Data.html#glue.core.data.Data" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Data</span></code></a>, optional</span></dt><dd><p>The initial dataset to show in the viewer. Additional
+datasets can be added later using the <code class="docutils literal notranslate"><span class="pre">add_data</span></code> method on
+the viewer object.</p>
+</dd>
+<dt><strong>widget</strong><span class="classifier">{‘bqplot’, ‘matplotlib’}</span></dt><dd><p>Whether to use bqplot or Matplotlib as the front-end.</p>
+</dd>
+<dt><strong>color</strong><span class="classifier">str or tuple, optional</span></dt><dd><p>The color to use for the markers. Note that this will have the
+effect of setting the data color for all viewers.</p>
+</dd>
+<dt><strong>size</strong><span class="classifier">int or float</span></dt><dd><p>The size to use for the markers. Note that this will have the
+effect of setting the marker size for all viewers.</p>
+</dd>
+<dt><strong>viewer_state</strong><span class="classifier"><a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.viewers.common.state.ViewerState.html#glue.viewers.common.state.ViewerState" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ViewerState</span></code></a></span></dt><dd><p>The initial state for the viewer (advanced).</p>
+</dd>
+<dt><strong>layer_state</strong><span class="classifier"><a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.viewers.common.state.LayerState.html#glue.viewers.common.state.LayerState" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LayerState</span></code></a></span></dt><dd><p>The initial state for the data layer (advanced).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="glue_jupyter.JupyterApplication.scatter3d">
+<code class="descname">scatter3d</code><span class="sig-paren">(</span><em>self</em>, <em>x=None</em>, <em>y=None</em>, <em>z=None</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/app.html#JupyterApplication.scatter3d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.JupyterApplication.scatter3d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open an interactive 3d scatter plot viewer.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>x</strong><span class="classifier">str or <a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.component_id.ComponentID.html#glue.core.component_id.ComponentID" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ComponentID</span></code></a>, optional</span></dt><dd><p>The attribute to show on the x axis.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">str or <a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.component_id.ComponentID.html#glue.core.component_id.ComponentID" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ComponentID</span></code></a>, optional</span></dt><dd><p>The attribute to show on the y axis.</p>
+</dd>
+<dt><strong>z</strong><span class="classifier">str or <a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.component_id.ComponentID.html#glue.core.component_id.ComponentID" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ComponentID</span></code></a>, optional</span></dt><dd><p>The attribute to show on the z axis.</p>
+</dd>
+<dt><strong>data</strong><span class="classifier"><a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.data.Data.html#glue.core.data.Data" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Data</span></code></a>, optional</span></dt><dd><p>The initial dataset to show in the viewer. Additional
+datasets can be added later using the <code class="docutils literal notranslate"><span class="pre">add_data</span></code> method on
+the viewer object.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="glue_jupyter.JupyterApplication.set_subset_mode">
+<code class="descname">set_subset_mode</code><span class="sig-paren">(</span><em>self</em>, <em>mode</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/app.html#JupyterApplication.set_subset_mode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.JupyterApplication.set_subset_mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the current subset mode.</p>
+<p>By default, selections in viewers update the current subset by
+replacing the previous selection with the new selection. However it is
+also possible to combine the current selection with previous selections
+using boolean operations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>mode</strong><span class="classifier">{‘new’, ‘replace’, ‘and’, ‘or’, ‘xor’, ‘not’}</span></dt><dd><p>The selection mode to use.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="glue_jupyter.JupyterApplication.subset">
+<code class="descname">subset</code><span class="sig-paren">(</span><em>self</em>, <em>name</em>, <em>subset_state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/app.html#JupyterApplication.subset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.JupyterApplication.subset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new selection/subset.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>name</strong><span class="classifier">str</span></dt><dd><p>The name of the new subset.</p>
+</dd>
+<dt><strong>subset_state</strong><span class="classifier"><a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.subset.SubsetState.html#glue.core.subset.SubsetState" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SubsetState</span></code></a></span></dt><dd><p>The definition of the subset. See the documentation at
+<a class="reference external" href="http://docs.glueviz.org/en/stable/python_guide/data_tutorial.html#defining-new-subsets">http://docs.glueviz.org/en/stable/python_guide/data_tutorial.html#defining-new-subsets</a>
+for more information about creating subsets programmatically.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="glue_jupyter.JupyterApplication.subset_lasso2d">
+<code class="descname">subset_lasso2d</code><span class="sig-paren">(</span><em>self</em>, <em>x_att</em>, <em>y_att</em>, <em>lasso_x</em>, <em>lasso_y</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/app.html#JupyterApplication.subset_lasso2d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.JupyterApplication.subset_lasso2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a subset from a programmatic 2d lasso selection.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>x_att</strong><span class="classifier"><a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.component_id.ComponentID.html#glue.core.component_id.ComponentID" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ComponentID</span></code></a></span></dt><dd><p>The attribute corresponding to the x values being selected.</p>
+</dd>
+<dt><strong>y_att</strong><span class="classifier"><a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.component_id.ComponentID.html#glue.core.component_id.ComponentID" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ComponentID</span></code></a></span></dt><dd><p>The attribute corresponding to the x values being selected.</p>
+</dd>
+<dt><strong>lasso_x</strong><span class="classifier">iterable</span></dt><dd><p>The x values of the lasso.</p>
+</dd>
+<dt><strong>lasso_y</strong><span class="classifier">iterable</span></dt><dd><p>The y values of the lasso.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="glue_jupyter.JupyterApplication.subset_roi">
+<code class="descname">subset_roi</code><span class="sig-paren">(</span><em>self</em>, <em>attributes</em>, <em>roi</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/app.html#JupyterApplication.subset_roi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.JupyterApplication.subset_roi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a subset from a region of interest.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>attributes</strong><span class="classifier">iterable</span></dt><dd><p>The attributes on the x and y axis</p>
+</dd>
+<dt><strong>roi</strong><span class="classifier"><a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.roi.Roi.html#glue.core.roi.Roi" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Roi</span></code></a></span></dt><dd><p>The region of interest to use to create the subset.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="glue_jupyter.JupyterApplication.volshow">
+<code class="descname">volshow</code><span class="sig-paren">(</span><em>self</em>, <em>x=None</em>, <em>y=None</em>, <em>z=None</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/app.html#JupyterApplication.volshow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.JupyterApplication.volshow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open an interactive volume viewer.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>x</strong><span class="classifier">str or <a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.component_id.ComponentID.html#glue.core.component_id.ComponentID" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ComponentID</span></code></a>, optional</span></dt><dd><p>The attribute to show on the x axis. This should be one of the
+pixel axis attributes.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">str or <a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.component_id.ComponentID.html#glue.core.component_id.ComponentID" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ComponentID</span></code></a>, optional</span></dt><dd><p>The attribute to show on the y axis. This should be one of the
+pixel axis attributes.</p>
+</dd>
+<dt><strong>z</strong><span class="classifier">str or <a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.component_id.ComponentID.html#glue.core.component_id.ComponentID" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ComponentID</span></code></a>, optional</span></dt><dd><p>The attribute to show on the z axis. This should be one of the
+pixel axis attributes.</p>
+</dd>
+<dt><strong>data</strong><span class="classifier"><a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.data.Data.html#glue.core.data.Data" title="(in Glue v0.15.0.dev0261)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Data</span></code></a>, optional</span></dt><dd><p>The initial dataset to show in the viewer. Additional
+datasets can be added later using the <code class="docutils literal notranslate"><span class="pre">add_data</span></code> method on
+the viewer object.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="glue_jupyter.app.JupyterApplication.html" class="btn btn-neutral float-right" title="JupyterApplication" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="glue_jupyter.example_volume.html" class="btn btn-neutral float-left" title="example_volume" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Maarten A. Breddels
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

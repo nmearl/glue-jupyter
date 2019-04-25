@@ -1,0 +1,35 @@
+IPyWidgetView
+=============
+
+.. currentmodule:: glue_jupyter.view
+
+.. autoclass:: IPyWidgetView
+   :show-inheritance:
+
+   .. rubric:: Attributes Summary
+
+   .. autosummary::
+
+      ~IPyWidgetView.inherit_tools
+      ~IPyWidgetView.subtools
+      ~IPyWidgetView.tools
+
+   .. rubric:: Methods Summary
+
+   .. autosummary::
+
+      ~IPyWidgetView.add_data
+      ~IPyWidgetView.get_layer_artist
+      ~IPyWidgetView.initialize_toolbar
+
+   .. rubric:: Attributes Documentation
+
+   .. autoattribute:: inherit_tools
+   .. autoattribute:: subtools
+   .. autoattribute:: tools
+
+   .. rubric:: Methods Documentation
+
+   .. automethod:: add_data
+   .. automethod:: get_layer_artist
+   .. automethod:: initialize_toolbar

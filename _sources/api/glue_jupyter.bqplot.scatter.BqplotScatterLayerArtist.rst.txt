@@ -1,0 +1,21 @@
+BqplotScatterLayerArtist
+========================
+
+.. currentmodule:: glue_jupyter.bqplot.scatter
+
+.. autoclass:: BqplotScatterLayerArtist
+   :show-inheritance:
+
+   .. rubric:: Methods Summary
+
+   .. autosummary::
+
+      ~BqplotScatterLayerArtist.redraw
+      ~BqplotScatterLayerArtist.update
+      ~BqplotScatterLayerArtist.update_histogram
+
+   .. rubric:: Methods Documentation
+
+   .. automethod:: redraw
+   .. automethod:: update
+   .. automethod:: update_histogram

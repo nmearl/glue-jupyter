@@ -1,0 +1,6 @@
+example_volume
+==============
+
+.. currentmodule:: glue_jupyter
+
+.. autofunction:: example_volume

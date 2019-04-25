@@ -1,0 +1,23 @@
+BqplotProfileView
+=================
+
+.. currentmodule:: glue_jupyter.bqplot.profile
+
+.. autoclass:: BqplotProfileView
+   :show-inheritance:
+
+   .. rubric:: Attributes Summary
+
+   .. autosummary::
+
+      ~BqplotProfileView.allow_duplicate_data
+      ~BqplotProfileView.allow_duplicate_subset
+      ~BqplotProfileView.is2d
+      ~BqplotProfileView.tools
+
+   .. rubric:: Attributes Documentation
+
+   .. autoattribute:: allow_duplicate_data
+   .. autoattribute:: allow_duplicate_subset
+   .. autoattribute:: is2d
+   .. autoattribute:: tools

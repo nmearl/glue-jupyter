@@ -1,0 +1,6 @@
+jglue
+=====
+
+.. currentmodule:: glue_jupyter
+
+.. autofunction:: jglue

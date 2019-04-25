@@ -1,0 +1,29 @@
+IpyvolumeVolumeView
+===================
+
+.. currentmodule:: glue_jupyter.ipyvolume.volume
+
+.. autoclass:: IpyvolumeVolumeView
+   :show-inheritance:
+
+   .. rubric:: Attributes Summary
+
+   .. autosummary::
+
+      ~IpyvolumeVolumeView.large_data_size
+
+   .. rubric:: Methods Summary
+
+   .. autosummary::
+
+      ~IpyvolumeVolumeView.get_data_layer_artist
+      ~IpyvolumeVolumeView.get_subset_layer_artist
+
+   .. rubric:: Attributes Documentation
+
+   .. autoattribute:: large_data_size
+
+   .. rubric:: Methods Documentation
+
+   .. automethod:: get_data_layer_artist
+   .. automethod:: get_subset_layer_artist

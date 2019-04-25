@@ -1,0 +1,6 @@
+example_image
+=============
+
+.. currentmodule:: glue_jupyter
+
+.. autofunction:: example_image

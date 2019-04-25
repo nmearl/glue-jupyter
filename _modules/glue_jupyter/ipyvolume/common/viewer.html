@@ -1,0 +1,298 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>glue_jupyter.ipyvolume.common.viewer &mdash; glue-jupyter 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> glue-jupyter
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installing.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">glue-jupyter</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../../glue_jupyter.html">glue_jupyter</a> &raquo;</li>
+        
+      <li>glue_jupyter.ipyvolume.common.viewer</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for glue_jupyter.ipyvolume.common.viewer</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">ipyvolume</span> <span class="k">as</span> <span class="nn">ipv</span>
+<span class="kn">import</span> <span class="nn">ipyvolume.moviemaker</span>
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="k">import</span> <span class="n">VBox</span><span class="p">,</span> <span class="n">Tab</span><span class="p">,</span> <span class="n">ToggleButton</span>
+
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">display</span>
+
+<span class="kn">from</span> <span class="nn">glue.core.subset</span> <span class="k">import</span> <span class="n">RoiSubsetState3d</span>
+<span class="kn">from</span> <span class="nn">glue.core.command</span> <span class="k">import</span> <span class="n">ApplySubsetState</span>
+
+<span class="kn">from</span> <span class="nn">...view</span> <span class="k">import</span> <span class="n">IPyWidgetView</span>
+<span class="kn">from</span> <span class="nn">...link</span> <span class="k">import</span> <span class="n">dlink</span>
+
+<span class="kn">from</span> <span class="nn">.viewer_options_widget</span> <span class="k">import</span> <span class="n">Viewer3DStateWidget</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;IpyvolumeBaseView&#39;</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="IpyvolumeBaseView"><a class="viewcode-back" href="../../../../api/glue_jupyter.ipyvolume.common.IpyvolumeBaseView.html#glue_jupyter.ipyvolume.common.IpyvolumeBaseView">[docs]</a><span class="k">class</span> <span class="nc">IpyvolumeBaseView</span><span class="p">(</span><span class="n">IPyWidgetView</span><span class="p">):</span>
+
+    <span class="n">allow_duplicate_data</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">allow_duplicate_subset</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="n">_options_cls</span> <span class="o">=</span> <span class="n">Viewer3DStateWidget</span>
+
+    <span class="n">tools</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ipyvolume:lasso&#39;</span><span class="p">,</span> <span class="s1">&#39;ipyvolume:circle&#39;</span><span class="p">,</span> <span class="s1">&#39;ipyvolume:rectangle&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state_cls</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">figure</span> <span class="o">=</span> <span class="n">ipv</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">animation_exponent</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">selector</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">IpyvolumeBaseView</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">create_tab</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">add_callback</span><span class="p">(</span><span class="s1">&#39;x_min&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">limits_to_scales</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">add_callback</span><span class="p">(</span><span class="s1">&#39;x_max&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">limits_to_scales</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">add_callback</span><span class="p">(</span><span class="s1">&#39;y_min&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">limits_to_scales</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">add_callback</span><span class="p">(</span><span class="s1">&#39;y_max&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">limits_to_scales</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="s1">&#39;z_min&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">add_callback</span><span class="p">(</span><span class="s1">&#39;z_min&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">limits_to_scales</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">add_callback</span><span class="p">(</span><span class="s1">&#39;z_max&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">limits_to_scales</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">main_widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">(</span>
+            <span class="n">children</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">widget_toolbar</span><span class="p">,</span> <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">ipv</span><span class="o">.</span><span class="n">gcc</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">tab</span><span class="p">])])</span>
+
+<div class="viewcode-block" id="IpyvolumeBaseView.show"><a class="viewcode-back" href="../../../../api/glue_jupyter.ipyvolume.common.IpyvolumeBaseView.html#glue_jupyter.ipyvolume.common.IpyvolumeBaseView.show">[docs]</a>    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">display</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">main_widget</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IpyvolumeBaseView.apply_roi"><a class="viewcode-back" href="../../../../api/glue_jupyter.ipyvolume.common.IpyvolumeBaseView.html#glue_jupyter.ipyvolume.common.IpyvolumeBaseView.apply_roi">[docs]</a>    <span class="k">def</span> <span class="nf">apply_roi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">roi</span><span class="p">,</span> <span class="n">use_current</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># self.state.x_att.parent.get_component(self.state.x_att)</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">x_att</span>
+            <span class="c1"># self.state.y_att.parent.get_component(self.state.y_att)</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">y_att</span>
+            <span class="c1"># self.state.z_att.parent.get_component(self.state.z_att)</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">z_att</span>
+            <span class="n">subset_state</span> <span class="o">=</span> <span class="n">RoiSubsetState3d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">roi</span><span class="p">)</span>
+            <span class="n">cmd</span> <span class="o">=</span> <span class="n">ApplySubsetState</span><span class="p">(</span><span class="n">data_collection</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span>
+                                   <span class="n">subset_state</span><span class="o">=</span><span class="n">subset_state</span><span class="p">,</span>
+                                   <span class="n">use_current</span><span class="o">=</span><span class="n">use_current</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">command_stack</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IpyvolumeBaseView.limits_to_scales"><a class="viewcode-back" href="../../../../api/glue_jupyter.ipyvolume.common.IpyvolumeBaseView.html#glue_jupyter.ipyvolume.common.IpyvolumeBaseView.limits_to_scales">[docs]</a>    <span class="k">def</span> <span class="nf">limits_to_scales</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">x_min</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">x_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">xlim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">x_min</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">x_max</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">y_min</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">y_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">ylim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">y_min</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">y_max</span>
+        <span class="c1"># if self.state.z_min is not None and self.state.z_max is not None:</span>
+        <span class="c1">#     self.figure.zlim = self.state.z_min, self.state.z_max</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="s1">&#39;z_min&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">z_min</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">z_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">zlim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">z_min</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">z_max</span></div>
+
+<div class="viewcode-block" id="IpyvolumeBaseView.redraw"><a class="viewcode-back" href="../../../../api/glue_jupyter.ipyvolume.common.IpyvolumeBaseView.html#glue_jupyter.ipyvolume.common.IpyvolumeBaseView.redraw">[docs]</a>    <span class="k">def</span> <span class="nf">redraw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="IpyvolumeBaseView.create_tab"><a class="viewcode-back" href="../../../../api/glue_jupyter.ipyvolume.common.IpyvolumeBaseView.html#glue_jupyter.ipyvolume.common.IpyvolumeBaseView.create_tab">[docs]</a>    <span class="k">def</span> <span class="nf">create_tab</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">def</span> <span class="nf">change</span><span class="p">(</span><span class="n">visible</span><span class="p">):</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">visible</span><span class="p">:</span>
+                    <span class="n">ipv</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">axes_on</span><span class="p">()</span>
+                    <span class="n">ipv</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">box_on</span><span class="p">()</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">ipv</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">axes_off</span><span class="p">()</span>
+                    <span class="n">ipv</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">box_off</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">add_callback</span><span class="p">(</span><span class="s1">&#39;visible_axes&#39;</span><span class="p">,</span> <span class="n">change</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">widget_show_movie_maker</span> <span class="o">=</span> <span class="n">ToggleButton</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Show movie maker&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">movie_maker</span> <span class="o">=</span> <span class="n">ipv</span><span class="o">.</span><span class="n">moviemaker</span><span class="o">.</span><span class="n">MovieMaker</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">camera</span><span class="p">)</span>
+        <span class="n">dlink</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">widget_show_movie_maker</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">movie_maker</span><span class="o">.</span><span class="n">widget_main</span><span class="o">.</span><span class="n">layout</span><span class="p">,</span> <span class="s1">&#39;display&#39;</span><span class="p">),</span> <span class="k">lambda</span> <span class="n">value</span><span class="p">:</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">value</span> <span class="k">else</span> <span class="s1">&#39;none&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">tab_general</span> <span class="o">=</span> <span class="n">VBox</span><span class="p">([])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tab_general</span><span class="o">.</span><span class="n">children</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options_cls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">)</span><span class="o">.</span><span class="n">children</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tab_general</span><span class="o">.</span><span class="n">children</span> <span class="o">+=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">widget_show_movie_maker</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">movie_maker</span><span class="o">.</span><span class="n">widget_main</span><span class="p">)</span>
+        <span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">tab_general</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tab</span> <span class="o">=</span> <span class="n">Tab</span><span class="p">(</span><span class="n">children</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tab</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;General&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tab</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Axes&quot;</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Maarten A. Breddels
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

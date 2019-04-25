@@ -1,0 +1,7 @@
+IPyWidgetLayerArtistContainer
+=============================
+
+.. currentmodule:: glue_jupyter.view
+
+.. autoclass:: IPyWidgetLayerArtistContainer
+   :show-inheritance:

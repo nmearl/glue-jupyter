@@ -1,0 +1,17 @@
+ImageLayerStateWidget
+=====================
+
+.. currentmodule:: glue_jupyter.common.state_widgets
+
+.. autoclass:: ImageLayerStateWidget
+   :show-inheritance:
+
+   .. rubric:: Methods Summary
+
+   .. autosummary::
+
+      ~ImageLayerStateWidget.setup_widgets
+
+   .. rubric:: Methods Documentation
+
+   .. automethod:: setup_widgets

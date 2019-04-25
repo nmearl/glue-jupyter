@@ -1,0 +1,7 @@
+ImageSubsetLayerStateWidget
+===========================
+
+.. currentmodule:: glue_jupyter.common.state_widgets
+
+.. autoclass:: ImageSubsetLayerStateWidget
+   :show-inheritance:

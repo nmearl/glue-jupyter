@@ -1,0 +1,17 @@
+BqplotHistogramLayerArtist
+==========================
+
+.. currentmodule:: glue_jupyter.bqplot.histogram
+
+.. autoclass:: BqplotHistogramLayerArtist
+   :show-inheritance:
+
+   .. rubric:: Methods Summary
+
+   .. autosummary::
+
+      ~BqplotHistogramLayerArtist.update
+
+   .. rubric:: Methods Documentation
+
+   .. automethod:: update

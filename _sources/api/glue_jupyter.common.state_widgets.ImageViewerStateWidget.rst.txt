@@ -1,0 +1,7 @@
+ImageViewerStateWidget
+======================
+
+.. currentmodule:: glue_jupyter.common.state_widgets
+
+.. autoclass:: ImageViewerStateWidget
+   :show-inheritance:

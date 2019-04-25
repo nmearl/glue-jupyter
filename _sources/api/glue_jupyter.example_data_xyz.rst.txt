@@ -1,0 +1,6 @@
+example_data_xyz
+================
+
+.. currentmodule:: glue_jupyter
+
+.. autofunction:: example_data_xyz

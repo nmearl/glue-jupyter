@@ -1,0 +1,19 @@
+BqplotImageLayerArtist
+======================
+
+.. currentmodule:: glue_jupyter.bqplot.image
+
+.. autoclass:: BqplotImageLayerArtist
+   :show-inheritance:
+
+   .. rubric:: Methods Summary
+
+   .. autosummary::
+
+      ~BqplotImageLayerArtist.enable
+      ~BqplotImageLayerArtist.redraw
+
+   .. rubric:: Methods Documentation
+
+   .. automethod:: enable
+   .. automethod:: redraw

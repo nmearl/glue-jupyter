@@ -1,0 +1,7 @@
+Scatter3DLayerStateWidget
+=========================
+
+.. currentmodule:: glue_jupyter.ipyvolume.scatter
+
+.. autoclass:: Scatter3DLayerStateWidget
+   :show-inheritance:

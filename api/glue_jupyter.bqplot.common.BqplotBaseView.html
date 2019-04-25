@@ -1,0 +1,374 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>BqplotBaseView &mdash; glue-jupyter 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="BqplotHistogramLayerArtist" href="glue_jupyter.bqplot.histogram.BqplotHistogramLayerArtist.html" />
+    <link rel="prev" title="LayerArtist" href="glue_jupyter.compat.LayerArtist.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> glue-jupyter
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installing.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#general">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter">glue_jupyter Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.app">glue_jupyter.app Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.view">glue_jupyter.view Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.common.state3d">glue_jupyter.common.state3d Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.common.state_widgets">glue_jupyter.common.state_widgets Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.compat">glue_jupyter.compat Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#bqplot-viewers">bqplot viewers</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#module-glue_jupyter.bqplot.common">glue_jupyter.bqplot.common Package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../api.html#id6">Classes</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">BqplotBaseView</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.bqplot.histogram">glue_jupyter.bqplot.histogram Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.bqplot.image">glue_jupyter.bqplot.image Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.bqplot.profile">glue_jupyter.bqplot.profile Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.bqplot.scatter">glue_jupyter.bqplot.scatter Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#ipyvolume-viewers">ipyvolume viewers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.ipyvolume.common">glue_jupyter.ipyvolume.common Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.ipyvolume.scatter">glue_jupyter.ipyvolume.scatter Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.ipyvolume.volume">glue_jupyter.ipyvolume.volume Package</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">glue-jupyter</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">API Documentation</a> &raquo;</li>
+        
+      <li>BqplotBaseView</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/glue_jupyter.bqplot.common.BqplotBaseView.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="bqplotbaseview">
+<h1>BqplotBaseView<a class="headerlink" href="#bqplotbaseview" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="glue_jupyter.bqplot.common.BqplotBaseView">
+<em class="property">class </em><code class="descclassname">glue_jupyter.bqplot.common.</code><code class="descname">BqplotBaseView</code><span class="sig-paren">(</span><em>session</em>, <em>state=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/bqplot/common/viewer.html#BqplotBaseView"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.bqplot.common.BqplotBaseView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="glue_jupyter.view.IPyWidgetView.html#glue_jupyter.view.IPyWidgetView" title="glue_jupyter.view.IPyWidgetView"><code class="xref py py-class docutils literal notranslate"><span class="pre">glue_jupyter.view.IPyWidgetView</span></code></a></p>
+<p class="rubric">Attributes Summary</p>
+<table class="longtable docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.bqplot.common.BqplotBaseView.allow_duplicate_data" title="glue_jupyter.bqplot.common.BqplotBaseView.allow_duplicate_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">allow_duplicate_data</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.bqplot.common.BqplotBaseView.allow_duplicate_subset" title="glue_jupyter.bqplot.common.BqplotBaseView.allow_duplicate_subset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">allow_duplicate_subset</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.bqplot.common.BqplotBaseView.is2d" title="glue_jupyter.bqplot.common.BqplotBaseView.is2d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is2d</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods Summary</p>
+<table class="longtable docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.bqplot.common.BqplotBaseView.apply_roi" title="glue_jupyter.bqplot.common.BqplotBaseView.apply_roi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_roi</span></code></a>(self, roi[, use_current])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.bqplot.common.BqplotBaseView.create_tab" title="glue_jupyter.bqplot.common.BqplotBaseView.create_tab"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_tab</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.bqplot.common.BqplotBaseView.get_layer_artist" title="glue_jupyter.bqplot.common.BqplotBaseView.get_layer_artist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_layer_artist</span></code></a>(self, cls[, layer, layer_state])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.bqplot.common.BqplotBaseView.limits_to_scales" title="glue_jupyter.bqplot.common.BqplotBaseView.limits_to_scales"><code class="xref py py-obj docutils literal notranslate"><span class="pre">limits_to_scales</span></code></a>(self, \*args)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.bqplot.common.BqplotBaseView.receive_message" title="glue_jupyter.bqplot.common.BqplotBaseView.receive_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">receive_message</span></code></a>(self, message)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.bqplot.common.BqplotBaseView.redraw" title="glue_jupyter.bqplot.common.BqplotBaseView.redraw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">redraw</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.bqplot.common.BqplotBaseView.show" title="glue_jupyter.bqplot.common.BqplotBaseView.show"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.bqplot.common.BqplotBaseView.update_viewer_state" title="glue_jupyter.bqplot.common.BqplotBaseView.update_viewer_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_viewer_state</span></code></a>(rec, context)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes Documentation</p>
+<dl class="attribute">
+<dt id="glue_jupyter.bqplot.common.BqplotBaseView.allow_duplicate_data">
+<code class="descname">allow_duplicate_data</code><em class="property"> = False</em><a class="headerlink" href="#glue_jupyter.bqplot.common.BqplotBaseView.allow_duplicate_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="glue_jupyter.bqplot.common.BqplotBaseView.allow_duplicate_subset">
+<code class="descname">allow_duplicate_subset</code><em class="property"> = False</em><a class="headerlink" href="#glue_jupyter.bqplot.common.BqplotBaseView.allow_duplicate_subset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="glue_jupyter.bqplot.common.BqplotBaseView.is2d">
+<code class="descname">is2d</code><em class="property"> = True</em><a class="headerlink" href="#glue_jupyter.bqplot.common.BqplotBaseView.is2d" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p class="rubric">Methods Documentation</p>
+<dl class="method">
+<dt id="glue_jupyter.bqplot.common.BqplotBaseView.apply_roi">
+<code class="descname">apply_roi</code><span class="sig-paren">(</span><em>self</em>, <em>roi</em>, <em>use_current=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/bqplot/common/viewer.html#BqplotBaseView.apply_roi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.bqplot.common.BqplotBaseView.apply_roi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="glue_jupyter.bqplot.common.BqplotBaseView.create_tab">
+<code class="descname">create_tab</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/bqplot/common/viewer.html#BqplotBaseView.create_tab"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.bqplot.common.BqplotBaseView.create_tab" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="glue_jupyter.bqplot.common.BqplotBaseView.get_layer_artist">
+<code class="descname">get_layer_artist</code><span class="sig-paren">(</span><em>self</em>, <em>cls</em>, <em>layer=None</em>, <em>layer_state=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/bqplot/common/viewer.html#BqplotBaseView.get_layer_artist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.bqplot.common.BqplotBaseView.get_layer_artist" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="glue_jupyter.bqplot.common.BqplotBaseView.limits_to_scales">
+<code class="descname">limits_to_scales</code><span class="sig-paren">(</span><em>self</em>, <em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/bqplot/common/viewer.html#BqplotBaseView.limits_to_scales"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.bqplot.common.BqplotBaseView.limits_to_scales" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="glue_jupyter.bqplot.common.BqplotBaseView.receive_message">
+<code class="descname">receive_message</code><span class="sig-paren">(</span><em>self</em>, <em>message</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/bqplot/common/viewer.html#BqplotBaseView.receive_message"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.bqplot.common.BqplotBaseView.receive_message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="glue_jupyter.bqplot.common.BqplotBaseView.redraw">
+<code class="descname">redraw</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/bqplot/common/viewer.html#BqplotBaseView.redraw"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.bqplot.common.BqplotBaseView.redraw" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="glue_jupyter.bqplot.common.BqplotBaseView.show">
+<code class="descname">show</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/bqplot/common/viewer.html#BqplotBaseView.show"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.bqplot.common.BqplotBaseView.show" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="glue_jupyter.bqplot.common.BqplotBaseView.update_viewer_state">
+<em class="property">static </em><code class="descname">update_viewer_state</code><span class="sig-paren">(</span><em>rec</em>, <em>context</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/bqplot/common/viewer.html#BqplotBaseView.update_viewer_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.bqplot.common.BqplotBaseView.update_viewer_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="glue_jupyter.bqplot.histogram.BqplotHistogramLayerArtist.html" class="btn btn-neutral float-right" title="BqplotHistogramLayerArtist" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="glue_jupyter.compat.LayerArtist.html" class="btn btn-neutral float-left" title="LayerArtist" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Maarten A. Breddels
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

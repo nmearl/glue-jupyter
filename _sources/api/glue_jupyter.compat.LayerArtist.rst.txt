@@ -1,0 +1,29 @@
+LayerArtist
+===========
+
+.. currentmodule:: glue_jupyter.compat
+
+.. autoclass:: LayerArtist
+   :show-inheritance:
+
+   .. rubric:: Attributes Summary
+
+   .. autosummary::
+
+      ~LayerArtist.visible
+      ~LayerArtist.zorder
+
+   .. rubric:: Methods Summary
+
+   .. autosummary::
+
+      ~LayerArtist.pop_changed_properties
+
+   .. rubric:: Attributes Documentation
+
+   .. autoattribute:: visible
+   .. autoattribute:: zorder
+
+   .. rubric:: Methods Documentation
+
+   .. automethod:: pop_changed_properties

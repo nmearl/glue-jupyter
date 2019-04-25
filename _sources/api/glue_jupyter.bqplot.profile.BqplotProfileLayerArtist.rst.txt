@@ -1,0 +1,17 @@
+BqplotProfileLayerArtist
+========================
+
+.. currentmodule:: glue_jupyter.bqplot.profile
+
+.. autoclass:: BqplotProfileLayerArtist
+   :show-inheritance:
+
+   .. rubric:: Methods Summary
+
+   .. autosummary::
+
+      ~BqplotProfileLayerArtist.update
+
+   .. rubric:: Methods Documentation
+
+   .. automethod:: update

@@ -1,0 +1,23 @@
+BqplotImageSubsetLayerArtist
+============================
+
+.. currentmodule:: glue_jupyter.bqplot.image
+
+.. autoclass:: BqplotImageSubsetLayerArtist
+   :show-inheritance:
+
+   .. rubric:: Methods Summary
+
+   .. autosummary::
+
+      ~BqplotImageSubsetLayerArtist.enable
+      ~BqplotImageSubsetLayerArtist.redraw
+      ~BqplotImageSubsetLayerArtist.remove
+      ~BqplotImageSubsetLayerArtist.update
+
+   .. rubric:: Methods Documentation
+
+   .. automethod:: enable
+   .. automethod:: redraw
+   .. automethod:: remove
+   .. automethod:: update

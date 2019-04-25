@@ -1,0 +1,33 @@
+IpyvolumeScatterView
+====================
+
+.. currentmodule:: glue_jupyter.ipyvolume.scatter
+
+.. autoclass:: IpyvolumeScatterView
+   :show-inheritance:
+
+   .. rubric:: Attributes Summary
+
+   .. autosummary::
+
+      ~IpyvolumeScatterView.allow_duplicate_data
+      ~IpyvolumeScatterView.allow_duplicate_subset
+      ~IpyvolumeScatterView.large_data_size
+
+   .. rubric:: Methods Summary
+
+   .. autosummary::
+
+      ~IpyvolumeScatterView.get_data_layer_artist
+      ~IpyvolumeScatterView.get_subset_layer_artist
+
+   .. rubric:: Attributes Documentation
+
+   .. autoattribute:: allow_duplicate_data
+   .. autoattribute:: allow_duplicate_subset
+   .. autoattribute:: large_data_size
+
+   .. rubric:: Methods Documentation
+
+   .. automethod:: get_data_layer_artist
+   .. automethod:: get_subset_layer_artist
