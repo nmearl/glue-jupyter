@@ -1,0 +1,7 @@
+link
+====
+
+.. currentmodule:: glue_jupyter.link
+
+.. autoclass:: link
+   :show-inheritance:

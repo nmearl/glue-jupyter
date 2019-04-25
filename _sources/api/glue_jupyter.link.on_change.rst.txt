@@ -1,0 +1,6 @@
+on_change
+=========
+
+.. currentmodule:: glue_jupyter.link
+
+.. autofunction:: on_change

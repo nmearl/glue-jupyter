@@ -86,6 +86,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../installing.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer_notes.html">Notes for developers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api.html">API Documentation</a></li>
 </ul>
 
@@ -158,7 +159,7 @@
 <span class="kn">from</span> <span class="nn">glue.core.state_objects</span> <span class="k">import</span> <span class="n">StateAttributeLimitsHelper</span>
 <span class="kn">from</span> <span class="nn">glue.utils</span> <span class="k">import</span> <span class="n">nonpartial</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ViewerState3D&#39;</span><span class="p">,</span> <span class="s1">&#39;ViewerState3DVolume&#39;</span><span class="p">,</span> <span class="s1">&#39;ViewerState3DScatter&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ViewerState3D&#39;</span><span class="p">,</span> <span class="s1">&#39;VolumeViewerState&#39;</span><span class="p">,</span> <span class="s1">&#39;Scatter3DViewerState&#39;</span><span class="p">]</span>
 
 
 <div class="viewcode-block" id="ViewerState3D"><a class="viewcode-back" href="../../../api/glue_jupyter.common.state3d.ViewerState3D.html#glue_jupyter.common.state3d.ViewerState3D">[docs]</a><span class="k">class</span> <span class="nc">ViewerState3D</span><span class="p">(</span><span class="n">ViewerState</span><span class="p">):</span>
@@ -269,9 +270,9 @@
     <span class="c1">#         self.z_min = z_min</span>
     <span class="c1">#         self.z_max = z_max</span>
 
-<div class="viewcode-block" id="ViewerState3DVolume"><a class="viewcode-back" href="../../../api/glue_jupyter.common.state3d.ViewerState3DVolume.html#glue_jupyter.common.state3d.ViewerState3DVolume">[docs]</a><span class="k">class</span> <span class="nc">ViewerState3DVolume</span><span class="p">(</span><span class="n">ViewerState3D</span><span class="p">):</span>
+<div class="viewcode-block" id="VolumeViewerState"><a class="viewcode-back" href="../../../api/glue_jupyter.common.state3d.VolumeViewerState.html#glue_jupyter.common.state3d.VolumeViewerState">[docs]</a><span class="k">class</span> <span class="nc">VolumeViewerState</span><span class="p">(</span><span class="n">ViewerState3D</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">ViewerState3DVolume</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">VolumeViewerState</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_callback</span><span class="p">(</span><span class="s1">&#39;layers&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_attributes</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update_from_dict</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
 
@@ -296,11 +297,11 @@
             <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">z_att</span><span class="o">.</span><span class="n">set_choices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">[</span><span class="n">z_cid</span><span class="p">])</span></div>
 
 
-<div class="viewcode-block" id="ViewerState3DScatter"><a class="viewcode-back" href="../../../api/glue_jupyter.common.state3d.ViewerState3DScatter.html#glue_jupyter.common.state3d.ViewerState3DScatter">[docs]</a><span class="k">class</span> <span class="nc">ViewerState3DScatter</span><span class="p">(</span><span class="n">ViewerState3D</span><span class="p">):</span>
+<div class="viewcode-block" id="Scatter3DViewerState"><a class="viewcode-back" href="../../../api/glue_jupyter.common.state3d.Scatter3DViewerState.html#glue_jupyter.common.state3d.Scatter3DViewerState">[docs]</a><span class="k">class</span> <span class="nc">Scatter3DViewerState</span><span class="p">(</span><span class="n">ViewerState3D</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
-        <span class="nb">super</span><span class="p">(</span><span class="n">ViewerState3DScatter</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Scatter3DViewerState</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">x_att_helper</span> <span class="o">=</span> <span class="n">ComponentIDComboHelper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;x_att&#39;</span><span class="p">,</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">y_att_helper</span> <span class="o">=</span> <span class="n">ComponentIDComboHelper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;y_att&#39;</span><span class="p">,</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ViewerState3DVolume &mdash; glue-jupyter 0.0.1 documentation</title>
+  <title>Scatter3DViewerState &mdash; glue-jupyter 0.0.1 documentation</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="ViewerState3DScatter" href="glue_jupyter.common.state3d.ViewerState3DScatter.html" />
-    <link rel="prev" title="ViewerState3D" href="glue_jupyter.common.state3d.ViewerState3D.html" /> 
+    <link rel="next" title="HistogramLayerStateWidget" href="glue_jupyter.common.state_widgets.HistogramLayerStateWidget.html" />
+    <link rel="prev" title="VolumeViewerState" href="glue_jupyter.common.state3d.VolumeViewerState.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -88,16 +88,18 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../installing.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_notes.html">Notes for developers</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Documentation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../api.html#general">General</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter">glue_jupyter Package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.app">glue_jupyter.app Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.link">glue_jupyter.link Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.view">glue_jupyter.view Module</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../api.html#module-glue_jupyter.common.state3d">glue_jupyter.common.state3d Module</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="../api.html#id3">Classes</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../api.html#id5">Classes</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="glue_jupyter.common.state3d.ViewerState3D.html">ViewerState3D</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">ViewerState3DVolume</a></li>
-<li class="toctree-l4"><a class="reference internal" href="glue_jupyter.common.state3d.ViewerState3DScatter.html">ViewerState3DScatter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="glue_jupyter.common.state3d.VolumeViewerState.html">VolumeViewerState</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Scatter3DViewerState</a></li>
 </ul>
 </li>
 </ul>
@@ -163,13 +165,13 @@
         
           <li><a href="../api.html">API Documentation</a> &raquo;</li>
         
-      <li>ViewerState3DVolume</li>
+      <li>Scatter3DViewerState</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/api/glue_jupyter.common.state3d.ViewerState3DVolume.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/glue_jupyter.common.state3d.Scatter3DViewerState.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -206,11 +208,11 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="viewerstate3dvolume">
-<h1>ViewerState3DVolume<a class="headerlink" href="#viewerstate3dvolume" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="scatter3dviewerstate">
+<h1>Scatter3DViewerState<a class="headerlink" href="#scatter3dviewerstate" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="glue_jupyter.common.state3d.ViewerState3DVolume">
-<em class="property">class </em><code class="descclassname">glue_jupyter.common.state3d.</code><code class="descname">ViewerState3DVolume</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/common/state3d.html#ViewerState3DVolume"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.common.state3d.ViewerState3DVolume" title="Permalink to this definition">¶</a></dt>
+<dt id="glue_jupyter.common.state3d.Scatter3DViewerState">
+<em class="property">class </em><code class="descclassname">glue_jupyter.common.state3d.</code><code class="descname">Scatter3DViewerState</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/common/state3d.html#Scatter3DViewerState"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.common.state3d.Scatter3DViewerState" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="glue_jupyter.common.state3d.ViewerState3D.html#glue_jupyter.common.state3d.ViewerState3D" title="glue_jupyter.common.state3d.ViewerState3D"><code class="xref py py-class docutils literal notranslate"><span class="pre">glue_jupyter.common.state3d.ViewerState3D</span></code></a></p>
 </dd></dl>
 
@@ -224,10 +226,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="glue_jupyter.common.state3d.ViewerState3DScatter.html" class="btn btn-neutral float-right" title="ViewerState3DScatter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="glue_jupyter.common.state_widgets.HistogramLayerStateWidget.html" class="btn btn-neutral float-right" title="HistogramLayerStateWidget" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="glue_jupyter.common.state3d.ViewerState3D.html" class="btn btn-neutral float-left" title="ViewerState3D" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="glue_jupyter.common.state3d.VolumeViewerState.html" class="btn btn-neutral float-left" title="VolumeViewerState" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

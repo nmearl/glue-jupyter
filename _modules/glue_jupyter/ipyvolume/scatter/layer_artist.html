@@ -86,6 +86,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../installing.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_notes.html">Notes for developers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api.html">API Documentation</a></li>
 </ul>
 
@@ -164,10 +165,10 @@
 
 <span class="kn">from</span> <span class="nn">...link</span> <span class="k">import</span> <span class="n">link</span><span class="p">,</span> <span class="n">on_change</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Scatter3dLayerState&#39;</span><span class="p">,</span> <span class="s1">&#39;IpyvolumeScatterLayerArtist&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Scatter3DLayerState&#39;</span><span class="p">,</span> <span class="s1">&#39;IpyvolumeScatterLayerArtist&#39;</span><span class="p">]</span>
 
 
-<div class="viewcode-block" id="Scatter3dLayerState"><a class="viewcode-back" href="../../../../api/glue_jupyter.ipyvolume.scatter.Scatter3dLayerState.html#glue_jupyter.ipyvolume.scatter.Scatter3dLayerState">[docs]</a><span class="k">class</span> <span class="nc">Scatter3dLayerState</span><span class="p">(</span><span class="n">ScatterLayerState</span><span class="p">):</span>
+<div class="viewcode-block" id="Scatter3DLayerState"><a class="viewcode-back" href="../../../../api/glue_jupyter.ipyvolume.scatter.Scatter3DLayerState.html#glue_jupyter.ipyvolume.scatter.Scatter3DLayerState">[docs]</a><span class="k">class</span> <span class="nc">Scatter3DLayerState</span><span class="p">(</span><span class="n">ScatterLayerState</span><span class="p">):</span>
 
     <span class="c1"># FIXME: the following should be a SelectionCallbackProperty</span>
     <span class="n">geo</span> <span class="o">=</span> <span class="n">CallbackProperty</span><span class="p">(</span><span class="s1">&#39;sphere&#39;</span><span class="p">,</span> <span class="n">docstring</span><span class="o">=</span><span class="s2">&quot;Type of marker&quot;</span><span class="p">)</span>
@@ -176,11 +177,11 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">viewer_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">vz_att_helper</span> <span class="o">=</span> <span class="n">ComponentIDComboHelper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;vz_att&#39;</span><span class="p">,</span>
                                                     <span class="n">numeric</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">Scatter3dLayerState</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">viewer_state</span><span class="o">=</span><span class="n">viewer_state</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="n">layer</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Scatter3DLayerState</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">viewer_state</span><span class="o">=</span><span class="n">viewer_state</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="n">layer</span><span class="p">)</span>
         <span class="c1"># self.update_from_dict(kwargs)</span>
 
     <span class="k">def</span> <span class="nf">_on_layer_change</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">Scatter3dLayerState</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">_on_layer_change</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="n">layer</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Scatter3DLayerState</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">_on_layer_change</span><span class="p">(</span><span class="n">layer</span><span class="o">=</span><span class="n">layer</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">layer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">vz_att_helper</span><span class="o">.</span><span class="n">set_multiple_data</span><span class="p">([])</span>
         <span class="k">else</span><span class="p">:</span>
@@ -189,7 +190,7 @@
 
 <div class="viewcode-block" id="IpyvolumeScatterLayerArtist"><a class="viewcode-back" href="../../../../api/glue_jupyter.ipyvolume.scatter.IpyvolumeScatterLayerArtist.html#glue_jupyter.ipyvolume.scatter.IpyvolumeScatterLayerArtist">[docs]</a><span class="k">class</span> <span class="nc">IpyvolumeScatterLayerArtist</span><span class="p">(</span><span class="n">LayerArtist</span><span class="p">):</span>
 
-    <span class="n">_layer_state_cls</span> <span class="o">=</span> <span class="n">Scatter3dLayerState</span>
+    <span class="n">_layer_state_cls</span> <span class="o">=</span> <span class="n">Scatter3DLayerState</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">view</span><span class="p">,</span> <span class="n">viewer_state</span><span class="p">,</span> <span class="n">layer</span><span class="p">,</span> <span class="n">layer_state</span><span class="p">):</span>
 

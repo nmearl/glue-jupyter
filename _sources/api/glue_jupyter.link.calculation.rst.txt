@@ -1,0 +1,6 @@
+calculation
+===========
+
+.. currentmodule:: glue_jupyter.link
+
+.. autofunction:: calculation

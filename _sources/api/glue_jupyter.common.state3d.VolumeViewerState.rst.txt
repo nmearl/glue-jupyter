@@ -1,0 +1,7 @@
+VolumeViewerState
+=================
+
+.. currentmodule:: glue_jupyter.common.state3d
+
+.. autoclass:: VolumeViewerState
+   :show-inheritance:

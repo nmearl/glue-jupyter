@@ -1,7 +1,7 @@
-ViewerState3DScatter
+Scatter3DViewerState
 ====================
 
 .. currentmodule:: glue_jupyter.common.state3d
 
-.. autoclass:: ViewerState3DScatter
+.. autoclass:: Scatter3DViewerState
    :show-inheritance:

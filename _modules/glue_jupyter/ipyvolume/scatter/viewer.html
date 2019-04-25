@@ -86,6 +86,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../installing.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_notes.html">Notes for developers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api.html">API Documentation</a></li>
 </ul>
 
@@ -152,7 +153,7 @@
            <div itemprop="articleBody">
             
   <h1>Source code for glue_jupyter.ipyvolume.scatter.viewer</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">glue_jupyter.common.state3d</span> <span class="k">import</span> <span class="n">ViewerState3DScatter</span>
+<span></span><span class="kn">from</span> <span class="nn">glue_jupyter.common.state3d</span> <span class="k">import</span> <span class="n">Scatter3DViewerState</span>
 <span class="kn">from</span> <span class="nn">.layer_artist</span> <span class="k">import</span> <span class="n">IpyvolumeScatterLayerArtist</span>
 <span class="kn">from</span> <span class="nn">.layer_style_widget</span> <span class="k">import</span> <span class="n">Scatter3DLayerStateWidget</span>
 <span class="kn">from</span> <span class="nn">..common.viewer_options_widget</span> <span class="k">import</span> <span class="n">Viewer3DStateWidget</span>
@@ -167,7 +168,7 @@
     <span class="n">allow_duplicate_subset</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">large_data_size</span> <span class="o">=</span> <span class="mf">1e7</span>
 
-    <span class="n">_state_cls</span> <span class="o">=</span> <span class="n">ViewerState3DScatter</span>
+    <span class="n">_state_cls</span> <span class="o">=</span> <span class="n">Scatter3DViewerState</span>
     <span class="n">_options_cls</span> <span class="o">=</span> <span class="n">Viewer3DStateWidget</span>
     <span class="n">_data_artist_cls</span> <span class="o">=</span> <span class="n">IpyvolumeScatterLayerArtist</span>
     <span class="n">_subset_artist_cls</span> <span class="o">=</span> <span class="n">IpyvolumeScatterLayerArtist</span>

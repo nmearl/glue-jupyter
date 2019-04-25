@@ -1,0 +1,6 @@
+link_component_id_to_select_widget
+==================================
+
+.. currentmodule:: glue_jupyter.link
+
+.. autofunction:: link_component_id_to_select_widget

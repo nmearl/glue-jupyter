@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>IpyvolumeLayerState &mdash; glue-jupyter 0.0.1 documentation</title>
+  <title>VolumeLayerState &mdash; glue-jupyter 0.0.1 documentation</title>
   
 
   
@@ -36,8 +36,7 @@
   <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="IpyvolumeVolumeView" href="glue_jupyter.ipyvolume.volume.IpyvolumeVolumeView.html" />
-    <link rel="prev" title="Scatter3dLayerState" href="glue_jupyter.ipyvolume.scatter.Scatter3dLayerState.html" /> 
+    <link rel="prev" title="Volume3DLayerStateWidget" href="glue_jupyter.ipyvolume.volume.Volume3DLayerStateWidget.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -88,10 +87,12 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../installing.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_notes.html">Notes for developers</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Documentation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../api.html#general">General</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter">glue_jupyter Package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.app">glue_jupyter.app Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.link">glue_jupyter.link Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.view">glue_jupyter.view Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.common.state3d">glue_jupyter.common.state3d Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.common.state_widgets">glue_jupyter.common.state_widgets Package</a></li>
@@ -106,10 +107,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.ipyvolume.common">glue_jupyter.ipyvolume.common Package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api.html#module-glue_jupyter.ipyvolume.scatter">glue_jupyter.ipyvolume.scatter Package</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../api.html#module-glue_jupyter.ipyvolume.volume">glue_jupyter.ipyvolume.volume Package</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="../api.html#id13">Classes</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">IpyvolumeLayerState</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../api.html#id15">Classes</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="glue_jupyter.ipyvolume.volume.IpyvolumeVolumeView.html">IpyvolumeVolumeView</a></li>
 <li class="toctree-l4"><a class="reference internal" href="glue_jupyter.ipyvolume.volume.Volume3DLayerStateWidget.html">Volume3DLayerStateWidget</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">VolumeLayerState</a></li>
 </ul>
 </li>
 </ul>
@@ -163,13 +164,13 @@
         
           <li><a href="../api.html">API Documentation</a> &raquo;</li>
         
-      <li>IpyvolumeLayerState</li>
+      <li>VolumeLayerState</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/api/glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/glue_jupyter.ipyvolume.volume.VolumeLayerState.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -206,11 +207,11 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="ipyvolumelayerstate">
-<h1>IpyvolumeLayerState<a class="headerlink" href="#ipyvolumelayerstate" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="volumelayerstate">
+<h1>VolumeLayerState<a class="headerlink" href="#volumelayerstate" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="glue_jupyter.ipyvolume.volume.IpyvolumeLayerState">
-<em class="property">class </em><code class="descclassname">glue_jupyter.ipyvolume.volume.</code><code class="descname">IpyvolumeLayerState</code><span class="sig-paren">(</span><em>layer=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/ipyvolume/volume/layer_artist.html#IpyvolumeLayerState"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.ipyvolume.volume.IpyvolumeLayerState" title="Permalink to this definition">¶</a></dt>
+<dt id="glue_jupyter.ipyvolume.volume.VolumeLayerState">
+<em class="property">class </em><code class="descclassname">glue_jupyter.ipyvolume.volume.</code><code class="descname">VolumeLayerState</code><span class="sig-paren">(</span><em>layer=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/ipyvolume/volume/layer_artist.html#VolumeLayerState"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.ipyvolume.volume.VolumeLayerState" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">glue_vispy_viewers.volume.layer_state.VolumeLayerState</span></code></p>
 <p class="rubric">Attributes Summary</p>
 <table class="longtable docutils align-center">
@@ -219,36 +220,36 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.clamp_max" title="glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.clamp_max"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clamp_max</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.ipyvolume.volume.VolumeLayerState.clamp_max" title="glue_jupyter.ipyvolume.volume.VolumeLayerState.clamp_max"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clamp_max</span></code></a></p></td>
 <td><p>A property that callback functions can be added to.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.clamp_min" title="glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.clamp_min"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clamp_min</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.ipyvolume.volume.VolumeLayerState.clamp_min" title="glue_jupyter.ipyvolume.volume.VolumeLayerState.clamp_min"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clamp_min</span></code></a></p></td>
 <td><p>A property that callback functions can be added to.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.data_max" title="glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.data_max"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_max</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.ipyvolume.volume.VolumeLayerState.data_max" title="glue_jupyter.ipyvolume.volume.VolumeLayerState.data_max"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_max</span></code></a></p></td>
 <td><p>A property that callback functions can be added to.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.data_min" title="glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.data_min"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_min</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.ipyvolume.volume.VolumeLayerState.data_min" title="glue_jupyter.ipyvolume.volume.VolumeLayerState.data_min"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_min</span></code></a></p></td>
 <td><p>A property that callback functions can be added to.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.lighting" title="glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.lighting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lighting</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.ipyvolume.volume.VolumeLayerState.lighting" title="glue_jupyter.ipyvolume.volume.VolumeLayerState.lighting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lighting</span></code></a></p></td>
 <td><p>A property that callback functions can be added to.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.max_resolution" title="glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.max_resolution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">max_resolution</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.ipyvolume.volume.VolumeLayerState.max_resolution" title="glue_jupyter.ipyvolume.volume.VolumeLayerState.max_resolution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">max_resolution</span></code></a></p></td>
 <td><p>A property that callback functions can be added to.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.opacity_scale" title="glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.opacity_scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">opacity_scale</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.ipyvolume.volume.VolumeLayerState.opacity_scale" title="glue_jupyter.ipyvolume.volume.VolumeLayerState.opacity_scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">opacity_scale</span></code></a></p></td>
 <td><p>A property that callback functions can be added to.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.render_method" title="glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.render_method"><code class="xref py py-obj docutils literal notranslate"><span class="pre">render_method</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.ipyvolume.volume.VolumeLayerState.render_method" title="glue_jupyter.ipyvolume.volume.VolumeLayerState.render_method"><code class="xref py py-obj docutils literal notranslate"><span class="pre">render_method</span></code></a></p></td>
 <td><p>A property that callback functions can be added to.</p></td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Attributes Documentation</p>
 <dl class="attribute">
-<dt id="glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.clamp_max">
-<code class="descname">clamp_max</code><a class="headerlink" href="#glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.clamp_max" title="Permalink to this definition">¶</a></dt>
+<dt id="glue_jupyter.ipyvolume.volume.VolumeLayerState.clamp_max">
+<code class="descname">clamp_max</code><a class="headerlink" href="#glue_jupyter.ipyvolume.volume.VolumeLayerState.clamp_max" title="Permalink to this definition">¶</a></dt>
 <dd><p>A property that callback functions can be added to.</p>
 <p>When a callback property changes value, each callback function
 is called with information about the state change. Otherwise,
@@ -271,8 +272,8 @@ a specific instance of a class with CallbackProperties</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.clamp_min">
-<code class="descname">clamp_min</code><a class="headerlink" href="#glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.clamp_min" title="Permalink to this definition">¶</a></dt>
+<dt id="glue_jupyter.ipyvolume.volume.VolumeLayerState.clamp_min">
+<code class="descname">clamp_min</code><a class="headerlink" href="#glue_jupyter.ipyvolume.volume.VolumeLayerState.clamp_min" title="Permalink to this definition">¶</a></dt>
 <dd><p>A property that callback functions can be added to.</p>
 <p>When a callback property changes value, each callback function
 is called with information about the state change. Otherwise,
@@ -295,8 +296,8 @@ a specific instance of a class with CallbackProperties</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.data_max">
-<code class="descname">data_max</code><a class="headerlink" href="#glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.data_max" title="Permalink to this definition">¶</a></dt>
+<dt id="glue_jupyter.ipyvolume.volume.VolumeLayerState.data_max">
+<code class="descname">data_max</code><a class="headerlink" href="#glue_jupyter.ipyvolume.volume.VolumeLayerState.data_max" title="Permalink to this definition">¶</a></dt>
 <dd><p>A property that callback functions can be added to.</p>
 <p>When a callback property changes value, each callback function
 is called with information about the state change. Otherwise,
@@ -319,8 +320,8 @@ a specific instance of a class with CallbackProperties</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.data_min">
-<code class="descname">data_min</code><a class="headerlink" href="#glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.data_min" title="Permalink to this definition">¶</a></dt>
+<dt id="glue_jupyter.ipyvolume.volume.VolumeLayerState.data_min">
+<code class="descname">data_min</code><a class="headerlink" href="#glue_jupyter.ipyvolume.volume.VolumeLayerState.data_min" title="Permalink to this definition">¶</a></dt>
 <dd><p>A property that callback functions can be added to.</p>
 <p>When a callback property changes value, each callback function
 is called with information about the state change. Otherwise,
@@ -343,8 +344,8 @@ a specific instance of a class with CallbackProperties</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.lighting">
-<code class="descname">lighting</code><a class="headerlink" href="#glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.lighting" title="Permalink to this definition">¶</a></dt>
+<dt id="glue_jupyter.ipyvolume.volume.VolumeLayerState.lighting">
+<code class="descname">lighting</code><a class="headerlink" href="#glue_jupyter.ipyvolume.volume.VolumeLayerState.lighting" title="Permalink to this definition">¶</a></dt>
 <dd><p>A property that callback functions can be added to.</p>
 <p>When a callback property changes value, each callback function
 is called with information about the state change. Otherwise,
@@ -367,8 +368,8 @@ a specific instance of a class with CallbackProperties</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.max_resolution">
-<code class="descname">max_resolution</code><a class="headerlink" href="#glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.max_resolution" title="Permalink to this definition">¶</a></dt>
+<dt id="glue_jupyter.ipyvolume.volume.VolumeLayerState.max_resolution">
+<code class="descname">max_resolution</code><a class="headerlink" href="#glue_jupyter.ipyvolume.volume.VolumeLayerState.max_resolution" title="Permalink to this definition">¶</a></dt>
 <dd><p>A property that callback functions can be added to.</p>
 <p>When a callback property changes value, each callback function
 is called with information about the state change. Otherwise,
@@ -391,8 +392,8 @@ a specific instance of a class with CallbackProperties</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.opacity_scale">
-<code class="descname">opacity_scale</code><a class="headerlink" href="#glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.opacity_scale" title="Permalink to this definition">¶</a></dt>
+<dt id="glue_jupyter.ipyvolume.volume.VolumeLayerState.opacity_scale">
+<code class="descname">opacity_scale</code><a class="headerlink" href="#glue_jupyter.ipyvolume.volume.VolumeLayerState.opacity_scale" title="Permalink to this definition">¶</a></dt>
 <dd><p>A property that callback functions can be added to.</p>
 <p>When a callback property changes value, each callback function
 is called with information about the state change. Otherwise,
@@ -415,8 +416,8 @@ a specific instance of a class with CallbackProperties</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.render_method">
-<code class="descname">render_method</code><a class="headerlink" href="#glue_jupyter.ipyvolume.volume.IpyvolumeLayerState.render_method" title="Permalink to this definition">¶</a></dt>
+<dt id="glue_jupyter.ipyvolume.volume.VolumeLayerState.render_method">
+<code class="descname">render_method</code><a class="headerlink" href="#glue_jupyter.ipyvolume.volume.VolumeLayerState.render_method" title="Permalink to this definition">¶</a></dt>
 <dd><p>A property that callback functions can be added to.</p>
 <p>When a callback property changes value, each callback function
 is called with information about the state change. Otherwise,
@@ -450,10 +451,8 @@ a specific instance of a class with CallbackProperties</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="glue_jupyter.ipyvolume.volume.IpyvolumeVolumeView.html" class="btn btn-neutral float-right" title="IpyvolumeVolumeView" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="glue_jupyter.ipyvolume.scatter.Scatter3dLayerState.html" class="btn btn-neutral float-left" title="Scatter3dLayerState" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="glue_jupyter.ipyvolume.volume.Volume3DLayerStateWidget.html" class="btn btn-neutral float-left" title="Volume3DLayerStateWidget" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
