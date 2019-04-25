@@ -3,7 +3,7 @@
 set -evax
 
 # if [[ $TRAVIS_PULL_REQUEST == false && $TRAVIS_OS_NAME == linux && $PYTHON_VERSION == 3.7 ]]; then
-if [[ $TRAVIS_BRANCH == test_gh_pages && $TRAVIS_OS_NAME == linux && $PYTHON_VERSION == 3.7 ]]; then
+if [[ $TRAVIS_BRANCH == debug_docs && $TRAVIS_OS_NAME == linux && $PYTHON_VERSION == 3.7 ]]; then
 
     # Decrypt ssh deploy key
     openssl aes-256-cbc -K $encrypted_4288ce07de63_key -iv $encrypted_4288ce07de63_iv -in .deploy_docs_key.enc -out ~/.ssh/publish-key -d
