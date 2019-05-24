@@ -226,7 +226,10 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.ipyvolume.common.IpyvolumeBaseView.allow_duplicate_subset" title="glue_jupyter.ipyvolume.common.IpyvolumeBaseView.allow_duplicate_subset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">allow_duplicate_subset</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.ipyvolume.common.IpyvolumeBaseView.tools" title="glue_jupyter.ipyvolume.common.IpyvolumeBaseView.tools"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tools</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.ipyvolume.common.IpyvolumeBaseView.figure_widget" title="glue_jupyter.ipyvolume.common.IpyvolumeBaseView.figure_widget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">figure_widget</span></code></a></p></td>
+<td><p>The main figure widget.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.ipyvolume.common.IpyvolumeBaseView.tools" title="glue_jupyter.ipyvolume.common.IpyvolumeBaseView.tools"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tools</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -241,16 +244,10 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.ipyvolume.common.IpyvolumeBaseView.apply_roi" title="glue_jupyter.ipyvolume.common.IpyvolumeBaseView.apply_roi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_roi</span></code></a>(self, roi[, use_current])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.ipyvolume.common.IpyvolumeBaseView.create_tab" title="glue_jupyter.ipyvolume.common.IpyvolumeBaseView.create_tab"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_tab</span></code></a>(self)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.ipyvolume.common.IpyvolumeBaseView.limits_to_scales" title="glue_jupyter.ipyvolume.common.IpyvolumeBaseView.limits_to_scales"><code class="xref py py-obj docutils literal notranslate"><span class="pre">limits_to_scales</span></code></a>(self, \*args)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.ipyvolume.common.IpyvolumeBaseView.limits_to_scales" title="glue_jupyter.ipyvolume.common.IpyvolumeBaseView.limits_to_scales"><code class="xref py py-obj docutils literal notranslate"><span class="pre">limits_to_scales</span></code></a>(self, \*args)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.ipyvolume.common.IpyvolumeBaseView.redraw" title="glue_jupyter.ipyvolume.common.IpyvolumeBaseView.redraw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">redraw</span></code></a>(self)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.ipyvolume.common.IpyvolumeBaseView.show" title="glue_jupyter.ipyvolume.common.IpyvolumeBaseView.show"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show</span></code></a>(self)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.ipyvolume.common.IpyvolumeBaseView.redraw" title="glue_jupyter.ipyvolume.common.IpyvolumeBaseView.redraw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">redraw</span></code></a>(self)</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -267,6 +264,12 @@
 <dd></dd></dl>
 
 <dl class="attribute">
+<dt id="glue_jupyter.ipyvolume.common.IpyvolumeBaseView.figure_widget">
+<code class="descname">figure_widget</code><a class="headerlink" href="#glue_jupyter.ipyvolume.common.IpyvolumeBaseView.figure_widget" title="Permalink to this definition">¶</a></dt>
+<dd><p>The main figure widget.</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="glue_jupyter.ipyvolume.common.IpyvolumeBaseView.tools">
 <code class="descname">tools</code><em class="property"> = ['ipyvolume:lasso', 'ipyvolume:circle', 'ipyvolume:rectangle']</em><a class="headerlink" href="#glue_jupyter.ipyvolume.common.IpyvolumeBaseView.tools" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -278,11 +281,6 @@
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="glue_jupyter.ipyvolume.common.IpyvolumeBaseView.create_tab">
-<code class="descname">create_tab</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/ipyvolume/common/viewer.html#IpyvolumeBaseView.create_tab"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.ipyvolume.common.IpyvolumeBaseView.create_tab" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="glue_jupyter.ipyvolume.common.IpyvolumeBaseView.limits_to_scales">
 <code class="descname">limits_to_scales</code><span class="sig-paren">(</span><em>self</em>, <em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/ipyvolume/common/viewer.html#IpyvolumeBaseView.limits_to_scales"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.ipyvolume.common.IpyvolumeBaseView.limits_to_scales" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -290,11 +288,6 @@
 <dl class="method">
 <dt id="glue_jupyter.ipyvolume.common.IpyvolumeBaseView.redraw">
 <code class="descname">redraw</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/ipyvolume/common/viewer.html#IpyvolumeBaseView.redraw"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.ipyvolume.common.IpyvolumeBaseView.redraw" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="glue_jupyter.ipyvolume.common.IpyvolumeBaseView.show">
-<code class="descname">show</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/ipyvolume/common/viewer.html#IpyvolumeBaseView.show"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.ipyvolume.common.IpyvolumeBaseView.show" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

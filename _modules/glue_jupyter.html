@@ -157,7 +157,26 @@
 <span class="kn">from</span> <span class="nn">.app</span> <span class="k">import</span> <span class="n">JupyterApplication</span>  <span class="c1"># noqa</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;jglue&#39;</span><span class="p">,</span> <span class="s1">&#39;example_data_xyz&#39;</span><span class="p">,</span> <span class="s1">&#39;example_image&#39;</span><span class="p">,</span> <span class="s1">&#39;example_volume&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;JupyterApplication&#39;</span><span class="p">]</span>
+           <span class="s1">&#39;JupyterApplication&#39;</span><span class="p">,</span> <span class="s1">&#39;set_layout_factory&#39;</span><span class="p">,</span> <span class="s1">&#39;get_layout_factory&#39;</span><span class="p">]</span>
+
+<span class="n">LAYOUT_FACTORY</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<div class="viewcode-block" id="set_layout_factory"><a class="viewcode-back" href="../api/glue_jupyter.set_layout_factory.html#glue_jupyter.set_layout_factory">[docs]</a><span class="k">def</span> <span class="nf">set_layout_factory</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set the function to use to generate the viewer layout. This should take a</span>
+<span class="sd">    viewer class and return a widget containing the viewer widgets laid out</span>
+<span class="sd">    in the desired way.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">LAYOUT_FACTORY</span>
+    <span class="n">LAYOUT_FACTORY</span> <span class="o">=</span> <span class="n">func</span></div>
+
+
+<div class="viewcode-block" id="get_layout_factory"><a class="viewcode-back" href="../api/glue_jupyter.get_layout_factory.html#glue_jupyter.get_layout_factory">[docs]</a><span class="k">def</span> <span class="nf">get_layout_factory</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the current layout factory. Returns `None` if using the default.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">LAYOUT_FACTORY</span></div>
 
 
 <div class="viewcode-block" id="jglue"><a class="viewcode-back" href="../api/glue_jupyter.jglue.html#glue_jupyter.jglue">[docs]</a><span class="k">def</span> <span class="nf">jglue</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -166,7 +185,7 @@
 
 <span class="sd">    It is typically easiest to call this function without arguments and load</span>
 <span class="sd">    data and add links separately in subsequent calls. However, this function</span>
-<span class="sd">    can also take the same inputs as the `~glue.qglue.qglue` function.</span>
+<span class="sd">    can also take the same inputs as the `~glue.qglue` function.</span>
 
 <span class="sd">    Once this function is called, it will return a</span>
 <span class="sd">    `~glue_jupyter.JupyterApplication` object, which can then be used to</span>

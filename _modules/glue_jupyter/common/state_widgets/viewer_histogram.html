@@ -153,7 +153,7 @@
            <div itemprop="articleBody">
             
   <h1>Source code for glue_jupyter.common.state_widgets.viewer_histogram</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="k">import</span> <span class="n">VBox</span><span class="p">,</span> <span class="n">ToggleButton</span>
+<span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="k">import</span> <span class="n">VBox</span><span class="p">,</span> <span class="n">ToggleButton</span><span class="p">,</span> <span class="n">Checkbox</span>
 
 <span class="kn">from</span> <span class="nn">...widgets.linked_dropdown</span> <span class="k">import</span> <span class="n">LinkedDropdown</span>
 <span class="kn">from</span> <span class="nn">...link</span> <span class="k">import</span> <span class="n">link</span>
@@ -167,18 +167,21 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">viewer_state</span>
 
+        <span class="bp">self</span><span class="o">.</span><span class="n">widget_show_axes</span> <span class="o">=</span> <span class="n">Checkbox</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Show axes&quot;</span><span class="p">)</span>
+        <span class="n">link</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">widget_show_axes</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="s1">&#39;show_axes&#39;</span><span class="p">))</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">button_normalize</span> <span class="o">=</span> <span class="n">ToggleButton</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;normalize&#39;</span><span class="p">,</span>
                                              <span class="n">tooltip</span><span class="o">=</span><span class="s1">&#39;Normalize histogram&#39;</span><span class="p">)</span>
         <span class="n">link</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">button_normalize</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="s1">&#39;normalize&#39;</span><span class="p">))</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">button_cumulative</span> <span class="o">=</span> <span class="n">ToggleButton</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;cumulative&#39;</span><span class="p">,</span>
-                                             <span class="n">tooltip</span><span class="o">=</span><span class="s1">&#39;Cumulative histogram&#39;</span><span class="p">)</span>
+                                              <span class="n">tooltip</span><span class="o">=</span><span class="s1">&#39;Cumulative histogram&#39;</span><span class="p">)</span>
         <span class="n">link</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">button_cumulative</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="s1">&#39;cumulative&#39;</span><span class="p">))</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">widget_x_axis</span> <span class="o">=</span> <span class="n">LinkedDropdown</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="s1">&#39;x_att&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;x axis&#39;</span><span class="p">)</span>
 
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">widget_x_axis</span><span class="p">,</span>
-                          <span class="bp">self</span><span class="o">.</span><span class="n">button_normalize</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">button_cumulative</span><span class="p">])</span></div>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">widget_x_axis</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">button_normalize</span><span class="p">,</span>
+                          <span class="bp">self</span><span class="o">.</span><span class="n">button_cumulative</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">widget_show_axes</span><span class="p">])</span></div>
 </pre></div>
 
            </div>

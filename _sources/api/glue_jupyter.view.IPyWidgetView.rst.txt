@@ -10,26 +10,48 @@ IPyWidgetView
 
    .. autosummary::
 
+      ~IPyWidgetView.figure_widget
       ~IPyWidgetView.inherit_tools
+      ~IPyWidgetView.layer_options
+      ~IPyWidgetView.layout
+      ~IPyWidgetView.output_widget
       ~IPyWidgetView.subtools
+      ~IPyWidgetView.toolbar_active_subset
+      ~IPyWidgetView.toolbar_selection_mode
+      ~IPyWidgetView.toolbar_selection_tools
       ~IPyWidgetView.tools
+      ~IPyWidgetView.viewer_options
 
    .. rubric:: Methods Summary
 
    .. autosummary::
 
       ~IPyWidgetView.add_data
+      ~IPyWidgetView.create_layout
       ~IPyWidgetView.get_layer_artist
+      ~IPyWidgetView.initialize_layer_options
       ~IPyWidgetView.initialize_toolbar
+      ~IPyWidgetView.show
 
    .. rubric:: Attributes Documentation
 
+   .. autoattribute:: figure_widget
    .. autoattribute:: inherit_tools
+   .. autoattribute:: layer_options
+   .. autoattribute:: layout
+   .. autoattribute:: output_widget
    .. autoattribute:: subtools
+   .. autoattribute:: toolbar_active_subset
+   .. autoattribute:: toolbar_selection_mode
+   .. autoattribute:: toolbar_selection_tools
    .. autoattribute:: tools
+   .. autoattribute:: viewer_options
 
    .. rubric:: Methods Documentation
 
    .. automethod:: add_data
+   .. automethod:: create_layout
    .. automethod:: get_layer_artist
+   .. automethod:: initialize_layer_options
    .. automethod:: initialize_toolbar
+   .. automethod:: show

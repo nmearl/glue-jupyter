@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>example_volume &mdash; glue-jupyter 0.0.1 documentation</title>
+  <title>set_layout_factory &mdash; glue-jupyter 0.0.1 documentation</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="set_layout_factory" href="glue_jupyter.set_layout_factory.html" />
-    <link rel="prev" title="example_image" href="glue_jupyter.example_image.html" /> 
+    <link rel="next" title="get_layout_factory" href="glue_jupyter.get_layout_factory.html" />
+    <link rel="prev" title="example_volume" href="glue_jupyter.example_volume.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -96,8 +96,8 @@
 <li class="toctree-l4"><a class="reference internal" href="glue_jupyter.jglue.html">jglue</a></li>
 <li class="toctree-l4"><a class="reference internal" href="glue_jupyter.example_data_xyz.html">example_data_xyz</a></li>
 <li class="toctree-l4"><a class="reference internal" href="glue_jupyter.example_image.html">example_image</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">example_volume</a></li>
-<li class="toctree-l4"><a class="reference internal" href="glue_jupyter.set_layout_factory.html">set_layout_factory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="glue_jupyter.example_volume.html">example_volume</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">set_layout_factory</a></li>
 <li class="toctree-l4"><a class="reference internal" href="glue_jupyter.get_layout_factory.html">get_layout_factory</a></li>
 </ul>
 </li>
@@ -169,13 +169,13 @@
         
           <li><a href="../api.html">API Documentation</a> &raquo;</li>
         
-      <li>example_volume</li>
+      <li>set_layout_factory</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/api/glue_jupyter.example_volume.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/glue_jupyter.set_layout_factory.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -212,12 +212,14 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="example-volume">
-<h1>example_volume<a class="headerlink" href="#example-volume" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="set-layout-factory">
+<h1>set_layout_factory<a class="headerlink" href="#set-layout-factory" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
-<dt id="glue_jupyter.example_volume">
-<code class="descclassname">glue_jupyter.</code><code class="descname">example_volume</code><span class="sig-paren">(</span><em>shape=64, limits=[-4, 4]</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter.html#example_volume"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.example_volume" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates a test 3-d dataset containing a ball.</p>
+<dt id="glue_jupyter.set_layout_factory">
+<code class="descclassname">glue_jupyter.</code><code class="descname">set_layout_factory</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter.html#set_layout_factory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.set_layout_factory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the function to use to generate the viewer layout. This should take a
+viewer class and return a widget containing the viewer widgets laid out
+in the desired way.</p>
 </dd></dl>
 
 </div>
@@ -230,10 +232,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="glue_jupyter.set_layout_factory.html" class="btn btn-neutral float-right" title="set_layout_factory" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="glue_jupyter.get_layout_factory.html" class="btn btn-neutral float-right" title="get_layout_factory" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="glue_jupyter.example_image.html" class="btn btn-neutral float-left" title="example_image" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="glue_jupyter.example_volume.html" class="btn btn-neutral float-left" title="example_volume" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

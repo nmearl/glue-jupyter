@@ -182,13 +182,13 @@
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state_cls</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">figure</span> <span class="o">=</span> <span class="n">ipv</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">animation_exponent</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">selector</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 
         <span class="nb">super</span><span class="p">(</span><span class="n">IpyvolumeBaseView</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">create_tab</span><span class="p">()</span>
+        <span class="c1"># FIXME: hack for the movie maker to have access to the figure</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">figure</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">figure</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">add_callback</span><span class="p">(</span><span class="s1">&#39;x_min&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">limits_to_scales</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">add_callback</span><span class="p">(</span><span class="s1">&#39;x_max&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">limits_to_scales</span><span class="p">)</span>
@@ -197,12 +197,25 @@
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="s1">&#39;z_min&#39;</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">add_callback</span><span class="p">(</span><span class="s1">&#39;z_min&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">limits_to_scales</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">add_callback</span><span class="p">(</span><span class="s1">&#39;z_max&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">limits_to_scales</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">output_widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">main_widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">(</span>
-            <span class="n">children</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">widget_toolbar</span><span class="p">,</span> <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">ipv</span><span class="o">.</span><span class="n">gcc</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">tab</span><span class="p">])])</span>
 
-<div class="viewcode-block" id="IpyvolumeBaseView.show"><a class="viewcode-back" href="../../../../api/glue_jupyter.ipyvolume.common.IpyvolumeBaseView.html#glue_jupyter.ipyvolume.common.IpyvolumeBaseView.show">[docs]</a>    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">display</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">main_widget</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">add_callback</span><span class="p">(</span><span class="s1">&#39;visible_axes&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_axes_visibility</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_figure_widget</span> <span class="o">=</span> <span class="n">ipv</span><span class="o">.</span><span class="n">gcc</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">create_layout</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_update_axes_visibility</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">visible_axes</span><span class="p">:</span>
+                <span class="n">ipv</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">axes_on</span><span class="p">()</span>
+                <span class="n">ipv</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">box_on</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">ipv</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">axes_off</span><span class="p">()</span>
+                <span class="n">ipv</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">box_off</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">figure_widget</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_figure_widget</span>
 
 <div class="viewcode-block" id="IpyvolumeBaseView.apply_roi"><a class="viewcode-back" href="../../../../api/glue_jupyter.ipyvolume.common.IpyvolumeBaseView.html#glue_jupyter.ipyvolume.common.IpyvolumeBaseView.apply_roi">[docs]</a>    <span class="k">def</span> <span class="nf">apply_roi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">roi</span><span class="p">,</span> <span class="n">use_current</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -230,31 +243,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">zlim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">z_min</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">z_max</span></div>
 
 <div class="viewcode-block" id="IpyvolumeBaseView.redraw"><a class="viewcode-back" href="../../../../api/glue_jupyter.ipyvolume.common.IpyvolumeBaseView.html#glue_jupyter.ipyvolume.common.IpyvolumeBaseView.redraw">[docs]</a>    <span class="k">def</span> <span class="nf">redraw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">pass</span></div>
-
-<div class="viewcode-block" id="IpyvolumeBaseView.create_tab"><a class="viewcode-back" href="../../../../api/glue_jupyter.ipyvolume.common.IpyvolumeBaseView.html#glue_jupyter.ipyvolume.common.IpyvolumeBaseView.create_tab">[docs]</a>    <span class="k">def</span> <span class="nf">create_tab</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
-        <span class="k">def</span> <span class="nf">change</span><span class="p">(</span><span class="n">visible</span><span class="p">):</span>
-            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">visible</span><span class="p">:</span>
-                    <span class="n">ipv</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">axes_on</span><span class="p">()</span>
-                    <span class="n">ipv</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">box_on</span><span class="p">()</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">ipv</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">axes_off</span><span class="p">()</span>
-                    <span class="n">ipv</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">box_off</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">add_callback</span><span class="p">(</span><span class="s1">&#39;visible_axes&#39;</span><span class="p">,</span> <span class="n">change</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">widget_show_movie_maker</span> <span class="o">=</span> <span class="n">ToggleButton</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Show movie maker&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">movie_maker</span> <span class="o">=</span> <span class="n">ipv</span><span class="o">.</span><span class="n">moviemaker</span><span class="o">.</span><span class="n">MovieMaker</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">camera</span><span class="p">)</span>
-        <span class="n">dlink</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">widget_show_movie_maker</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">movie_maker</span><span class="o">.</span><span class="n">widget_main</span><span class="o">.</span><span class="n">layout</span><span class="p">,</span> <span class="s1">&#39;display&#39;</span><span class="p">),</span> <span class="k">lambda</span> <span class="n">value</span><span class="p">:</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">value</span> <span class="k">else</span> <span class="s1">&#39;none&#39;</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">tab_general</span> <span class="o">=</span> <span class="n">VBox</span><span class="p">([])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tab_general</span><span class="o">.</span><span class="n">children</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options_cls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">)</span><span class="o">.</span><span class="n">children</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tab_general</span><span class="o">.</span><span class="n">children</span> <span class="o">+=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">widget_show_movie_maker</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">movie_maker</span><span class="o">.</span><span class="n">widget_main</span><span class="p">)</span>
-        <span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">tab_general</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tab</span> <span class="o">=</span> <span class="n">Tab</span><span class="p">(</span><span class="n">children</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tab</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;General&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tab</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Axes&quot;</span><span class="p">)</span></div></div>
+        <span class="k">pass</span></div></div>
 </pre></div>
 
            </div>

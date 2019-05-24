@@ -225,7 +225,10 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.bqplot.common.BqplotBaseView.allow_duplicate_subset" title="glue_jupyter.bqplot.common.BqplotBaseView.allow_duplicate_subset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">allow_duplicate_subset</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.bqplot.common.BqplotBaseView.is2d" title="glue_jupyter.bqplot.common.BqplotBaseView.is2d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is2d</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.bqplot.common.BqplotBaseView.figure_widget" title="glue_jupyter.bqplot.common.BqplotBaseView.figure_widget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">figure_widget</span></code></a></p></td>
+<td><p>The main figure widget.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.bqplot.common.BqplotBaseView.is2d" title="glue_jupyter.bqplot.common.BqplotBaseView.is2d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is2d</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -240,12 +243,6 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.bqplot.common.BqplotBaseView.apply_roi" title="glue_jupyter.bqplot.common.BqplotBaseView.apply_roi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_roi</span></code></a>(self, roi[, use_current])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.bqplot.common.BqplotBaseView.create_tab" title="glue_jupyter.bqplot.common.BqplotBaseView.create_tab"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_tab</span></code></a>(self)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.bqplot.common.BqplotBaseView.get_layer_artist" title="glue_jupyter.bqplot.common.BqplotBaseView.get_layer_artist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_layer_artist</span></code></a>(self, cls[, layer, layer_state])</p></td>
-<td><p></p></td>
-</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.bqplot.common.BqplotBaseView.limits_to_scales" title="glue_jupyter.bqplot.common.BqplotBaseView.limits_to_scales"><code class="xref py py-obj docutils literal notranslate"><span class="pre">limits_to_scales</span></code></a>(self, \*args)</p></td>
 <td><p></p></td>
 </tr>
@@ -255,10 +252,7 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.bqplot.common.BqplotBaseView.redraw" title="glue_jupyter.bqplot.common.BqplotBaseView.redraw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">redraw</span></code></a>(self)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.bqplot.common.BqplotBaseView.show" title="glue_jupyter.bqplot.common.BqplotBaseView.show"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show</span></code></a>(self)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.bqplot.common.BqplotBaseView.update_viewer_state" title="glue_jupyter.bqplot.common.BqplotBaseView.update_viewer_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_viewer_state</span></code></a>(rec, context)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.bqplot.common.BqplotBaseView.update_viewer_state" title="glue_jupyter.bqplot.common.BqplotBaseView.update_viewer_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_viewer_state</span></code></a>(rec, context)</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -275,6 +269,12 @@
 <dd></dd></dl>
 
 <dl class="attribute">
+<dt id="glue_jupyter.bqplot.common.BqplotBaseView.figure_widget">
+<code class="descname">figure_widget</code><a class="headerlink" href="#glue_jupyter.bqplot.common.BqplotBaseView.figure_widget" title="Permalink to this definition">¶</a></dt>
+<dd><p>The main figure widget.</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="glue_jupyter.bqplot.common.BqplotBaseView.is2d">
 <code class="descname">is2d</code><em class="property"> = True</em><a class="headerlink" href="#glue_jupyter.bqplot.common.BqplotBaseView.is2d" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -283,16 +283,6 @@
 <dl class="method">
 <dt id="glue_jupyter.bqplot.common.BqplotBaseView.apply_roi">
 <code class="descname">apply_roi</code><span class="sig-paren">(</span><em>self</em>, <em>roi</em>, <em>use_current=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/bqplot/common/viewer.html#BqplotBaseView.apply_roi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.bqplot.common.BqplotBaseView.apply_roi" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="glue_jupyter.bqplot.common.BqplotBaseView.create_tab">
-<code class="descname">create_tab</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/bqplot/common/viewer.html#BqplotBaseView.create_tab"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.bqplot.common.BqplotBaseView.create_tab" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="glue_jupyter.bqplot.common.BqplotBaseView.get_layer_artist">
-<code class="descname">get_layer_artist</code><span class="sig-paren">(</span><em>self</em>, <em>cls</em>, <em>layer=None</em>, <em>layer_state=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/bqplot/common/viewer.html#BqplotBaseView.get_layer_artist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.bqplot.common.BqplotBaseView.get_layer_artist" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -308,11 +298,6 @@
 <dl class="method">
 <dt id="glue_jupyter.bqplot.common.BqplotBaseView.redraw">
 <code class="descname">redraw</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/bqplot/common/viewer.html#BqplotBaseView.redraw"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.bqplot.common.BqplotBaseView.redraw" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="glue_jupyter.bqplot.common.BqplotBaseView.show">
-<code class="descname">show</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/bqplot/common/viewer.html#BqplotBaseView.show"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.bqplot.common.BqplotBaseView.show" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">

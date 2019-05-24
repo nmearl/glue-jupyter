@@ -155,7 +155,6 @@
   <h1>Source code for glue_jupyter.bqplot.common.viewer</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">bqplot</span>
 <span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">display</span>
 
 <span class="kn">from</span> <span class="nn">glue.core.subset</span> <span class="k">import</span> <span class="n">roi_to_subset_state</span>
 <span class="kn">from</span> <span class="nn">glue.core.command</span> <span class="k">import</span> <span class="n">ApplySubsetState</span>
@@ -211,29 +210,11 @@
 
         <span class="n">on_change</span><span class="p">([(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="s1">&#39;show_axes&#39;</span><span class="p">)])(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sync_show_axes</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">create_tab</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">output_widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">create_layout</span><span class="p">()</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">main_widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">widget_toolbar</span><span class="p">,</span>
-                <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tab</span><span class="p">]),</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">output_widget</span>
-            <span class="p">])</span>
-
-<div class="viewcode-block" id="BqplotBaseView.show"><a class="viewcode-back" href="../../../../api/glue_jupyter.bqplot.common.BqplotBaseView.html#glue_jupyter.bqplot.common.BqplotBaseView.show">[docs]</a>    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">display</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">main_widget</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="BqplotBaseView.create_tab"><a class="viewcode-back" href="../../../../api/glue_jupyter.bqplot.common.BqplotBaseView.html#glue_jupyter.bqplot.common.BqplotBaseView.create_tab">[docs]</a>    <span class="k">def</span> <span class="nf">create_tab</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">widget_show_axes</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Show axes&quot;</span><span class="p">)</span>
-        <span class="n">link</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="s1">&#39;show_axes&#39;</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">widget_show_axes</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">))</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">tab_general</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">widget_show_axes</span><span class="p">])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tab_general</span><span class="o">.</span><span class="n">children</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options_cls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">)</span><span class="o">.</span><span class="n">children</span>
-        <span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">tab_general</span><span class="p">]</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">tab</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Tab</span><span class="p">(</span><span class="n">children</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tab</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;General&quot;</span><span class="p">)</span></div>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">figure_widget</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">figure</span>
 
     <span class="k">def</span> <span class="nf">_sync_show_axes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># TODO: if moved to state, this would not rely on the widget</span>
@@ -246,7 +227,7 @@
 
 <div class="viewcode-block" id="BqplotBaseView.apply_roi"><a class="viewcode-back" href="../../../../api/glue_jupyter.bqplot.common.BqplotBaseView.html#glue_jupyter.bqplot.common.BqplotBaseView.apply_roi">[docs]</a>    <span class="k">def</span> <span class="nf">apply_roi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">roi</span><span class="p">,</span> <span class="n">use_current</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="c1"># TODO: partial copy paste from glue/viewers/matplotlib/qt/data_viewer.py</span>
-        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_widget</span><span class="p">:</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output_widget</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">subset_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_roi_to_subset_state</span><span class="p">(</span><span class="n">roi</span><span class="p">)</span>
                 <span class="n">cmd</span> <span class="o">=</span> <span class="n">ApplySubsetState</span><span class="p">(</span><span class="n">data_collection</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span>
@@ -278,11 +259,6 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">y_min</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">y_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">scale_y</span><span class="o">.</span><span class="n">min</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">y_min</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">scale_y</span><span class="o">.</span><span class="n">max</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">y_max</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="BqplotBaseView.get_layer_artist"><a class="viewcode-back" href="../../../../api/glue_jupyter.bqplot.common.BqplotBaseView.html#glue_jupyter.bqplot.common.BqplotBaseView.get_layer_artist">[docs]</a>    <span class="k">def</span> <span class="nf">get_layer_artist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">cls</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">layer_state</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="n">layer</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_layer_artist</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="n">layer</span><span class="p">,</span> <span class="n">layer_state</span><span class="o">=</span><span class="n">layer_state</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_add_layer_tab</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">layer</span></div>
 
 <div class="viewcode-block" id="BqplotBaseView.receive_message"><a class="viewcode-back" href="../../../../api/glue_jupyter.bqplot.common.BqplotBaseView.html#glue_jupyter.bqplot.common.BqplotBaseView.receive_message">[docs]</a>    <span class="k">def</span> <span class="nf">receive_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Message received:&quot;</span><span class="p">)</span>

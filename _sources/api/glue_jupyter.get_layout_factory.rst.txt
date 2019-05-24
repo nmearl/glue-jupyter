@@ -1,0 +1,6 @@
+get_layout_factory
+==================
+
+.. currentmodule:: glue_jupyter
+
+.. autofunction:: get_layout_factory

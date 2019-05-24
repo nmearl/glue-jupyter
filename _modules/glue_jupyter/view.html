@@ -153,7 +153,9 @@
            <div itemprop="articleBody">
             
   <h1>Source code for glue_jupyter.view</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="k">import</span> <span class="n">HBox</span>
+<span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="k">import</span> <span class="n">HBox</span><span class="p">,</span> <span class="n">Tab</span><span class="p">,</span> <span class="n">VBox</span><span class="p">,</span> <span class="n">Output</span>
+
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">display</span>
 
 <span class="kn">from</span> <span class="nn">glue.viewers.common.viewer</span> <span class="k">import</span> <span class="n">Viewer</span>
 <span class="kn">from</span> <span class="nn">glue.viewers.common.utils</span> <span class="k">import</span> <span class="n">get_viewer_tools</span>
@@ -162,9 +164,10 @@
 <span class="kn">from</span> <span class="nn">glue.core.subset</span> <span class="k">import</span> <span class="n">Subset</span>
 
 
+<span class="kn">from</span> <span class="nn">glue_jupyter</span> <span class="k">import</span> <span class="n">get_layout_factory</span>
 <span class="kn">from</span> <span class="nn">glue_jupyter.utils</span> <span class="k">import</span> <span class="n">_update_not_none</span>
-
 <span class="kn">from</span> <span class="nn">glue_jupyter.common.toolbar</span> <span class="k">import</span> <span class="n">BasicJupyterToolbar</span>
+<span class="kn">from</span> <span class="nn">glue_jupyter.widgets.layer_options</span> <span class="k">import</span> <span class="n">LayerOptionsWidget</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;IPyWidgetView&#39;</span><span class="p">,</span> <span class="s1">&#39;IPyWidgetLayerArtistContainer&#39;</span><span class="p">]</span>
 
@@ -186,11 +189,98 @@
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initialize_layer_options</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">initialize_toolbar</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">widget_toolbar</span> <span class="o">=</span> <span class="n">HBox</span><span class="p">([</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">toolbar</span><span class="p">,</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">widget_subset_select</span><span class="p">,</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">widget_subset_mode</span><span class="p">])</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">toolbar_selection_tools</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The selection tools, e.g. rectangular or polygon selection.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">toolbar</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">toolbar_active_subset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        A dropdown providing control over the current active subset.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">widget_subset_select</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">toolbar_selection_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Buttons providing control over logical selections.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">widget_subset_mode</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">figure_widget</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The main figure widget.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">output_widget</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        A widget containing any textual output from the figures (including</span>
+<span class="sd">        errors).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output_widget</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">viewer_options</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        A widget containing the options for the current viewer.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_layout_viewer_options</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">layer_options</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        A widget containing a layer selector and the options for the selected</span>
+<span class="sd">        layer.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_layout_layer_options</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">layout</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The widget containing the final layout of the individual figure widgets.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_layout</span>
+
+<div class="viewcode-block" id="IPyWidgetView.create_layout"><a class="viewcode-back" href="../../api/glue_jupyter.view.IPyWidgetView.html#glue_jupyter.view.IPyWidgetView.create_layout">[docs]</a>    <span class="k">def</span> <span class="nf">create_layout</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="c1"># Check for a custom layout factory</span>
+        <span class="n">layout_factory</span> <span class="o">=</span> <span class="n">get_layout_factory</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">layout_factory</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_layout</span> <span class="o">=</span> <span class="n">layout_factory</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="c1"># Take all the different widgets and construct a standard layout</span>
+        <span class="c1"># for the viewers, based on ipywidgets HBox and VBox. This can be</span>
+        <span class="c1"># overriden in sub-classes to create alternate layouts.</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_layout_toolbar</span> <span class="o">=</span> <span class="n">HBox</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">toolbar_selection_tools</span><span class="p">,</span>
+                                     <span class="bp">self</span><span class="o">.</span><span class="n">toolbar_active_subset</span><span class="p">,</span>
+                                     <span class="bp">self</span><span class="o">.</span><span class="n">toolbar_selection_mode</span><span class="p">])</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_layout_viewer_options</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options_cls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_layout_tab</span> <span class="o">=</span> <span class="n">Tab</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_layout_viewer_options</span><span class="p">,</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">_layout_layer_options</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_layout_tab</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;General&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_layout_tab</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Layers&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_output_widget</span> <span class="o">=</span> <span class="n">Output</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_layout</span> <span class="o">=</span> <span class="n">VBox</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_layout_toolbar</span><span class="p">,</span>
+                             <span class="n">HBox</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">figure_widget</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_layout_tab</span><span class="p">]),</span>
+                             <span class="bp">self</span><span class="o">.</span><span class="n">_output_widget</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="IPyWidgetView.show"><a class="viewcode-back" href="../../api/glue_jupyter.view.IPyWidgetView.html#glue_jupyter.view.IPyWidgetView.show">[docs]</a>    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">display</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_layout</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="IPyWidgetView.add_data"><a class="viewcode-back" href="../../api/glue_jupyter.view.IPyWidgetView.html#glue_jupyter.view.IPyWidgetView.add_data">[docs]</a>    <span class="k">def</span> <span class="nf">add_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">layer_state</span><span class="p">):</span>
 
@@ -220,23 +310,8 @@
 <div class="viewcode-block" id="IPyWidgetView.get_layer_artist"><a class="viewcode-back" href="../../api/glue_jupyter.view.IPyWidgetView.html#glue_jupyter.view.IPyWidgetView.get_layer_artist">[docs]</a>    <span class="k">def</span> <span class="nf">get_layer_artist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">cls</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">layer_state</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="n">layer</span><span class="p">,</span> <span class="n">layer_state</span><span class="o">=</span><span class="n">layer_state</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_add_layer_tab</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_layer_style_widget_cls</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-            <span class="n">layer_tab</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_layer_style_widget_cls</span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">layer</span><span class="p">)](</span><span class="n">layer</span><span class="o">.</span><span class="n">state</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">layer_tab</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_layer_style_widget_cls</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">state</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tab</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tab</span><span class="o">.</span><span class="n">children</span> <span class="o">+</span> <span class="p">(</span><span class="n">layer_tab</span><span class="p">,</span> <span class="p">)</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">layer</span><span class="p">,</span> <span class="n">Subset</span><span class="p">):</span>
-            <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{data_label}</span><span class="s1">:</span><span class="si">{subset_label}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data_label</span><span class="o">=</span><span class="n">layer</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">subset_label</span><span class="o">=</span><span class="n">layer</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">label</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">label</span>
-
-        <span class="c1"># Long tab titles can cause issues</span>
-        <span class="c1"># (see https://github.com/jupyter-widgets/ipywidgets/issues/2366)</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">label</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">15</span><span class="p">:</span>
-            <span class="n">label</span> <span class="o">=</span> <span class="n">label</span><span class="p">[:</span><span class="mi">15</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;...&#39;</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">tab</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tab</span><span class="o">.</span><span class="n">children</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+<div class="viewcode-block" id="IPyWidgetView.initialize_layer_options"><a class="viewcode-back" href="../../api/glue_jupyter.view.IPyWidgetView.html#glue_jupyter.view.IPyWidgetView.initialize_layer_options">[docs]</a>    <span class="k">def</span> <span class="nf">initialize_layer_options</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_layout_layer_options</span> <span class="o">=</span> <span class="n">LayerOptionsWidget</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="IPyWidgetView.initialize_toolbar"><a class="viewcode-back" href="../../api/glue_jupyter.view.IPyWidgetView.html#glue_jupyter.view.IPyWidgetView.initialize_toolbar">[docs]</a>    <span class="k">def</span> <span class="nf">initialize_toolbar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 

@@ -12,6 +12,7 @@ IpyvolumeBaseView
 
       ~IpyvolumeBaseView.allow_duplicate_data
       ~IpyvolumeBaseView.allow_duplicate_subset
+      ~IpyvolumeBaseView.figure_widget
       ~IpyvolumeBaseView.tools
 
    .. rubric:: Methods Summary
@@ -19,21 +20,18 @@ IpyvolumeBaseView
    .. autosummary::
 
       ~IpyvolumeBaseView.apply_roi
-      ~IpyvolumeBaseView.create_tab
       ~IpyvolumeBaseView.limits_to_scales
       ~IpyvolumeBaseView.redraw
-      ~IpyvolumeBaseView.show
 
    .. rubric:: Attributes Documentation
 
    .. autoattribute:: allow_duplicate_data
    .. autoattribute:: allow_duplicate_subset
+   .. autoattribute:: figure_widget
    .. autoattribute:: tools
 
    .. rubric:: Methods Documentation
 
    .. automethod:: apply_roi
-   .. automethod:: create_tab
    .. automethod:: limits_to_scales
    .. automethod:: redraw
-   .. automethod:: show

@@ -212,7 +212,7 @@
 <dl class="class">
 <dt id="glue_jupyter.view.IPyWidgetView">
 <em class="property">class </em><code class="descclassname">glue_jupyter.view.</code><code class="descname">IPyWidgetView</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/view.html#IPyWidgetView"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.view.IPyWidgetView" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.viewers.common.viewer.Viewer.html#glue.viewers.common.viewer.Viewer" title="(in Glue v0.15.0.dev0257)"><code class="xref py py-class docutils literal notranslate"><span class="pre">glue.viewers.common.viewer.Viewer</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.viewers.common.viewer.Viewer.html#glue.viewers.common.viewer.Viewer" title="(in Glue v0.15.0.dev0479)"><code class="xref py py-class docutils literal notranslate"><span class="pre">glue.viewers.common.viewer.Viewer</span></code></a></p>
 <p class="rubric">Attributes Summary</p>
 <table class="longtable docutils align-center">
 <colgroup>
@@ -220,14 +220,38 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.view.IPyWidgetView.inherit_tools" title="glue_jupyter.view.IPyWidgetView.inherit_tools"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inherit_tools</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.view.IPyWidgetView.figure_widget" title="glue_jupyter.view.IPyWidgetView.figure_widget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">figure_widget</span></code></a></p></td>
+<td><p>The main figure widget.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.view.IPyWidgetView.inherit_tools" title="glue_jupyter.view.IPyWidgetView.inherit_tools"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inherit_tools</span></code></a></p></td>
 <td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.view.IPyWidgetView.layer_options" title="glue_jupyter.view.IPyWidgetView.layer_options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layer_options</span></code></a></p></td>
+<td><p>A widget containing a layer selector and the options for the selected layer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.view.IPyWidgetView.layout" title="glue_jupyter.view.IPyWidgetView.layout"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layout</span></code></a></p></td>
+<td><p>The widget containing the final layout of the individual figure widgets.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.view.IPyWidgetView.output_widget" title="glue_jupyter.view.IPyWidgetView.output_widget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">output_widget</span></code></a></p></td>
+<td><p>A widget containing any textual output from the figures (including errors).</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.view.IPyWidgetView.subtools" title="glue_jupyter.view.IPyWidgetView.subtools"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subtools</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.view.IPyWidgetView.tools" title="glue_jupyter.view.IPyWidgetView.tools"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tools</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.view.IPyWidgetView.toolbar_active_subset" title="glue_jupyter.view.IPyWidgetView.toolbar_active_subset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toolbar_active_subset</span></code></a></p></td>
+<td><p>A dropdown providing control over the current active subset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.view.IPyWidgetView.toolbar_selection_mode" title="glue_jupyter.view.IPyWidgetView.toolbar_selection_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toolbar_selection_mode</span></code></a></p></td>
+<td><p>Buttons providing control over logical selections.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.view.IPyWidgetView.toolbar_selection_tools" title="glue_jupyter.view.IPyWidgetView.toolbar_selection_tools"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toolbar_selection_tools</span></code></a></p></td>
+<td><p>The selection tools, e.g.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.view.IPyWidgetView.tools" title="glue_jupyter.view.IPyWidgetView.tools"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tools</span></code></a></p></td>
 <td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.view.IPyWidgetView.viewer_options" title="glue_jupyter.view.IPyWidgetView.viewer_options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">viewer_options</span></code></a></p></td>
+<td><p>A widget containing the options for the current viewer.</p></td>
 </tr>
 </tbody>
 </table>
@@ -241,19 +265,54 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.view.IPyWidgetView.add_data" title="glue_jupyter.view.IPyWidgetView.add_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_data</span></code></a>(self, data[, color, alpha])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.view.IPyWidgetView.get_layer_artist" title="glue_jupyter.view.IPyWidgetView.get_layer_artist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_layer_artist</span></code></a>(self, cls[, layer, layer_state])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.view.IPyWidgetView.create_layout" title="glue_jupyter.view.IPyWidgetView.create_layout"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_layout</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.view.IPyWidgetView.get_layer_artist" title="glue_jupyter.view.IPyWidgetView.get_layer_artist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_layer_artist</span></code></a>(self, cls[, layer, layer_state])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.view.IPyWidgetView.initialize_layer_options" title="glue_jupyter.view.IPyWidgetView.initialize_layer_options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initialize_layer_options</span></code></a>(self)</p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.view.IPyWidgetView.initialize_toolbar" title="glue_jupyter.view.IPyWidgetView.initialize_toolbar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initialize_toolbar</span></code></a>(self)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.view.IPyWidgetView.show" title="glue_jupyter.view.IPyWidgetView.show"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show</span></code></a>(self)</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Attributes Documentation</p>
 <dl class="attribute">
+<dt id="glue_jupyter.view.IPyWidgetView.figure_widget">
+<code class="descname">figure_widget</code><a class="headerlink" href="#glue_jupyter.view.IPyWidgetView.figure_widget" title="Permalink to this definition">¶</a></dt>
+<dd><p>The main figure widget.</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="glue_jupyter.view.IPyWidgetView.inherit_tools">
 <code class="descname">inherit_tools</code><em class="property"> = True</em><a class="headerlink" href="#glue_jupyter.view.IPyWidgetView.inherit_tools" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="attribute">
+<dt id="glue_jupyter.view.IPyWidgetView.layer_options">
+<code class="descname">layer_options</code><a class="headerlink" href="#glue_jupyter.view.IPyWidgetView.layer_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>A widget containing a layer selector and the options for the selected
+layer.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="glue_jupyter.view.IPyWidgetView.layout">
+<code class="descname">layout</code><a class="headerlink" href="#glue_jupyter.view.IPyWidgetView.layout" title="Permalink to this definition">¶</a></dt>
+<dd><p>The widget containing the final layout of the individual figure widgets.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="glue_jupyter.view.IPyWidgetView.output_widget">
+<code class="descname">output_widget</code><a class="headerlink" href="#glue_jupyter.view.IPyWidgetView.output_widget" title="Permalink to this definition">¶</a></dt>
+<dd><p>A widget containing any textual output from the figures (including
+errors).</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="glue_jupyter.view.IPyWidgetView.subtools">
@@ -261,9 +320,33 @@
 <dd></dd></dl>
 
 <dl class="attribute">
+<dt id="glue_jupyter.view.IPyWidgetView.toolbar_active_subset">
+<code class="descname">toolbar_active_subset</code><a class="headerlink" href="#glue_jupyter.view.IPyWidgetView.toolbar_active_subset" title="Permalink to this definition">¶</a></dt>
+<dd><p>A dropdown providing control over the current active subset.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="glue_jupyter.view.IPyWidgetView.toolbar_selection_mode">
+<code class="descname">toolbar_selection_mode</code><a class="headerlink" href="#glue_jupyter.view.IPyWidgetView.toolbar_selection_mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Buttons providing control over logical selections.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="glue_jupyter.view.IPyWidgetView.toolbar_selection_tools">
+<code class="descname">toolbar_selection_tools</code><a class="headerlink" href="#glue_jupyter.view.IPyWidgetView.toolbar_selection_tools" title="Permalink to this definition">¶</a></dt>
+<dd><p>The selection tools, e.g. rectangular or polygon selection.</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="glue_jupyter.view.IPyWidgetView.tools">
 <code class="descname">tools</code><em class="property"> = []</em><a class="headerlink" href="#glue_jupyter.view.IPyWidgetView.tools" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="attribute">
+<dt id="glue_jupyter.view.IPyWidgetView.viewer_options">
+<code class="descname">viewer_options</code><a class="headerlink" href="#glue_jupyter.view.IPyWidgetView.viewer_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>A widget containing the options for the current viewer.</p>
+</dd></dl>
 
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
@@ -272,13 +355,28 @@
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="glue_jupyter.view.IPyWidgetView.create_layout">
+<code class="descname">create_layout</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/view.html#IPyWidgetView.create_layout"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.view.IPyWidgetView.create_layout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="glue_jupyter.view.IPyWidgetView.get_layer_artist">
 <code class="descname">get_layer_artist</code><span class="sig-paren">(</span><em>self</em>, <em>cls</em>, <em>layer=None</em>, <em>layer_state=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/view.html#IPyWidgetView.get_layer_artist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.view.IPyWidgetView.get_layer_artist" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="glue_jupyter.view.IPyWidgetView.initialize_layer_options">
+<code class="descname">initialize_layer_options</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/view.html#IPyWidgetView.initialize_layer_options"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.view.IPyWidgetView.initialize_layer_options" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="glue_jupyter.view.IPyWidgetView.initialize_toolbar">
 <code class="descname">initialize_toolbar</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/view.html#IPyWidgetView.initialize_toolbar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.view.IPyWidgetView.initialize_toolbar" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="glue_jupyter.view.IPyWidgetView.show">
+<code class="descname">show</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/view.html#IPyWidgetView.show"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.view.IPyWidgetView.show" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

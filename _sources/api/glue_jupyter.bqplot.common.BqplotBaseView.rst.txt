@@ -12,6 +12,7 @@ BqplotBaseView
 
       ~BqplotBaseView.allow_duplicate_data
       ~BqplotBaseView.allow_duplicate_subset
+      ~BqplotBaseView.figure_widget
       ~BqplotBaseView.is2d
 
    .. rubric:: Methods Summary
@@ -19,27 +20,22 @@ BqplotBaseView
    .. autosummary::
 
       ~BqplotBaseView.apply_roi
-      ~BqplotBaseView.create_tab
-      ~BqplotBaseView.get_layer_artist
       ~BqplotBaseView.limits_to_scales
       ~BqplotBaseView.receive_message
       ~BqplotBaseView.redraw
-      ~BqplotBaseView.show
       ~BqplotBaseView.update_viewer_state
 
    .. rubric:: Attributes Documentation
 
    .. autoattribute:: allow_duplicate_data
    .. autoattribute:: allow_duplicate_subset
+   .. autoattribute:: figure_widget
    .. autoattribute:: is2d
 
    .. rubric:: Methods Documentation
 
    .. automethod:: apply_roi
-   .. automethod:: create_tab
-   .. automethod:: get_layer_artist
    .. automethod:: limits_to_scales
    .. automethod:: receive_message
    .. automethod:: redraw
-   .. automethod:: show
    .. automethod:: update_viewer_state
