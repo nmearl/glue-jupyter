@@ -244,7 +244,7 @@ created.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.JupyterApplication.histogram1d" title="glue_jupyter.JupyterApplication.histogram1d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">histogram1d</span></code></a>(self[, x, data, widget, color, …])</p></td>
 <td><p>Open an interactive histogram viewer.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.JupyterApplication.imshow" title="glue_jupyter.JupyterApplication.imshow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">imshow</span></code></a>(self[, x, y, data, widget])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.JupyterApplication.imshow" title="glue_jupyter.JupyterApplication.imshow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">imshow</span></code></a>(self[, x, y, data, widget, show])</p></td>
 <td><p>Open an interactive image viewer.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.JupyterApplication.link" title="glue_jupyter.JupyterApplication.link"><code class="xref py py-obj docutils literal notranslate"><span class="pre">link</span></code></a>(self, links)</p></td>
@@ -253,13 +253,13 @@ created.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.JupyterApplication.new_data_viewer" title="glue_jupyter.JupyterApplication.new_data_viewer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">new_data_viewer</span></code></a>(self, \*args, \*\*kwargs)</p></td>
 <td><p>Create a new data viewer, add it to the UI, and populate with data</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.JupyterApplication.profile1d" title="glue_jupyter.JupyterApplication.profile1d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profile1d</span></code></a>(self[, x, data, widget])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.JupyterApplication.profile1d" title="glue_jupyter.JupyterApplication.profile1d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profile1d</span></code></a>(self[, x, data, widget, show])</p></td>
 <td><p>Open an interactive 1d profile viewer.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.JupyterApplication.scatter2d" title="glue_jupyter.JupyterApplication.scatter2d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scatter2d</span></code></a>(self[, x, y, data, widget, color, …])</p></td>
 <td><p>Open an interactive 2d scatter plot viewer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.JupyterApplication.scatter3d" title="glue_jupyter.JupyterApplication.scatter3d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scatter3d</span></code></a>(self[, x, y, z, data])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.JupyterApplication.scatter3d" title="glue_jupyter.JupyterApplication.scatter3d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scatter3d</span></code></a>(self[, x, y, z, data, show])</p></td>
 <td><p>Open an interactive 3d scatter plot viewer.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.JupyterApplication.set_subset_mode" title="glue_jupyter.JupyterApplication.set_subset_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_subset_mode</span></code></a>(self, mode)</p></td>
@@ -274,7 +274,7 @@ created.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#glue_jupyter.JupyterApplication.subset_roi" title="glue_jupyter.JupyterApplication.subset_roi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subset_roi</span></code></a>(self, attributes, roi)</p></td>
 <td><p>Create a subset from a region of interest.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.JupyterApplication.volshow" title="glue_jupyter.JupyterApplication.volshow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">volshow</span></code></a>(self[, x, y, z, data])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#glue_jupyter.JupyterApplication.volshow" title="glue_jupyter.JupyterApplication.volshow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">volshow</span></code></a>(self[, x, y, z, data, show])</p></td>
 <td><p>Open an interactive volume viewer.</p></td>
 </tr>
 </tbody>
@@ -307,7 +307,7 @@ created.</p>
 
 <dl class="method">
 <dt id="glue_jupyter.JupyterApplication.histogram1d">
-<code class="descname">histogram1d</code><span class="sig-paren">(</span><em>self</em>, <em>x=None</em>, <em>data=None</em>, <em>widget='bqplot'</em>, <em>color=None</em>, <em>x_min=None</em>, <em>x_max=None</em>, <em>n_bin=None</em>, <em>normalize=False</em>, <em>cumulative=False</em>, <em>viewer_state=None</em>, <em>layer_state=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/app.html#JupyterApplication.histogram1d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.JupyterApplication.histogram1d" title="Permalink to this definition">¶</a></dt>
+<code class="descname">histogram1d</code><span class="sig-paren">(</span><em>self</em>, <em>x=None</em>, <em>data=None</em>, <em>widget='bqplot'</em>, <em>color=None</em>, <em>x_min=None</em>, <em>x_max=None</em>, <em>n_bin=None</em>, <em>normalize=False</em>, <em>cumulative=False</em>, <em>viewer_state=None</em>, <em>layer_state=None</em>, <em>show=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/app.html#JupyterApplication.histogram1d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.JupyterApplication.histogram1d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Open an interactive histogram viewer.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -337,6 +337,10 @@ effect of setting the data color for all viewers.</p>
 </dd>
 <dt><strong>layer_state</strong><span class="classifier"><a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.viewers.common.state.LayerState.html#glue.viewers.common.state.LayerState" title="(in Glue v0.15.0.dev0479)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LayerState</span></code></a></span></dt><dd><p>The initial state for the data layer (advanced).</p>
 </dd>
+<dt><strong>show</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to show the view immediately (<a class="reference external" href="https://docs.python.org/3.7/library/constants.html#True" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>) or whether to only
+show it later if the <code class="docutils literal notranslate"><span class="pre">show()</span></code> method is called explicitly
+(<a class="reference external" href="https://docs.python.org/3.7/library/constants.html#False" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>).</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -344,7 +348,7 @@ effect of setting the data color for all viewers.</p>
 
 <dl class="method">
 <dt id="glue_jupyter.JupyterApplication.imshow">
-<code class="descname">imshow</code><span class="sig-paren">(</span><em>self</em>, <em>x=None</em>, <em>y=None</em>, <em>data=None</em>, <em>widget='bqplot'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/app.html#JupyterApplication.imshow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.JupyterApplication.imshow" title="Permalink to this definition">¶</a></dt>
+<code class="descname">imshow</code><span class="sig-paren">(</span><em>self</em>, <em>x=None</em>, <em>y=None</em>, <em>data=None</em>, <em>widget='bqplot'</em>, <em>show=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/app.html#JupyterApplication.imshow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.JupyterApplication.imshow" title="Permalink to this definition">¶</a></dt>
 <dd><p>Open an interactive image viewer.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -360,6 +364,10 @@ datasets can be added later using the <code class="docutils literal notranslate"
 the viewer object.</p>
 </dd>
 <dt><strong>widget</strong><span class="classifier">{‘bqplot’, ‘matplotlib’}</span></dt><dd><p>Whether to use bqplot or Matplotlib as the front-end.</p>
+</dd>
+<dt><strong>show</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to show the view immediately (<a class="reference external" href="https://docs.python.org/3.7/library/constants.html#True" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>) or whether to only
+show it later if the <code class="docutils literal notranslate"><span class="pre">show()</span></code> method is called explicitly
+(<a class="reference external" href="https://docs.python.org/3.7/library/constants.html#False" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>).</p>
 </dd>
 </dl>
 </dd>
@@ -381,7 +389,7 @@ and populate with data</p>
 
 <dl class="method">
 <dt id="glue_jupyter.JupyterApplication.profile1d">
-<code class="descname">profile1d</code><span class="sig-paren">(</span><em>self</em>, <em>x=None</em>, <em>data=None</em>, <em>widget='bqplot'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/app.html#JupyterApplication.profile1d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.JupyterApplication.profile1d" title="Permalink to this definition">¶</a></dt>
+<code class="descname">profile1d</code><span class="sig-paren">(</span><em>self</em>, <em>x=None</em>, <em>data=None</em>, <em>widget='bqplot'</em>, <em>show=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/app.html#JupyterApplication.profile1d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.JupyterApplication.profile1d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Open an interactive 1d profile viewer.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -395,6 +403,10 @@ the viewer object.</p>
 </dd>
 <dt><strong>widget</strong><span class="classifier">{‘bqplot’, ‘matplotlib’}</span></dt><dd><p>Whether to use bqplot or Matplotlib as the front-end.</p>
 </dd>
+<dt><strong>show</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to show the view immediately (<a class="reference external" href="https://docs.python.org/3.7/library/constants.html#True" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>) or whether to only
+show it later if the <code class="docutils literal notranslate"><span class="pre">show()</span></code> method is called explicitly
+(<a class="reference external" href="https://docs.python.org/3.7/library/constants.html#False" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>).</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -402,7 +414,7 @@ the viewer object.</p>
 
 <dl class="method">
 <dt id="glue_jupyter.JupyterApplication.scatter2d">
-<code class="descname">scatter2d</code><span class="sig-paren">(</span><em>self</em>, <em>x=None</em>, <em>y=None</em>, <em>data=None</em>, <em>widget='bqplot'</em>, <em>color=None</em>, <em>size=None</em>, <em>viewer_state=None</em>, <em>layer_state=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/app.html#JupyterApplication.scatter2d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.JupyterApplication.scatter2d" title="Permalink to this definition">¶</a></dt>
+<code class="descname">scatter2d</code><span class="sig-paren">(</span><em>self</em>, <em>x=None</em>, <em>y=None</em>, <em>data=None</em>, <em>widget='bqplot'</em>, <em>color=None</em>, <em>size=None</em>, <em>viewer_state=None</em>, <em>layer_state=None</em>, <em>show=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/app.html#JupyterApplication.scatter2d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.JupyterApplication.scatter2d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Open an interactive 2d scatter plot viewer.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -427,6 +439,10 @@ effect of setting the marker size for all viewers.</p>
 </dd>
 <dt><strong>layer_state</strong><span class="classifier"><a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.viewers.common.state.LayerState.html#glue.viewers.common.state.LayerState" title="(in Glue v0.15.0.dev0479)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LayerState</span></code></a></span></dt><dd><p>The initial state for the data layer (advanced).</p>
 </dd>
+<dt><strong>show</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to show the view immediately (<a class="reference external" href="https://docs.python.org/3.7/library/constants.html#True" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>) or whether to only
+show it later if the <code class="docutils literal notranslate"><span class="pre">show()</span></code> method is called explicitly
+(<a class="reference external" href="https://docs.python.org/3.7/library/constants.html#False" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>).</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -434,7 +450,7 @@ effect of setting the marker size for all viewers.</p>
 
 <dl class="method">
 <dt id="glue_jupyter.JupyterApplication.scatter3d">
-<code class="descname">scatter3d</code><span class="sig-paren">(</span><em>self</em>, <em>x=None</em>, <em>y=None</em>, <em>z=None</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/app.html#JupyterApplication.scatter3d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.JupyterApplication.scatter3d" title="Permalink to this definition">¶</a></dt>
+<code class="descname">scatter3d</code><span class="sig-paren">(</span><em>self</em>, <em>x=None</em>, <em>y=None</em>, <em>z=None</em>, <em>data=None</em>, <em>show=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/app.html#JupyterApplication.scatter3d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.JupyterApplication.scatter3d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Open an interactive 3d scatter plot viewer.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -448,6 +464,10 @@ effect of setting the marker size for all viewers.</p>
 <dt><strong>data</strong><span class="classifier"><a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.data.Data.html#glue.core.data.Data" title="(in Glue v0.15.0.dev0479)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Data</span></code></a>, optional</span></dt><dd><p>The initial dataset to show in the viewer. Additional
 datasets can be added later using the <code class="docutils literal notranslate"><span class="pre">add_data</span></code> method on
 the viewer object.</p>
+</dd>
+<dt><strong>show</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to show the view immediately (<a class="reference external" href="https://docs.python.org/3.7/library/constants.html#True" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>) or whether to only
+show it later if the <code class="docutils literal notranslate"><span class="pre">show()</span></code> method is called explicitly
+(<a class="reference external" href="https://docs.python.org/3.7/library/constants.html#False" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>).</p>
 </dd>
 </dl>
 </dd>
@@ -528,7 +548,7 @@ for more information about creating subsets programmatically.</p>
 
 <dl class="method">
 <dt id="glue_jupyter.JupyterApplication.volshow">
-<code class="descname">volshow</code><span class="sig-paren">(</span><em>self</em>, <em>x=None</em>, <em>y=None</em>, <em>z=None</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/app.html#JupyterApplication.volshow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.JupyterApplication.volshow" title="Permalink to this definition">¶</a></dt>
+<code class="descname">volshow</code><span class="sig-paren">(</span><em>self</em>, <em>x=None</em>, <em>y=None</em>, <em>z=None</em>, <em>data=None</em>, <em>show=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/glue_jupyter/app.html#JupyterApplication.volshow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#glue_jupyter.JupyterApplication.volshow" title="Permalink to this definition">¶</a></dt>
 <dd><p>Open an interactive volume viewer.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -545,6 +565,10 @@ pixel axis attributes.</p>
 <dt><strong>data</strong><span class="classifier"><a class="reference external" href="http://docs.glueviz.org/en/latest/api/glue.core.data.Data.html#glue.core.data.Data" title="(in Glue v0.15.0.dev0479)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Data</span></code></a>, optional</span></dt><dd><p>The initial dataset to show in the viewer. Additional
 datasets can be added later using the <code class="docutils literal notranslate"><span class="pre">add_data</span></code> method on
 the viewer object.</p>
+</dd>
+<dt><strong>show</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to show the view immediately (<a class="reference external" href="https://docs.python.org/3.7/library/constants.html#True" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>) or whether to only
+show it later if the <code class="docutils literal notranslate"><span class="pre">show()</span></code> method is called explicitly
+(<a class="reference external" href="https://docs.python.org/3.7/library/constants.html#False" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>).</p>
 </dd>
 </dl>
 </dd>

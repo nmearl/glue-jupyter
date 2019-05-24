@@ -254,11 +254,16 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">edit_subset_mode</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">mode</span></div>
 
 <div class="viewcode-block" id="JupyterApplication.new_data_viewer"><a class="viewcode-back" href="../../api/glue_jupyter.app.JupyterApplication.html#glue_jupyter.JupyterApplication.new_data_viewer">[docs]</a>    <span class="k">def</span> <span class="nf">new_data_viewer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">show</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;show&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
         <span class="n">viewer</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">new_data_viewer</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="n">viewer</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">show</span><span class="p">:</span>
+            <span class="n">viewer</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">viewer</span></div>
 
-<div class="viewcode-block" id="JupyterApplication.histogram1d"><a class="viewcode-back" href="../../api/glue_jupyter.app.JupyterApplication.html#glue_jupyter.JupyterApplication.histogram1d">[docs]</a>    <span class="k">def</span> <span class="nf">histogram1d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">widget</span><span class="o">=</span><span class="s1">&#39;bqplot&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">x_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">x_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_bin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cumulative</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">viewer_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">layer_state</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="JupyterApplication.histogram1d"><a class="viewcode-back" href="../../api/glue_jupyter.app.JupyterApplication.html#glue_jupyter.JupyterApplication.histogram1d">[docs]</a>    <span class="k">def</span> <span class="nf">histogram1d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">widget</span><span class="o">=</span><span class="s1">&#39;bqplot&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                    <span class="n">x_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">x_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_bin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">cumulative</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">viewer_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">layer_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                    <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Open an interactive histogram viewer.</span>
 
@@ -289,6 +294,10 @@
 <span class="sd">            The initial state for the viewer (advanced).</span>
 <span class="sd">        layer_state : `~glue.viewers.common.state.LayerState`</span>
 <span class="sd">            The initial state for the data layer (advanced).</span>
+<span class="sd">        show : bool, optional</span>
+<span class="sd">            Whether to show the view immediately (`True`) or whether to only</span>
+<span class="sd">            show it later if the ``show()`` method is called explicitly</span>
+<span class="sd">            (`False`).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="n">widget</span> <span class="o">==</span> <span class="s1">&#39;bqplot&#39;</span><span class="p">:</span>
@@ -319,13 +328,15 @@
             <span class="n">normalize</span><span class="o">=</span><span class="n">normalize</span><span class="p">,</span> <span class="n">cumulative</span><span class="o">=</span><span class="n">cumulative</span><span class="p">)</span>
         <span class="n">viewer_state_obj</span><span class="o">.</span><span class="n">update_from_dict</span><span class="p">(</span><span class="n">viewer_state</span><span class="p">)</span>
 
-        <span class="n">view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_data_viewer</span><span class="p">(</span><span class="n">viewer_cls</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="n">viewer_state_obj</span><span class="p">)</span>
+        <span class="n">view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_data_viewer</span><span class="p">(</span><span class="n">viewer_cls</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
+                                    <span class="n">state</span><span class="o">=</span><span class="n">viewer_state_obj</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="n">show</span><span class="p">)</span>
         <span class="n">layer_state</span> <span class="o">=</span> <span class="n">layer_state</span> <span class="ow">or</span> <span class="p">{}</span>
         <span class="n">_update_not_none</span><span class="p">(</span><span class="n">layer_state</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
         <span class="n">view</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">update_from_dict</span><span class="p">(</span><span class="n">layer_state</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">view</span></div>
 
-<div class="viewcode-block" id="JupyterApplication.scatter2d"><a class="viewcode-back" href="../../api/glue_jupyter.app.JupyterApplication.html#glue_jupyter.JupyterApplication.scatter2d">[docs]</a>    <span class="k">def</span> <span class="nf">scatter2d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">widget</span><span class="o">=</span><span class="s1">&#39;bqplot&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">viewer_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">layer_state</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="JupyterApplication.scatter2d"><a class="viewcode-back" href="../../api/glue_jupyter.app.JupyterApplication.html#glue_jupyter.JupyterApplication.scatter2d">[docs]</a>    <span class="k">def</span> <span class="nf">scatter2d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">widget</span><span class="o">=</span><span class="s1">&#39;bqplot&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                  <span class="n">size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">viewer_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">layer_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Open an interactive 2d scatter plot viewer.</span>
 
@@ -351,6 +362,10 @@
 <span class="sd">            The initial state for the viewer (advanced).</span>
 <span class="sd">        layer_state : `~glue.viewers.common.state.LayerState`</span>
 <span class="sd">            The initial state for the data layer (advanced).</span>
+<span class="sd">        show : bool, optional</span>
+<span class="sd">            Whether to show the view immediately (`True`) or whether to only</span>
+<span class="sd">            show it later if the ``show()`` method is called explicitly</span>
+<span class="sd">            (`False`).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="n">widget</span> <span class="o">==</span> <span class="s1">&#39;bqplot&#39;</span><span class="p">:</span>
@@ -380,13 +395,14 @@
 
         <span class="n">viewer_state_obj</span><span class="o">.</span><span class="n">update_from_dict</span><span class="p">(</span><span class="n">viewer_state</span><span class="p">)</span>
 
-        <span class="n">view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_data_viewer</span><span class="p">(</span><span class="n">viewer_cls</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="n">viewer_state_obj</span><span class="p">)</span>
+        <span class="n">view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_data_viewer</span><span class="p">(</span><span class="n">viewer_cls</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
+                                    <span class="n">state</span><span class="o">=</span><span class="n">viewer_state_obj</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="n">show</span><span class="p">)</span>
         <span class="n">layer_state</span> <span class="o">=</span> <span class="n">layer_state</span> <span class="ow">or</span> <span class="p">{}</span>
         <span class="n">_update_not_none</span><span class="p">(</span><span class="n">layer_state</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
         <span class="n">view</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">update_from_dict</span><span class="p">(</span><span class="n">layer_state</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">view</span></div>
 
-<div class="viewcode-block" id="JupyterApplication.scatter3d"><a class="viewcode-back" href="../../api/glue_jupyter.app.JupyterApplication.html#glue_jupyter.JupyterApplication.scatter3d">[docs]</a>    <span class="k">def</span> <span class="nf">scatter3d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="JupyterApplication.scatter3d"><a class="viewcode-back" href="../../api/glue_jupyter.app.JupyterApplication.html#glue_jupyter.JupyterApplication.scatter3d">[docs]</a>    <span class="k">def</span> <span class="nf">scatter3d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Open an interactive 3d scatter plot viewer.</span>
 
@@ -402,6 +418,10 @@
 <span class="sd">            The initial dataset to show in the viewer. Additional</span>
 <span class="sd">            datasets can be added later using the ``add_data`` method on</span>
 <span class="sd">            the viewer object.</span>
+<span class="sd">        show : bool, optional</span>
+<span class="sd">            Whether to show the view immediately (`True`) or whether to only</span>
+<span class="sd">            show it later if the ``show()`` method is called explicitly</span>
+<span class="sd">            (`False`).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="kn">from</span> <span class="nn">.ipyvolume</span> <span class="k">import</span> <span class="n">IpyvolumeScatterView</span>
@@ -412,7 +432,7 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-        <span class="n">view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_data_viewer</span><span class="p">(</span><span class="n">IpyvolumeScatterView</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_data_viewer</span><span class="p">(</span><span class="n">IpyvolumeScatterView</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="n">show</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">id</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
             <span class="n">view</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">x_att</span> <span class="o">=</span> <span class="n">x</span>
@@ -424,7 +444,7 @@
             <span class="n">view</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">z_att</span> <span class="o">=</span> <span class="n">z</span>
         <span class="k">return</span> <span class="n">view</span></div>
 
-<div class="viewcode-block" id="JupyterApplication.imshow"><a class="viewcode-back" href="../../api/glue_jupyter.app.JupyterApplication.html#glue_jupyter.JupyterApplication.imshow">[docs]</a>    <span class="k">def</span> <span class="nf">imshow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">widget</span><span class="o">=</span><span class="s1">&#39;bqplot&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="JupyterApplication.imshow"><a class="viewcode-back" href="../../api/glue_jupyter.app.JupyterApplication.html#glue_jupyter.JupyterApplication.imshow">[docs]</a>    <span class="k">def</span> <span class="nf">imshow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">widget</span><span class="o">=</span><span class="s1">&#39;bqplot&#39;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Open an interactive image viewer.</span>
 
@@ -442,6 +462,10 @@
 <span class="sd">            the viewer object.</span>
 <span class="sd">        widget : {&#39;bqplot&#39;, &#39;matplotlib&#39;}</span>
 <span class="sd">            Whether to use bqplot or Matplotlib as the front-end.</span>
+<span class="sd">        show : bool, optional</span>
+<span class="sd">            Whether to show the view immediately (`True`) or whether to only</span>
+<span class="sd">            show it later if the ``show()`` method is called explicitly</span>
+<span class="sd">            (`False`).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="n">widget</span> <span class="o">==</span> <span class="s1">&#39;bqplot&#39;</span><span class="p">:</span>
@@ -463,7 +487,7 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Only data with two or more dimensions can be used &#39;</span>
                              <span class="s1">&#39;as the initial dataset in the image viewer&#39;</span><span class="p">)</span>
 
-        <span class="n">view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_data_viewer</span><span class="p">(</span><span class="n">viewer_cls</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_data_viewer</span><span class="p">(</span><span class="n">viewer_cls</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="n">show</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">id</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
@@ -475,7 +499,7 @@
 
         <span class="k">return</span> <span class="n">view</span></div>
 
-<div class="viewcode-block" id="JupyterApplication.profile1d"><a class="viewcode-back" href="../../api/glue_jupyter.app.JupyterApplication.html#glue_jupyter.JupyterApplication.profile1d">[docs]</a>    <span class="k">def</span> <span class="nf">profile1d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">widget</span><span class="o">=</span><span class="s1">&#39;bqplot&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="JupyterApplication.profile1d"><a class="viewcode-back" href="../../api/glue_jupyter.app.JupyterApplication.html#glue_jupyter.JupyterApplication.profile1d">[docs]</a>    <span class="k">def</span> <span class="nf">profile1d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">widget</span><span class="o">=</span><span class="s1">&#39;bqplot&#39;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Open an interactive 1d profile viewer.</span>
 
@@ -490,6 +514,10 @@
 <span class="sd">            the viewer object.</span>
 <span class="sd">        widget : {&#39;bqplot&#39;, &#39;matplotlib&#39;}</span>
 <span class="sd">            Whether to use bqplot or Matplotlib as the front-end.</span>
+<span class="sd">        show : bool, optional</span>
+<span class="sd">            Whether to show the view immediately (`True`) or whether to only</span>
+<span class="sd">            show it later if the ``show()`` method is called explicitly</span>
+<span class="sd">            (`False`).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="n">widget</span> <span class="o">==</span> <span class="s1">&#39;bqplot&#39;</span><span class="p">:</span>
@@ -507,7 +535,7 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-        <span class="n">view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_data_viewer</span><span class="p">(</span><span class="n">viewer_cls</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_data_viewer</span><span class="p">(</span><span class="n">viewer_cls</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="n">show</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">id</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
@@ -515,7 +543,7 @@
 
         <span class="k">return</span> <span class="n">view</span></div>
 
-<div class="viewcode-block" id="JupyterApplication.volshow"><a class="viewcode-back" href="../../api/glue_jupyter.app.JupyterApplication.html#glue_jupyter.JupyterApplication.volshow">[docs]</a>    <span class="k">def</span> <span class="nf">volshow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="JupyterApplication.volshow"><a class="viewcode-back" href="../../api/glue_jupyter.app.JupyterApplication.html#glue_jupyter.JupyterApplication.volshow">[docs]</a>    <span class="k">def</span> <span class="nf">volshow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Open an interactive volume viewer.</span>
 
@@ -534,7 +562,11 @@
 <span class="sd">            The initial dataset to show in the viewer. Additional</span>
 <span class="sd">            datasets can be added later using the ``add_data`` method on</span>
 <span class="sd">            the viewer object.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        show : bool, optional</span>
+<span class="sd">            Whether to show the view immediately (`True`) or whether to only</span>
+<span class="sd">            show it later if the ``show()`` method is called explicitly</span>
+<span class="sd">            (`False`).</span>
+<span class="sd">         &quot;&quot;&quot;</span>
         <span class="kn">from</span> <span class="nn">.ipyvolume</span> <span class="k">import</span> <span class="n">IpyvolumeVolumeView</span>
 
         <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -543,7 +575,7 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-        <span class="n">view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_data_viewer</span><span class="p">(</span><span class="n">IpyvolumeVolumeView</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_data_viewer</span><span class="p">(</span><span class="n">IpyvolumeVolumeView</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="n">show</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">id</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
