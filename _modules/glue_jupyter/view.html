@@ -191,6 +191,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">initialize_layer_options</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">initialize_toolbar</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_output_widget</span> <span class="o">=</span> <span class="n">Output</span><span class="p">()</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">toolbar_selection_tools</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -252,6 +253,8 @@
 
 <div class="viewcode-block" id="IPyWidgetView.create_layout"><a class="viewcode-back" href="../../api/glue_jupyter.view.IPyWidgetView.html#glue_jupyter.view.IPyWidgetView.create_layout">[docs]</a>    <span class="k">def</span> <span class="nf">create_layout</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_layout_viewer_options</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options_cls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">)</span>
+
         <span class="c1"># Check for a custom layout factory</span>
         <span class="n">layout_factory</span> <span class="o">=</span> <span class="n">get_layout_factory</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">layout_factory</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -266,14 +269,10 @@
                                      <span class="bp">self</span><span class="o">.</span><span class="n">toolbar_active_subset</span><span class="p">,</span>
                                      <span class="bp">self</span><span class="o">.</span><span class="n">toolbar_selection_mode</span><span class="p">])</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_layout_viewer_options</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options_cls</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">)</span>
-
         <span class="bp">self</span><span class="o">.</span><span class="n">_layout_tab</span> <span class="o">=</span> <span class="n">Tab</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_layout_viewer_options</span><span class="p">,</span>
                                 <span class="bp">self</span><span class="o">.</span><span class="n">_layout_layer_options</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_layout_tab</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;General&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_layout_tab</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Layers&quot;</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">_output_widget</span> <span class="o">=</span> <span class="n">Output</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_layout</span> <span class="o">=</span> <span class="n">VBox</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_layout_toolbar</span><span class="p">,</span>
                              <span class="n">HBox</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">figure_widget</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_layout_tab</span><span class="p">]),</span>
