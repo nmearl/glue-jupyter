@@ -21,9 +21,7 @@ BqplotBaseView
 
       ~BqplotBaseView.apply_roi
       ~BqplotBaseView.limits_to_scales
-      ~BqplotBaseView.receive_message
       ~BqplotBaseView.redraw
-      ~BqplotBaseView.update_viewer_state
 
    .. rubric:: Attributes Documentation
 
@@ -36,6 +34,4 @@ BqplotBaseView
 
    .. automethod:: apply_roi
    .. automethod:: limits_to_scales
-   .. automethod:: receive_message
    .. automethod:: redraw
-   .. automethod:: update_viewer_state

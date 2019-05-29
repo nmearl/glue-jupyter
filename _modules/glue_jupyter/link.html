@@ -176,7 +176,6 @@
         <span class="k">def</span> <span class="nf">sync</span><span class="p">(</span><span class="o">*</span><span class="n">ignore</span><span class="p">):</span>
             <span class="n">old_value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">target</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
             <span class="n">new_value</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">source</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">source</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
-            <span class="c1">#print(&#39;old/new&#39;, old_value, new_value)</span>
             <span class="k">if</span> <span class="n">new_value</span> <span class="o">!=</span> <span class="n">old_value</span><span class="p">:</span>
                 <span class="nb">setattr</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">target</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">new_value</span><span class="p">)</span>
 

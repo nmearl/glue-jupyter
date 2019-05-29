@@ -161,21 +161,17 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">glue.core</span> <span class="k">import</span> <span class="n">BaseData</span>
-<span class="kn">from</span> <span class="nn">glue.utils</span> <span class="k">import</span> <span class="n">defer_draw</span><span class="p">,</span> <span class="n">nanmin</span><span class="p">,</span> <span class="n">nanmax</span>
+<span class="kn">from</span> <span class="nn">glue.utils</span> <span class="k">import</span> <span class="n">defer_draw</span><span class="p">,</span> <span class="n">nanmin</span><span class="p">,</span> <span class="n">nanmax</span><span class="p">,</span> <span class="n">color2hex</span>
 <span class="kn">from</span> <span class="nn">glue.viewers.profile.state</span> <span class="k">import</span> <span class="n">ProfileLayerState</span>
 <span class="kn">from</span> <span class="nn">glue.core.exceptions</span> <span class="k">import</span> <span class="n">IncompatibleAttribute</span><span class="p">,</span> <span class="n">IncompatibleDataException</span>
 
 <span class="kn">import</span> <span class="nn">bqplot</span>
-<span class="kn">import</span> <span class="nn">ipywidgets.widgets.trait_types</span> <span class="k">as</span> <span class="nn">tt</span>
 
 <span class="kn">from</span> <span class="nn">glue_jupyter.compat</span> <span class="k">import</span> <span class="n">LayerArtist</span>
 
-<span class="kn">from</span> <span class="nn">...link</span> <span class="k">import</span> <span class="n">link</span>
+<span class="kn">from</span> <span class="nn">...link</span> <span class="k">import</span> <span class="n">dlink</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;BqplotProfileLayerArtist&#39;</span><span class="p">]</span>
-
-<span class="c1"># FIXME: monkey patch ipywidget to accept anything</span>
-<span class="n">tt</span><span class="o">.</span><span class="n">Color</span><span class="o">.</span><span class="n">validate</span> <span class="o">=</span> <span class="k">lambda</span> <span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">value</span>
 
 
 <div class="viewcode-block" id="BqplotProfileLayerArtist"><a class="viewcode-back" href="../../../../api/glue_jupyter.bqplot.profile.BqplotProfileLayerArtist.html#glue_jupyter.bqplot.profile.BqplotProfileLayerArtist">[docs]</a><span class="k">class</span> <span class="nc">BqplotProfileLayerArtist</span><span class="p">(</span><span class="n">LayerArtist</span><span class="p">):</span>
@@ -197,10 +193,10 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">marks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">marks</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">line_mark</span><span class="p">]</span>
 
-        <span class="n">link</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="s1">&#39;color&#39;</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">line_mark</span><span class="p">,</span> <span class="s1">&#39;colors&#39;</span><span class="p">),</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">x</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-        <span class="n">link</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="s1">&#39;alpha&#39;</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">line_mark</span><span class="p">,</span> <span class="s1">&#39;opacities&#39;</span><span class="p">),</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">x</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">dlink</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="s1">&#39;color&#39;</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">line_mark</span><span class="p">,</span> <span class="s1">&#39;colors&#39;</span><span class="p">),</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">color2hex</span><span class="p">(</span><span class="n">x</span><span class="p">)])</span>
+        <span class="n">dlink</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="s1">&#39;alpha&#39;</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">line_mark</span><span class="p">,</span> <span class="s1">&#39;opacities&#39;</span><span class="p">),</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">x</span><span class="p">])</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">line_mark</span><span class="o">.</span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">color</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">line_mark</span><span class="o">.</span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">color2hex</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">color</span><span class="p">)]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">line_mark</span><span class="o">.</span><span class="n">opacities</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">alpha</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">_calculate_profile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reset</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
