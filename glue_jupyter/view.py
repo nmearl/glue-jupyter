@@ -10,7 +10,7 @@ from glue.core import message as msg
 
 from glue_jupyter import get_layout_factory
 from glue_jupyter.utils import _update_not_none, validate_data_argument
-from glue_jupyter.common.toolbar import BasicJupyterToolbar
+from glue_jupyter.renderers.common import BasicJupyterToolbar
 from glue_jupyter.widgets.layer_options import LayerOptionsWidget
 
 __all__ = ['IPyWidgetView', 'IPyWidgetLayerArtistContainer']

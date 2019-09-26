@@ -7,7 +7,7 @@ import ipyvuetify as v
 from glue.config import viewer_tool
 
 from glue_jupyter.view import get_viewer_tools
-from glue_jupyter.common.toolbar_vuetify import BasicJupyterToolbar
+from glue_jupyter.renderers.common import BasicJupyterToolbar
 from glue_jupyter.widgets.subset_mode_vuetify import SelectionModeMenu
 from glue_jupyter.widgets.subset_select_vuetify import SubsetSelect
 

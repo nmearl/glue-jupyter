@@ -1,7 +1,6 @@
 import ipywidgets as widgets
 from IPython.display import display
 
-from glue.core import Data
 from glue.core.application_base import Application
 from glue.core.link_helpers import LinkSame
 from glue.core.roi import PolygonalROI
@@ -40,12 +39,14 @@ class JupyterApplication(Application):
     """
 
     def __init__(self, data_collection=None, session=None):
-        super(JupyterApplication, self).__init__(data_collection=data_collection, session=session)
+        super(JupyterApplication, self).__init__(
+            data_collection=data_collection, session=session)
         self.output = widgets.Output()
         self.widget_data_collection = widgets.SelectMultiple()
         self.widget_subset_select = SubsetSelect(self.session)
         self.widget_subset_mode = SubsetMode(self.session)
-        self.widget = widgets.VBox(children=[self.widget_subset_mode, self.output])
+        self.widget = widgets.VBox(
+            children=[self.widget_subset_mode, self.output])
 
     def _ipython_display_(self):
         display(self.widget)
@@ -146,10 +147,12 @@ class JupyterApplication(Application):
         """
 
         if widget == 'bqplot':
-            from .bqplot.histogram import BqplotHistogramView
+            from glue_jupyter.renderers.bqplot.histogram import \
+                BqplotHistogramView
             viewer_cls = BqplotHistogramView
         elif widget == 'matplotlib':
-            from .matplotlib.histogram import HistogramJupyterViewer
+            from glue_jupyter.renderers.matplotlib.histogram import \
+                HistogramJupyterViewer
             viewer_cls = HistogramJupyterViewer
         else:
             raise ValueError("Widget type should be 'bqplot' or 'matplotlib'")
@@ -165,8 +168,9 @@ class JupyterApplication(Application):
 
         # x_min and x_max get set to the hist_x_min/max in glue.viewers.histogram.state
         # for this API it make more sense to call it x_min and x_max, and for consistency with the rest
-        _update_not_none(viewer_state, hist_x_min=x_min, hist_x_max=x_max, hist_n_bin=n_bin,
-            normalize=normalize, cumulative=cumulative)
+        _update_not_none(viewer_state, hist_x_min=x_min, hist_x_max=x_max,
+                         hist_n_bin=n_bin,
+                         normalize=normalize, cumulative=cumulative)
         viewer_state_obj.update_from_dict(viewer_state)
 
         view = self.new_data_viewer(viewer_cls, data=data,
@@ -176,7 +180,8 @@ class JupyterApplication(Application):
         view.layers[0].state.update_from_dict(layer_state)
         return view
 
-    def scatter2d(self, *, data=None, x=None, y=None, widget='bqplot', color=None,
+    def scatter2d(self, *, data=None, x=None, y=None, widget='bqplot',
+                  color=None,
                   size=None, viewer_state=None, layer_state=None, show=True):
         """
         Open an interactive 2d scatter plot viewer.
@@ -210,10 +215,11 @@ class JupyterApplication(Application):
         """
 
         if widget == 'bqplot':
-            from .bqplot.scatter import BqplotScatterView
+            from glue_jupyter.renderers.bqplot.scatter import BqplotScatterView
             viewer_cls = BqplotScatterView
         elif widget == 'matplotlib':
-            from .matplotlib.scatter import ScatterJupyterViewer
+            from glue_jupyter.renderers.matplotlib.scatter import \
+                ScatterJupyterViewer
             viewer_cls = ScatterJupyterViewer
         else:
             raise ValueError("Widget type should be 'bqplot' or 'matplotlib'")
@@ -261,7 +267,7 @@ class JupyterApplication(Application):
             (`False`).
         """
 
-        from .ipyvolume import IpyvolumeScatterView
+        from glue_jupyter.renderers.ipyvolume import IpyvolumeScatterView
 
         data = validate_data_argument(self.data_collection, data)
 
@@ -302,10 +308,11 @@ class JupyterApplication(Application):
         """
 
         if widget == 'bqplot':
-            from .bqplot.image import BqplotImageView
+            from glue_jupyter.renderers.bqplot import BqplotImageView
             viewer_cls = BqplotImageView
         elif widget == 'matplotlib':
-            from .matplotlib.image import ImageJupyterViewer
+            from glue_jupyter.renderers.matplotlib.image import \
+                ImageJupyterViewer
             viewer_cls = ImageJupyterViewer
         else:
             raise ValueError("Widget type should be 'bqplot' or 'matplotlib'")
@@ -313,8 +320,9 @@ class JupyterApplication(Application):
         data = validate_data_argument(self.data_collection, data)
 
         if len(data.pixel_component_ids) < 2:
-            raise ValueError('Only data with two or more dimensions can be used '
-                             'as the initial dataset in the image viewer')
+            raise ValueError(
+                'Only data with two or more dimensions can be used '
+                'as the initial dataset in the image viewer')
 
         view = self.new_data_viewer(viewer_cls, data=data, show=show)
 
@@ -350,10 +358,11 @@ class JupyterApplication(Application):
         """
 
         if widget == 'bqplot':
-            from .bqplot.profile import BqplotProfileView
+            from glue_jupyter.renderers.bqplot.profile import BqplotProfileView
             viewer_cls = BqplotProfileView
         elif widget == 'matplotlib':
-            from .matplotlib.profile import ProfileJupyterViewer
+            from glue_jupyter.renderers.matplotlib.profile import \
+                ProfileJupyterViewer
             viewer_cls = ProfileJupyterViewer
         else:
             raise ValueError("Widget type should be 'matplotlib'")
@@ -392,7 +401,7 @@ class JupyterApplication(Application):
             show it later if the ``show()`` method is called explicitly
             (`False`).
          """
-        from .ipyvolume import IpyvolumeVolumeView
+        from glue_jupyter.renderers.ipyvolume import IpyvolumeVolumeView
 
         data = validate_data_argument(self.data_collection, data)
 
@@ -474,3 +483,26 @@ class JupyterApplication(Application):
 
     def add_widget(self, widget, label=None, tab=None):
         pass
+
+
+import ipyvuetify as v
+from traitlets import Unicode
+
+
+class IPyApplication(v.VuetifyTemplate, Application):
+    template = Unicode("""
+    <v-app>
+        <b-navigation-drawer />
+        <b-toolbar />
+        <b-content-area />
+    </v-app>
+    """).tag(sync=True)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.components = {
+            'b-toolbar': Toolbar(hub=self.hub),
+            'b-navigation-drawer': NavigationDrawer(hub=self.hub),
+            'b-content-area': ContentArea(hub=self.hub)
+        }
